@@ -1,14 +1,14 @@
 {
   "name": "xoox-ui",
   "private": false,
-  "version": "0.0.5",
+  "version": "0.0.8",
   "type": "module",
   "types": "index.d.ts",
   "files": [
-    "dist"
+    "./"
   ],
-  "main": "./xoox-ui.umd.cjs",
-  "module": "./xoox-ui.js",
+  "main": "xoox-ui.umd.cjs",
+  "module": "xoox-ui.js",
   "exports": {
     ".": {
       "import": "./xoox-ui.js",
