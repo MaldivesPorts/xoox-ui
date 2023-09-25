@@ -124,6 +124,6 @@ const Input = forwardRef<"input", InputProps>((props, ref) => {
   );
 });
 
-Input.displayName = "MplUI.Input";
+Input.displayName = "XooxUI.Input";
 
 export default Input;

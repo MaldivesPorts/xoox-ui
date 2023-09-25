@@ -1,7 +1,7 @@
-import {forwardRef, HTMLMplUIProps} from "../../core/system";
+import {forwardRef, HTMLXooxUIProps} from "../../core/system";
 import {useDOMRef} from "../../utilities/react-utils";
 
-export interface PaginationCursorProps extends HTMLMplUIProps<"span"> {
+export interface PaginationCursorProps extends HTMLXooxUIProps<"span"> {
   /**
    * The current active page.
    */
@@ -21,6 +21,6 @@ const PaginationCursor = forwardRef<"span", PaginationCursorProps>((props, ref) 
   );
 });
 
-PaginationCursor.displayName = "MplUI.PaginationCursor";
+PaginationCursor.displayName = "XooxUI.PaginationCursor";
 
 export default PaginationCursor;

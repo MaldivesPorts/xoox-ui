@@ -3,10 +3,10 @@ import type {ReactRef} from "../../utilities/react-utils";
 import type {ButtonGroupVariantProps} from "../../core/theme";
 
 import {buttonGroup} from "../../core/theme";
-import {HTMLMplUIProps, PropGetter, mapPropsVariants} from "../../core/system";
+import {HTMLXooxUIProps, PropGetter, mapPropsVariants} from "../../core/system";
 import {useDOMRef} from "../../utilities/react-utils";
 import {useMemo, useCallback} from "react";
-interface Props extends HTMLMplUIProps, ButtonGroupVariantProps {
+interface Props extends HTMLXooxUIProps, ButtonGroupVariantProps {
   /**
    * Ref to the DOM node.
    */

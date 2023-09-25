@@ -1,4 +1,4 @@
-import type {HTMLMplUIProps, PropGetter} from "../../core/system";
+import type {HTMLXooxUIProps, PropGetter} from "../../core/system";
 import type {PopoverProps} from "../popover";
 import type {MenuTriggerType} from "@react-types/menu";
 import type {Ref} from "react";
@@ -12,7 +12,7 @@ import {useMemo, useRef} from "react";
 import {mergeProps} from "@react-aria/utils";
 import {MenuProps} from "../menu";
 
-interface Props extends HTMLMplUIProps<"div"> {
+interface Props extends HTMLXooxUIProps<"div"> {
   /**
    * Type of overlay that is opened by the trigger.
    */

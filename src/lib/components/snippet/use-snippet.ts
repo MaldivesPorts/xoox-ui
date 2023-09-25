@@ -1,7 +1,7 @@
 import type {SnippetVariantProps, SnippetSlots, SlotsToClasses} from "../../core/theme";
 
 import {snippet} from "../../core/theme";
-import {HTMLMplUIProps, mapPropsVariants, PropGetter} from "../../core/system";
+import {HTMLXooxUIProps, mapPropsVariants, PropGetter} from "../../core/system";
 import {useDOMRef, filterDOMProps} from "../../utilities/react-utils";
 import {clsx, dataAttr} from "../../utilities/shared-utils";
 import {ReactRef} from "../../utilities/react-utils";
@@ -10,7 +10,7 @@ import {useFocusRing} from "@react-aria/focus";
 import {useMemo, useCallback, ReactElement, useRef} from "react";
 import {TooltipProps} from "../tooltip";
 import {ButtonProps} from "../button";
-export interface UseSnippetProps extends Omit<HTMLMplUIProps, "onCopy">, SnippetVariantProps {
+export interface UseSnippetProps extends Omit<HTMLXooxUIProps, "onCopy">, SnippetVariantProps {
   /**
    * Ref to the DOM node.
    */
@@ -87,7 +87,7 @@ export interface UseSnippetProps extends Omit<HTMLMplUIProps, "onCopy">, Snippet
   hideSymbol?: boolean;
   /**
    * Tooltip props.
-   * @see [Tooltip](https://MplUI.org/components/tooltip) for more details.
+   * @see [Tooltip](https://XooxUI.org/components/tooltip) for more details.
    * @default {
    *  offset: 15,
    *  delay: 1000,
@@ -99,7 +99,7 @@ export interface UseSnippetProps extends Omit<HTMLMplUIProps, "onCopy">, Snippet
   tooltipProps?: Partial<TooltipProps>;
   /**
    * Copy button props.
-   * @see [Button](https://MplUI.org/components/button) for more details.
+   * @see [Button](https://XooxUI.org/components/button) for more details.
    * @default {
    *   isDisabled: disableCopy,
    *   onPress: onCopy

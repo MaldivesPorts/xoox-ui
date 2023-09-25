@@ -1,7 +1,7 @@
 import type {GridNode} from "@react-types/grid";
 
 import {Key, useMemo} from "react";
-import {forwardRef, HTMLMplUIProps} from "../../core/system";
+import {forwardRef, HTMLXooxUIProps} from "../../core/system";
 import {useDOMRef, filterDOMProps} from "../../utilities/react-utils";
 import {clsx, dataAttr} from "../../utilities/shared-utils";
 import {useTableCell} from "@react-aria/table";
@@ -11,7 +11,7 @@ import {useFocusRing} from "@react-aria/focus";
 import {ValuesType} from "./use-table";
 
 // @internal
-export interface TableCellProps<T = object> extends HTMLMplUIProps<"td"> {
+export interface TableCellProps<T = object> extends HTMLXooxUIProps<"td"> {
   /**
    * The key of the table row.
    */
@@ -69,6 +69,6 @@ const TableCell = forwardRef<"td", TableCellProps>((props, ref) => {
   );
 });
 
-TableCell.displayName = "MplUI.TableCell";
+TableCell.displayName = "XooxUI.TableCell";
 
 export default TableCell;

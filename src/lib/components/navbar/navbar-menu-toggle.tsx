@@ -1,5 +1,5 @@
 import {AriaToggleButtonProps, useAriaToggleButton} from "../../hooks/use-aria-toggle-button";
-import {forwardRef, HTMLMplUIProps} from "../../core/system";
+import {forwardRef, HTMLXooxUIProps} from "../../core/system";
 import {useDOMRef} from "../../utilities/react-utils";
 import {clsx, dataAttr} from "../../utilities/shared-utils";
 import {useToggleState} from "@react-stately/toggle";
@@ -10,7 +10,7 @@ import {useMemo, ReactNode} from "react";
 
 import {useNavbarContext} from "./navbar-context";
 
-export interface Props extends Omit<HTMLMplUIProps<"button">, keyof AriaToggleButtonProps> {
+export interface Props extends Omit<HTMLXooxUIProps<"button">, keyof AriaToggleButtonProps> {
   /**
    * The value of the input element, used when submitting an HTML form. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefvalue).
    */
@@ -89,6 +89,6 @@ const NavbarMenuToggle = forwardRef<"button", NavbarMenuToggleProps>((props, ref
   );
 });
 
-NavbarMenuToggle.displayName = "MplUI.NavbarMenuToggle";
+NavbarMenuToggle.displayName = "XooxUI.NavbarMenuToggle";
 
 export default NavbarMenuToggle;

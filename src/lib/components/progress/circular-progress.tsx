@@ -38,6 +38,6 @@ const CircularProgress = forwardRef<"div", CircularProgressProps>((props, ref) =
   );
 });
 
-CircularProgress.displayName = "MplUI.CircularProgress";
+CircularProgress.displayName = "XooxUI.CircularProgress";
 
 export default CircularProgress;

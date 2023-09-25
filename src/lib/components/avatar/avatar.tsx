@@ -56,6 +56,6 @@ const Avatar = forwardRef<"span", AvatarProps>((props, ref) => {
   );
 });
 
-Avatar.displayName = "MplUI.Avatar";
+Avatar.displayName = "XooxUI.Avatar";
 
 export default Avatar;

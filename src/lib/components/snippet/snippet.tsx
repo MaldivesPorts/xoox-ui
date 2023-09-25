@@ -107,6 +107,6 @@ const Snippet = forwardRef<"div", SnippetProps>((props, ref) => {
   );
 });
 
-Snippet.displayName = "MplUI.Snippet";
+Snippet.displayName = "XooxUI.Snippet";
 
 export default Snippet;

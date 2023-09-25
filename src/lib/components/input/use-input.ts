@@ -1,6 +1,6 @@
 import type {InputVariantProps, SlotsToClasses, InputSlots} from "../../core/theme";
 
-import {HTMLMplUIProps, mapPropsVariants, PropGetter} from "../../core/system";
+import {HTMLXooxUIProps, mapPropsVariants, PropGetter} from "../../core/system";
 import {AriaTextFieldProps} from "@react-types/textfield";
 import {useFocusRing} from "@react-aria/focus";
 import {input} from "../../core/theme";
@@ -13,7 +13,7 @@ import {chain, mergeProps} from "@react-aria/utils";
 import {useTextField} from "@react-aria/textfield";
 
 export interface Props<T extends HTMLInputElement | HTMLTextAreaElement = HTMLInputElement>
-  extends Omit<HTMLMplUIProps<"input">, keyof InputVariantProps> {
+  extends Omit<HTMLXooxUIProps<"input">, keyof InputVariantProps> {
   /**
    * Ref to the DOM node.
    */

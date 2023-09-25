@@ -1,7 +1,7 @@
 import type {AvatarSlots, AvatarVariantProps, SlotsToClasses} from "../../core/theme";
 
 import {avatar} from "../../core/theme";
-import {HTMLMplUIProps, PropGetter} from "../../core/system";
+import {HTMLXooxUIProps, PropGetter} from "../../core/system";
 import {mergeProps} from "@react-aria/utils";
 import {useDOMRef} from "../../utilities/react-utils";
 import {clsx, safeText, dataAttr} from "../../utilities/shared-utils";
@@ -13,7 +13,7 @@ import {useHover} from "@react-aria/interactions";
 
 import {useAvatarGroupContext} from "./avatar-group-context";
 
-interface Props extends HTMLMplUIProps<"span"> {
+interface Props extends HTMLXooxUIProps<"span"> {
   /**
    * Ref to the DOM node.
    */

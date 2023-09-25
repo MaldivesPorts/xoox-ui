@@ -31,6 +31,6 @@ const Kbd = forwardRef<"kbd", KbdProps>((props, ref) => {
   );
 });
 
-Kbd.displayName = "MplUI.Kbd";
+Kbd.displayName = "XooxUI.Kbd";
 
 export default Kbd;

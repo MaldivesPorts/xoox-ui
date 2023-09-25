@@ -1,12 +1,12 @@
 import type {CodeVariantProps} from "../../core/theme";
-import type {HTMLMplUIProps, PropGetter} from "../../core/system";
+import type {HTMLXooxUIProps, PropGetter} from "../../core/system";
 
 import {code} from "../../core/theme";
 import {mapPropsVariants} from "../../core/system";
 import {ReactRef} from "../../utilities/react-utils";
 import {useMemo} from "react";
 
-export interface UseCodeProps extends HTMLMplUIProps<"code">, CodeVariantProps {
+export interface UseCodeProps extends HTMLXooxUIProps<"code">, CodeVariantProps {
   /**
    * Ref to the DOM node.
    */

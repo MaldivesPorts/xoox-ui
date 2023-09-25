@@ -14,6 +14,6 @@ const Code = forwardRef<"div", CodeProps>((props, ref) => {
   );
 });
 
-Code.displayName = "MplUI.Code";
+Code.displayName = "XooxUI.Code";
 
 export default Code;

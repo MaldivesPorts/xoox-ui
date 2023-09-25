@@ -1,10 +1,10 @@
-import {forwardRef, HTMLMplUIProps} from "../../core/system";
+import {forwardRef, HTMLXooxUIProps} from "../../core/system";
 import {useDOMRef} from "../../utilities/react-utils";
 import {clsx} from "../../utilities/shared-utils";
 
 import {useNavbarContext} from "./navbar-context";
 
-export interface NavbarContentProps extends HTMLMplUIProps<"ul"> {
+export interface NavbarContentProps extends HTMLXooxUIProps<"ul"> {
   /**
    * The content of the Navbar.Content. It is usually the `NavbarItem`,
    */
@@ -38,6 +38,6 @@ const NavbarContent = forwardRef<"ul", NavbarContentProps>((props, ref) => {
   );
 });
 
-NavbarContent.displayName = "MplUI.NavbarContent";
+NavbarContent.displayName = "XooxUI.NavbarContent";
 
 export default NavbarContent;

@@ -1,7 +1,7 @@
 import type {SelectSlots, SelectVariantProps, SlotsToClasses} from "../../core/theme";
 import type {HiddenSelectProps} from "./hidden-select";
 
-import {DOMAttributes, HTMLMplUIProps, mapPropsVariants, PropGetter} from "../../core/system";
+import {DOMAttributes, HTMLXooxUIProps, mapPropsVariants, PropGetter} from "../../core/system";
 import {select} from "../../core/theme";
 import {ReactRef, useDOMRef, filterDOMProps} from "../../utilities/react-utils";
 import {useMemo, useCallback, useRef, Key, ReactNode, useEffect} from "react";
@@ -41,7 +41,7 @@ export type SelectedItemProps<T = object> = {
 
 export type SelectedItems<T = object> = Array<SelectedItemProps<T>>;
 
-interface Props<T> extends Omit<HTMLMplUIProps<"select">, keyof SelectVariantProps> {
+interface Props<T> extends Omit<HTMLXooxUIProps<"select">, keyof SelectVariantProps> {
   /**
    * Ref to the DOM node.
    */

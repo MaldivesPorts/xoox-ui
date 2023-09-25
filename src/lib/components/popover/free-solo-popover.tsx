@@ -125,6 +125,6 @@ const FreeSoloPopover = forwardRef<"div", FreeSoloPopoverProps>((props, ref) => 
   );
 });
 
-FreeSoloPopover.displayName = "MplUI.FreeSoloPopover";
+FreeSoloPopover.displayName = "XooxUI.FreeSoloPopover";
 
 export default FreeSoloPopover;

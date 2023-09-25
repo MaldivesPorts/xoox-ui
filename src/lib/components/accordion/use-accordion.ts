@@ -1,4 +1,4 @@
-import type {HTMLMplUIProps, PropGetter} from "../../core/system";
+import type {HTMLXooxUIProps, PropGetter} from "../../core/system";
 import type {SelectionBehavior, MultipleSelection} from "@react-types/shared";
 import type {AriaAccordionProps} from "@react-types/accordion";
 import type {AccordionGroupVariantProps} from "../../core/theme";
@@ -15,7 +15,7 @@ import {DividerProps} from "../divider";
 
 import {AccordionItemProps} from "./accordion-item";
 
-interface Props extends HTMLMplUIProps<"div"> {
+interface Props extends HTMLXooxUIProps<"div"> {
   /**
    * Ref to the DOM node.
    */

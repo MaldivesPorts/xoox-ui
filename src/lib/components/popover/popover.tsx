@@ -34,6 +34,6 @@ const Popover = forwardRef<"div", PopoverProps>((props, ref) => {
   );
 });
 
-Popover.displayName = "MplUI.Popover";
+Popover.displayName = "XooxUI.Popover";
 
 export default Popover;

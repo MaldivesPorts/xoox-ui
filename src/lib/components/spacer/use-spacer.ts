@@ -1,5 +1,5 @@
 import type {SpacerVariantProps} from "../../core/theme";
-import type {HTMLMplUIProps, PropGetter} from "../../core/system";
+import type {HTMLXooxUIProps, PropGetter} from "../../core/system";
 
 import {mapPropsVariants} from "../../core/system";
 import {spacer} from "../../core/theme";
@@ -9,7 +9,7 @@ import {useMemo} from "react";
 
 import {spacing, Space} from "./utils";
 
-interface Props extends HTMLMplUIProps<"span"> {
+interface Props extends HTMLXooxUIProps<"span"> {
   /**
    * Ref to the DOM node.
    */

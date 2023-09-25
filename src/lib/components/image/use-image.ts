@@ -1,7 +1,7 @@
 import type {ImageVariantProps, SlotsToClasses, ImageSlots} from "../../core/theme";
 
 import {ImgHTMLAttributes, useCallback} from "react";
-import {HTMLMplUIProps, mapPropsVariants, PropGetter} from "../../core/system";
+import {HTMLXooxUIProps, mapPropsVariants, PropGetter} from "../../core/system";
 import {image} from "../../core/theme";
 import {useDOMRef} from "../../utilities/react-utils";
 import {clsx, dataAttr} from "../../utilities/shared-utils";
@@ -10,7 +10,7 @@ import {ReactRef} from "../../utilities/react-utils";
 import {useMemo} from "react";
 type NativeImageProps = ImgHTMLAttributes<HTMLImageElement>;
 
-interface Props extends HTMLMplUIProps<"img"> {
+interface Props extends HTMLXooxUIProps<"img"> {
   /**
    * Ref to the DOM node.
    */

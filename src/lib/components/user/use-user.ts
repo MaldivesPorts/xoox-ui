@@ -3,7 +3,7 @@ import type {AvatarProps} from "../avatar";
 
 import {ReactNode, useMemo, useCallback} from "react";
 import {useFocusRing} from "@react-aria/focus";
-import {HTMLMplUIProps, PropGetter} from "../../core/system";
+import {HTMLXooxUIProps, PropGetter} from "../../core/system";
 import {user} from "../../core/theme";
 import {clsx, dataAttr} from "../../utilities/shared-utils";
 import {filterDOMProps, ReactRef} from "../../utilities/react-utils";
@@ -29,7 +29,7 @@ interface Props {
   isFocusable?: boolean;
   /**
    * The user avatar props
-   * @see https://MplUI.org/docs/components/avatar
+   * @see https://XooxUI.org/docs/components/avatar
    */
   avatarProps?: Partial<AvatarProps>;
   /**
@@ -49,7 +49,7 @@ interface Props {
   classNames?: SlotsToClasses<UserSlots>;
 }
 
-export type UseUserProps = Props & Omit<HTMLMplUIProps<"div">, "children">;
+export type UseUserProps = Props & Omit<HTMLXooxUIProps<"div">, "children">;
 
 export function useUser(props: UseUserProps) {
   const {

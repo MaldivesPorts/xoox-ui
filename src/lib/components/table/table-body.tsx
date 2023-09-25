@@ -1,4 +1,4 @@
-import {forwardRef, HTMLMplUIProps} from "../../core/system";
+import {forwardRef, HTMLXooxUIProps} from "../../core/system";
 import {useDOMRef} from "../../utilities/react-utils";
 import {clsx, dataAttr} from "../../utilities/shared-utils";
 import {useTableRowGroup} from "@react-aria/table";
@@ -12,7 +12,7 @@ import TableCheckboxCell from "./table-checkbox-cell";
 import {ValuesType} from "./use-table";
 
 // @internal
-export interface TableBodyProps extends HTMLMplUIProps<"tbody"> {
+export interface TableBodyProps extends HTMLXooxUIProps<"tbody"> {
   slots: ValuesType["slots"];
   collection: ValuesType["collection"];
   state: ValuesType["state"];
@@ -146,6 +146,6 @@ const TableBody = forwardRef<"tbody", TableBodyProps>((props, ref) => {
   );
 });
 
-TableBody.displayName = "MplUI.TableBody";
+TableBody.displayName = "XooxUI.TableBody";
 
 export default TableBody;

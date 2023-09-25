@@ -18,6 +18,6 @@ const Spinner = forwardRef<"div", SpinnerProps>((props, ref) => {
   );
 });
 
-Spinner.displayName = "MplUI.Spinner";
+Spinner.displayName = "XooxUI.Spinner";
 
 export default Spinner;

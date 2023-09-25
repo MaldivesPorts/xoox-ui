@@ -60,6 +60,6 @@ const ListboxItem = forwardRef<"li", ListboxItemProps>((props, _) => {
   );
 });
 
-ListboxItem.displayName = "MplUI.ListboxItem";
+ListboxItem.displayName = "XooxUI.ListboxItem";
 
 export default ListboxItem;

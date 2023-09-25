@@ -29,6 +29,6 @@ const Card = forwardRef<"div", CardProps>((props, ref) => {
   );
 });
 
-Card.displayName = "MplUI.Card";
+Card.displayName = "XooxUI.Card";
 
 export default Card;

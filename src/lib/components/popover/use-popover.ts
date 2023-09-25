@@ -7,7 +7,7 @@ import {OverlayTriggerState, useOverlayTriggerState} from "@react-stately/overla
 import {useFocusRing} from "@react-aria/focus";
 import {ariaHideOutside, useOverlayTrigger} from "@react-aria/overlays";
 import {OverlayTriggerProps} from "@react-types/overlays";
-import {HTMLMplUIProps, mapPropsVariants, PropGetter} from "../../core/system";
+import {HTMLXooxUIProps, mapPropsVariants, PropGetter} from "../../core/system";
 import {getArrowPlacement, getShouldUseAxisPlacement} from "../../utilities/aria-utils";
 import {mergeProps, mergeRefs} from "@react-aria/utils";
 import {clsx, dataAttr} from "../../utilities/shared-utils";
@@ -16,7 +16,7 @@ import {useMemo, useCallback, useRef} from "react";
 import {useReactAriaPopover, ReactAriaPopoverProps} from "./use-aria-popover";
 import {popover} from '../../core/theme';
 
-export interface Props extends HTMLMplUIProps<"div"> {
+export interface Props extends HTMLXooxUIProps<"div"> {
   /**
    * Ref to the DOM node.
    */

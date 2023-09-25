@@ -1,4 +1,4 @@
-import {forwardRef, HTMLMplUIProps} from "../../core/system";
+import {forwardRef, HTMLXooxUIProps} from "../../core/system";
 import {useDOMRef} from "../../utilities/react-utils";
 import {clsx} from "../../utilities/shared-utils";
 import {useTableRowGroup} from "@react-aria/table";
@@ -6,7 +6,7 @@ import {mergeProps} from "@react-aria/utils";
 
 import {ValuesType} from "./use-table";
 
-export interface TableRowGroupProps extends HTMLMplUIProps<"thead"> {
+export interface TableRowGroupProps extends HTMLXooxUIProps<"thead"> {
   slots: ValuesType["slots"];
   classNames?: ValuesType["classNames"];
 }
@@ -32,6 +32,6 @@ const TableRowGroup = forwardRef<"thead", TableRowGroupProps>((props, ref) => {
   );
 });
 
-TableRowGroup.displayName = "MplUI.TableRowGroup";
+TableRowGroup.displayName = "XooxUI.TableRowGroup";
 
 export default TableRowGroup;

@@ -1,7 +1,7 @@
 import type {PaginationSlots, PaginationVariantProps, SlotsToClasses} from "../../core/theme";
 import type {Timer} from "../../utilities/shared-utils";
 import type {ReactNode, Ref} from "react";
-import type {HTMLMplUIProps, PropGetter} from "../../core/system";
+import type {HTMLXooxUIProps, PropGetter} from "../../core/system";
 
 import {
   UsePaginationProps as UseBasePaginationProps,
@@ -71,7 +71,7 @@ export type PaginationItemRenderProps = {
   setPage: (page: number) => void;
 };
 
-interface Props extends Omit<HTMLMplUIProps<"nav">, "onChange"> {
+interface Props extends Omit<HTMLXooxUIProps<"nav">, "onChange"> {
   /**
    * Ref to the DOM node.
    */

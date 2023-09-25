@@ -7,14 +7,14 @@ import {radioGroup} from "../../core/theme";
 import {useCallback, useMemo} from "react";
 import {RadioGroupState, useRadioGroupState} from "@react-stately/radio";
 import {useRadioGroup as useReactAriaRadioGroup} from "@react-aria/radio";
-import {HTMLMplUIProps, PropGetter} from "../../core/system";
+import {HTMLXooxUIProps, PropGetter} from "../../core/system";
 import {useDOMRef} from "../../utilities/react-utils";
 import {clsx, safeAriaLabel} from "../../utilities/shared-utils";
 import {mergeProps} from "@react-aria/utils";
 
 import {RadioProps} from "./index";
 
-interface Props extends Omit<HTMLMplUIProps<"div">, "onChange"> {
+interface Props extends Omit<HTMLXooxUIProps<"div">, "onChange"> {
   /**
    * Ref to the DOM node.
    */

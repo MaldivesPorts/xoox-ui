@@ -104,6 +104,6 @@ const Table = forwardRef<"table", TableProps>((props, ref) => {
   );
 });
 
-Table.displayName = "MplUI.Table";
+Table.displayName = "XooxUI.Table";
 
 export default Table;

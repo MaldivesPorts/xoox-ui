@@ -9,7 +9,7 @@ import {useTooltipTriggerState} from "@react-stately/tooltip";
 import {mergeProps} from "@react-aria/utils";
 import {useTooltip as useReactAriaTooltip, useTooltipTrigger} from "@react-aria/tooltip";
 import {useOverlayPosition, useOverlay, AriaOverlayProps} from "@react-aria/overlays";
-import {HTMLMplUIProps, mapPropsVariants, PropGetter} from "../../core/system";
+import {HTMLXooxUIProps, mapPropsVariants, PropGetter} from "../../core/system";
 import {popover} from "../../core/theme";
 import {clsx, dataAttr} from "../../utilities/shared-utils";
 import {ReactRef, mergeRefs} from "../../utilities/react-utils";
@@ -17,7 +17,7 @@ import {createDOMRef} from "../../utilities/react-utils";
 import {useMemo, useRef, useCallback} from "react";
 import {toReactAriaPlacement, getArrowPlacement} from "../../utilities/aria-utils";
 
-interface Props extends Omit<HTMLMplUIProps, "content"> {
+interface Props extends Omit<HTMLXooxUIProps, "content"> {
   /**
    * Ref to the DOM node.
    */

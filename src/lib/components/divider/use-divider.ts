@@ -1,12 +1,12 @@
 import type {DividerVariantProps} from "../../core/theme";
-import type {HTMLMplUIProps, PropGetter} from "../../core/system";
+import type {HTMLXooxUIProps, PropGetter} from "../../core/system";
 
 import {divider} from "../../core/theme";
 import {Ref, useCallback, useMemo} from "react";
 
 import {SeparatorProps as AriaSeparatorProps, useSeparator} from "./use-separator";
 
-interface Props extends HTMLMplUIProps<"hr"> {
+interface Props extends HTMLXooxUIProps<"hr"> {
   /**
    * Ref to the DOM node.
    */

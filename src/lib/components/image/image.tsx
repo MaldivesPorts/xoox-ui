@@ -52,6 +52,6 @@ const Image = forwardRef<"img", ImageProps>((props, ref) => {
   return img;
 });
 
-Image.displayName = "MplUI.Image";
+Image.displayName = "XooxUI.Image";
 
 export default Image;

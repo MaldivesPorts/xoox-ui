@@ -1,6 +1,6 @@
 import type {NavbarVariantProps, SlotsToClasses, NavbarSlots} from "../../core/theme";
 
-import {HTMLMplUIProps, mapPropsVariants, PropGetter} from "../../core/system";
+import {HTMLXooxUIProps, mapPropsVariants, PropGetter} from "../../core/system";
 import {navbar} from "../../core/theme";
 import {useDOMRef} from "../../utilities/react-utils";
 import {clsx, dataAttr} from "../../utilities/shared-utils";
@@ -11,7 +11,7 @@ import {useScrollPosition} from "../../hooks/use-scroll-position";
 import {useControlledState} from "@react-stately/utils";
 import {HTMLMotionProps} from "framer-motion";
 
-interface Props extends HTMLMplUIProps<"nav"> {
+interface Props extends HTMLXooxUIProps<"nav"> {
   /**
    * Ref to the DOM node.
    */

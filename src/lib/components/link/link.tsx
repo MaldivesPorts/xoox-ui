@@ -28,6 +28,6 @@ const Link = forwardRef<"a", LinkProps>((props, ref) => {
   );
 });
 
-Link.displayName = "MplUI.Link";
+Link.displayName = "XooxUI.Link";
 
 export default Link;

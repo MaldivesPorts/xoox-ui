@@ -143,6 +143,6 @@ const Tab = forwardRef<"button", TabItemProps>((props, ref) => {
   );
 });
 
-Tab.displayName = "MplUI.Tab";
+Tab.displayName = "XooxUI.Tab";
 
 export default Tab;

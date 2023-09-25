@@ -1,11 +1,11 @@
 import {useEffect} from "react";
-import {forwardRef, HTMLMplUIProps} from "../../core/system";
+import {forwardRef, HTMLXooxUIProps} from "../../core/system";
 import {useDOMRef} from "../../utilities/react-utils";
 import {clsx} from "../../utilities/shared-utils";
 
 import {useModalContext} from "./modal-context";
 
-export interface ModalHeaderProps extends HTMLMplUIProps<"header"> {}
+export interface ModalHeaderProps extends HTMLXooxUIProps<"header"> {}
 
 const ModalHeader = forwardRef<"header", ModalHeaderProps>((props, ref) => {
   const {as, children, className, ...otherProps} = props;
@@ -38,6 +38,6 @@ const ModalHeader = forwardRef<"header", ModalHeaderProps>((props, ref) => {
   );
 });
 
-ModalHeader.displayName = "MplUI.ModalHeader";
+ModalHeader.displayName = "XooxUI.ModalHeader";
 
 export default ModalHeader;

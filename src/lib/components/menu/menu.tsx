@@ -50,6 +50,6 @@ const Menu = forwardRef<"ul", MenuProps>((props, ref) => {
   );
 });
 
-Menu.displayName = "MplUI.Menu";
+Menu.displayName = "XooxUI.Menu";
 
 export default Menu;

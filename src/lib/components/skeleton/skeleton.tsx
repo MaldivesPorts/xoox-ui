@@ -14,6 +14,6 @@ const Skeleton = forwardRef<"div", SkeletonProps>((props, ref) => {
   );
 });
 
-Skeleton.displayName = "MplUI.Skeleton";
+Skeleton.displayName = "XooxUI.Skeleton";
 
 export default Skeleton;

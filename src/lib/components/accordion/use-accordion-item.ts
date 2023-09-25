@@ -1,4 +1,4 @@
-import {HTMLMplUIProps, PropGetter} from "../../core/system";
+import {HTMLXooxUIProps, PropGetter} from "../../core/system";
 import {useFocusRing} from "@react-aria/focus";
 import {accordionItem} from "../../core/theme";
 import {clsx, callAllHandlers, dataAttr} from "../../utilities/shared-utils";
@@ -12,7 +12,7 @@ import {TreeState} from "@react-stately/tree";
 
 import {AccordionItemBaseProps} from "./base/accordion-item-base";
 
-export interface Props<T extends object> extends HTMLMplUIProps<"div"> {
+export interface Props<T extends object> extends HTMLXooxUIProps<"div"> {
   /**
    * Ref to the DOM node.
    */

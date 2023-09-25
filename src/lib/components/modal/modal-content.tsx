@@ -10,14 +10,14 @@ import {RemoveScroll} from "react-remove-scroll";
 import {motion} from "framer-motion";
 import {useDialog} from "@react-aria/dialog";
 import {mergeProps} from "@react-aria/utils";
-import {HTMLMplUIProps} from "../../core/system";
+import {HTMLXooxUIProps} from "../../core/system";
 
 import {useModalContext} from "./modal-context";
 import {scaleInOut} from "./modal-transition";
 
 type KeysToOmit = "children" | "role";
 
-export interface ModalContentProps extends AriaDialogProps, HTMLMplUIProps<"div", KeysToOmit> {
+export interface ModalContentProps extends AriaDialogProps, HTMLXooxUIProps<"div", KeysToOmit> {
   children: ReactNode | ((onClose: () => void) => ReactNode);
 }
 
@@ -111,6 +111,6 @@ const ModalContent = forwardRef<"div", ModalContentProps, KeysToOmit>((props, _)
   );
 });
 
-ModalContent.displayName = "MplUI.ModalContent";
+ModalContent.displayName = "XooxUI.ModalContent";
 
 export default ModalContent;

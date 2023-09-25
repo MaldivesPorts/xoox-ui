@@ -2,7 +2,7 @@ import type {ProgressVariantProps, SlotsToClasses, ProgressSlots} from "../../co
 import type {PropGetter} from "../../core/system";
 import type {AriaProgressBarProps} from "@react-types/progress";
 
-import {HTMLMplUIProps, mapPropsVariants} from "../../core/system";
+import {HTMLXooxUIProps, mapPropsVariants} from "../../core/system";
 import {progress} from "../../core/theme";
 import {useDOMRef} from "../../utilities/react-utils";
 import {clampPercentage, clsx, dataAttr} from "../../utilities/shared-utils";
@@ -12,7 +12,7 @@ import {useMemo, useCallback} from "react";
 import {useIsMounted} from "../../hooks/use-is-mounted";
 import {useProgressBar as useAriaProgress} from "@react-aria/progress";
 
-interface Props extends HTMLMplUIProps<"div"> {
+interface Props extends HTMLXooxUIProps<"div"> {
   /**
    * Ref to the DOM node.
    */

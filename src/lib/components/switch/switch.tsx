@@ -48,6 +48,6 @@ const Switch = forwardRef<"label", SwitchProps>((props, ref) => {
   );
 });
 
-Switch.displayName = "MplUI.Switch";
+Switch.displayName = "XooxUI.Switch";
 
 export default Switch;

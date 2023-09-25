@@ -63,6 +63,6 @@ const MenuItem = forwardRef<"li", MenuItemProps>((props, _) => {
   );
 });
 
-MenuItem.displayName = "MplUI.MenuItem";
+MenuItem.displayName = "XooxUI.MenuItem";
 
 export default MenuItem;

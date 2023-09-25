@@ -39,11 +39,11 @@ function Listbox<T extends object>(props: Props<T>, ref: ForwardedRef<HTMLUListE
   );
 }
 
-Listbox.displayName = "MplUI.Listbox";
+Listbox.displayName = "XooxUI.Listbox";
 
 export type ListboxProps<T = object> = Props<T> & {ref?: Ref<HTMLElement>};
 
 // forwardRef doesn't support generic parameters, so cast the result to the correct type
 export default forwardRef(Listbox) as unknown as <T = object>(props: ListboxProps<T>) => ReactElement;
 
-Listbox.displayName = "MplUI.Listbox";
+Listbox.displayName = "XooxUI.Listbox";

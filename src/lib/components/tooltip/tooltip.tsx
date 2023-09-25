@@ -95,6 +95,6 @@ const Tooltip = forwardRef<"div", TooltipProps>((props, ref) => {
   );
 });
 
-Tooltip.displayName = "MplUI.Tooltip";
+Tooltip.displayName = "XooxUI.Tooltip";
 
 export default Tooltip;

@@ -20,6 +20,6 @@ const ButtonGroup = forwardRef<"div", ButtonGroupProps>((props, ref) => {
   );
 });
 
-ButtonGroup.displayName = "MplUI.ButtonGroup";
+ButtonGroup.displayName = "XooxUI.ButtonGroup";
 
 export default ButtonGroup;

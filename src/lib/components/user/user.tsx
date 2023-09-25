@@ -22,6 +22,6 @@ const User = forwardRef<"div", UserProps>((props, ref) => {
   );
 });
 
-User.displayName = "MplUI.User";
+User.displayName = "XooxUI.User";
 
 export default User;

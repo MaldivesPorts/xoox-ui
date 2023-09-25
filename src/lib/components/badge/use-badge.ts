@@ -1,6 +1,6 @@
 import type {BadgeSlots, BadgeVariantProps, SlotsToClasses} from "../../core/theme";
 import type {ReactNode} from "react";
-import type {HTMLMplUIProps, PropGetter} from "../../core/system";
+import type {HTMLXooxUIProps, PropGetter} from "../../core/system";
 
 import {badge} from "../../core/theme";
 import {mapPropsVariants} from "../../core/system";
@@ -8,7 +8,7 @@ import {clsx} from "../../utilities/shared-utils";
 import {ReactRef} from "../../utilities/react-utils";
 import {useMemo} from "react";
 
-interface Props extends HTMLMplUIProps<"span", "content"> {
+interface Props extends HTMLXooxUIProps<"span", "content"> {
   /**
    * Ref to the DOM node.
    */

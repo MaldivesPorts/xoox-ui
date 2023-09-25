@@ -12,7 +12,7 @@ import type {TableCollection} from "@react-types/table";
 import {ReactNode, Key, useCallback} from "react";
 import {useTableState} from "@react-stately/table";
 import {AriaTableProps, useTable as useReactAriaTable} from "@react-aria/table";
-import {HTMLMplUIProps, mapPropsVariants, PropGetter} from "../../core/system";
+import {HTMLXooxUIProps, mapPropsVariants, PropGetter} from "../../core/system";
 import {table} from "../../core/theme";
 import {useDOMRef, filterDOMProps} from "../../utilities/react-utils";
 import {mergeProps} from "@react-aria/utils";
@@ -23,7 +23,7 @@ import {CheckboxProps} from "../checkbox";
 
 type TableContentPlacement = "inside" | "outside";
 
-interface Props<T> extends HTMLMplUIProps<"table"> {
+interface Props<T> extends HTMLXooxUIProps<"table"> {
   /**
    * Ref to the DOM node.
    */

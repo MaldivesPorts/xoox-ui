@@ -1,6 +1,6 @@
 import type {ButtonVariantProps} from "../../core/theme";
 import type {AriaButtonProps} from "../../hooks/use-aria-button";
-import type {HTMLMplUIProps, PropGetter} from "../../core/system";
+import type {HTMLXooxUIProps, PropGetter} from "../../core/system";
 import type {ReactNode} from "react";
 
 import {dataAttr} from "../../utilities/shared-utils";
@@ -18,7 +18,7 @@ import {SpinnerProps} from "../spinner";
 
 import {useButtonGroupContext} from "./button-group-context";
 
-interface Props extends HTMLMplUIProps<"button"> {
+interface Props extends HTMLXooxUIProps<"button"> {
   /**
    * Ref to the DOM node.
    */
@@ -38,7 +38,7 @@ interface Props extends HTMLMplUIProps<"button"> {
   endContent?: ReactNode;
   /**
    * Spinner to display when loading.
-   * @see https://MplUI.org/components/spinner
+   * @see https://XooxUI.org/components/spinner
    */
   spinner?: ReactNode;
   /**

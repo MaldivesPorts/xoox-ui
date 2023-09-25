@@ -1,11 +1,11 @@
 import {useEffect} from "react";
-import {forwardRef, HTMLMplUIProps} from "../../core/system";
+import {forwardRef, HTMLXooxUIProps} from "../../core/system";
 import {useDOMRef} from "../../utilities/react-utils";
 import {clsx} from "../../utilities/shared-utils";
 
 import {useModalContext} from "./modal-context";
 
-export interface ModalBodyProps extends HTMLMplUIProps<"div"> {}
+export interface ModalBodyProps extends HTMLXooxUIProps<"div"> {}
 
 const ModalBody = forwardRef<"div", ModalBodyProps>((props, ref) => {
   const {as, children, className, ...otherProps} = props;
@@ -38,6 +38,6 @@ const ModalBody = forwardRef<"div", ModalBodyProps>((props, ref) => {
   );
 });
 
-ModalBody.displayName = "MplUI.ModalBody";
+ModalBody.displayName = "XooxUI.ModalBody";
 
 export default ModalBody;

@@ -55,4 +55,4 @@ export type TabsProps<T = object> = Props<T> & {ref?: Ref<HTMLElement>};
 // forwardRef doesn't support generic parameters, so cast the result to the correct type
 export default forwardRef(Tabs) as <T = object>(props: TabsProps<T>) => ReactElement;
 
-Tabs.displayName = "MplUI.Tabs";
+Tabs.displayName = "XooxUI.Tabs";

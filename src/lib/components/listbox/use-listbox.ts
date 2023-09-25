@@ -1,7 +1,7 @@
 import type {KeyboardDelegate} from "@react-types/shared";
 
 import {AriaListBoxProps, useListBox as useAriaListbox} from "@react-aria/listbox";
-import {HTMLMplUIProps, PropGetter} from "../../core/system";
+import {HTMLXooxUIProps, PropGetter} from "../../core/system";
 import {listbox, ListboxVariantProps} from "../../core/theme";
 import {ListState, useListState} from "@react-stately/list";
 import {filterDOMProps, ReactRef, useDOMRef} from "../../utilities/react-utils";
@@ -27,7 +27,7 @@ interface AriaListBoxOptions<T> extends AriaListBoxProps<T> {
   shouldFocusOnHover?: boolean;
 }
 
-interface Props<T> extends Omit<HTMLMplUIProps<"ul">, "children"> {
+interface Props<T> extends Omit<HTMLXooxUIProps<"ul">, "children"> {
   /**
    * Ref to the DOM node.
    */

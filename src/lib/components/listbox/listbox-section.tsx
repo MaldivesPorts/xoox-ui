@@ -125,6 +125,6 @@ const ListboxSection = forwardRef<"li", ListboxSectionProps>(
   },
 );
 
-ListboxSection.displayName = "MplUI.ListboxSection";
+ListboxSection.displayName = "XooxUI.ListboxSection";
 
 export default ListboxSection;

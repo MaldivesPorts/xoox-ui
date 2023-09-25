@@ -1,6 +1,6 @@
 import type {GridNode} from "@react-types/grid";
 
-import {forwardRef, HTMLMplUIProps} from "../../core/system";
+import {forwardRef, HTMLXooxUIProps} from "../../core/system";
 import {useDOMRef, filterDOMProps} from "../../utilities/react-utils";
 import {clsx, dataAttr} from "../../utilities/shared-utils";
 import {useTableColumnHeader} from "@react-aria/table";
@@ -13,7 +13,7 @@ import {useHover} from "@react-aria/interactions";
 import {ValuesType} from "./use-table";
 
 // @internal
-export interface TableColumnHeaderProps<T = object> extends HTMLMplUIProps<"th"> {
+export interface TableColumnHeaderProps<T = object> extends HTMLXooxUIProps<"th"> {
   slots: ValuesType["slots"];
   state: ValuesType["state"];
   classNames?: ValuesType["classNames"];
@@ -73,6 +73,6 @@ const TableColumnHeader = forwardRef<"th", TableColumnHeaderProps>((props, ref) 
   );
 });
 
-TableColumnHeader.displayName = "MplUI.TableColumnHeader";
+TableColumnHeader.displayName = "XooxUI.TableColumnHeader";
 
 export default TableColumnHeader;

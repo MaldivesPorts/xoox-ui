@@ -8,13 +8,13 @@ import {mergeProps} from "@react-aria/utils";
 import {useFocusRing} from "@react-aria/focus";
 import {useHover} from "@react-aria/interactions";
 import {useAriaButton} from "../../hooks/use-aria-button";
-import {HTMLMplUIProps, mapPropsVariants, PropGetter} from "../../core/system";
+import {HTMLXooxUIProps, mapPropsVariants, PropGetter} from "../../core/system";
 import {clsx, dataAttr} from "../../utilities/shared-utils";
 import {ReactRef, filterDOMProps} from "../../utilities/react-utils";
 import {useDOMRef} from "../../utilities/react-utils";
 // import {useRipple} from "@nextui-org/ripple";
 
-export interface Props extends HTMLMplUIProps<"div"> {
+export interface Props extends HTMLXooxUIProps<"div"> {
   /**
    * Ref to the DOM node.
    */

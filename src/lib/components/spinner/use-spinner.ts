@@ -1,12 +1,12 @@
 import type {SpinnerVariantProps, SpinnerSlots, SlotsToClasses} from "../../core/theme";
-import type {HTMLMplUIProps, PropGetter} from "../../core/system";
+import type {HTMLXooxUIProps, PropGetter} from "../../core/system";
 
 import {mapPropsVariants} from "../../core/system";
 import {spinner} from "../../core/theme";
 import {clsx} from "../../utilities/shared-utils";
 import {useMemo, useCallback, Ref} from "react";
 
-interface Props extends HTMLMplUIProps<"div"> {
+interface Props extends HTMLXooxUIProps<"div"> {
   /**
    * Ref to the DOM node.
    */

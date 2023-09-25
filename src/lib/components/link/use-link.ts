@@ -3,7 +3,7 @@ import type {LinkVariantProps} from "../../core/theme";
 
 import {link} from "../../core/theme";
 import {useAriaLink} from "../../hooks/use-aria-link";
-import {HTMLMplUIProps, mapPropsVariants, PropGetter} from "../../core/system";
+import {HTMLXooxUIProps, mapPropsVariants, PropGetter} from "../../core/system";
 import {useDOMRef} from "../../utilities/react-utils";
 import {useFocusRing} from "@react-aria/focus";
 import {dataAttr} from "../../utilities/shared-utils";
@@ -11,7 +11,7 @@ import {ReactRef} from "../../utilities/react-utils";
 import {useMemo, useCallback} from "react";
 import {mergeProps} from "@react-aria/utils";
 
-interface Props extends HTMLMplUIProps<"a">, LinkVariantProps {
+interface Props extends HTMLXooxUIProps<"a">, LinkVariantProps {
   /**
    * Ref to the DOM node.
    */

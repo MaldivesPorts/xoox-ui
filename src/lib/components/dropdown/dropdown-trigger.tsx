@@ -19,6 +19,6 @@ const DropdownTrigger = forwardRef<"button", DropdownTriggerProps>((props, _) =>
   return <PopoverTrigger {...getMenuTriggerProps(otherProps)}>{children}</PopoverTrigger>;
 });
 
-DropdownTrigger.displayName = "MplUI.DropdownTrigger";
+DropdownTrigger.displayName = "XooxUI.DropdownTrigger";
 
 export default DropdownTrigger;

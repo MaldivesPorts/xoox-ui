@@ -1,10 +1,10 @@
-import {forwardRef, HTMLMplUIProps} from "../../core/system";
+import {forwardRef, HTMLXooxUIProps} from "../../core/system";
 import {useDOMRef} from "../../utilities/react-utils";
 import {clsx} from "../../utilities/shared-utils";
 
 import {useNavbarContext} from "./navbar-context";
 
-export interface NavbarBrandProps extends HTMLMplUIProps<"div"> {
+export interface NavbarBrandProps extends HTMLXooxUIProps<"div"> {
   children?: React.ReactNode | React.ReactNode[];
 }
 
@@ -25,6 +25,6 @@ const NavbarBrand = forwardRef<"div", NavbarBrandProps>((props, ref) => {
   );
 });
 
-NavbarBrand.displayName = "MplUI.NavbarBrand";
+NavbarBrand.displayName = "XooxUI.NavbarBrand";
 
 export default NavbarBrand;

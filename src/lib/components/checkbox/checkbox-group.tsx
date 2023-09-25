@@ -34,6 +34,6 @@ const CheckboxGroup = forwardRef<"div", CheckboxGroupProps>((props, ref) => {
   );
 });
 
-CheckboxGroup.displayName = "MplUI.CheckboxGroup";
+CheckboxGroup.displayName = "XooxUI.CheckboxGroup";
 
 export default CheckboxGroup;

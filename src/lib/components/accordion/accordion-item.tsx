@@ -106,6 +106,6 @@ const AccordionItem = forwardRef<"button", AccordionItemProps>((props, ref) => {
   );
 });
 
-AccordionItem.displayName = "MplUI.AccordionItem";
+AccordionItem.displayName = "XooxUI.AccordionItem";
 
 export default AccordionItem;

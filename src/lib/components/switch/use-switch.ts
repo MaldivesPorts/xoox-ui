@@ -1,7 +1,7 @@
 import type {ToggleVariantProps, ToggleSlots, SlotsToClasses} from "../../core/theme";
 import type {FocusableRef} from "@react-types/shared";
 import type {AriaSwitchProps} from "@react-aria/switch";
-import type {HTMLMplUIProps, PropGetter} from "../../core/system";
+import type {HTMLXooxUIProps, PropGetter} from "../../core/system";
 
 import {ReactNode, Ref, useCallback, useId, useRef, useState} from "react";
 import {mapPropsVariants} from "../../core/system";
@@ -22,7 +22,7 @@ export type SwitchThumbIconProps = {
   isSelected: boolean;
   className: string;
 };
-interface Props extends HTMLMplUIProps<"label"> {
+interface Props extends HTMLXooxUIProps<"label"> {
   /**
    * Ref to the DOM node.
    */

@@ -1,6 +1,6 @@
 import type {CheckboxVariantProps, CheckboxSlots, SlotsToClasses} from "../../core/theme";
 import type {AriaCheckboxProps} from "@react-types/checkbox";
-import type {HTMLMplUIProps, PropGetter} from "../../core/system";
+import type {HTMLXooxUIProps, PropGetter} from "../../core/system";
 
 import {ReactNode, Ref, useCallback, useId, useState} from "react";
 import {useMemo, useRef} from "react";
@@ -27,7 +27,7 @@ export type CheckboxIconProps = {
   className: string;
 };
 
-interface Props extends Omit<HTMLMplUIProps<"input">, keyof CheckboxVariantProps> {
+interface Props extends Omit<HTMLXooxUIProps<"input">, keyof CheckboxVariantProps> {
   /**
    * Ref to the DOM node.
    */

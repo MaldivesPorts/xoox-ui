@@ -10,6 +10,6 @@ const Divider = forwardRef<"div", DividerProps>((props, ref) => {
   return <Component ref={ref} {...getDividerProps()} />;
 });
 
-Divider.displayName = "MplUI.Divider";
+Divider.displayName = "XooxUI.Divider";
 
 export default Divider;

@@ -38,6 +38,6 @@ const Radio = forwardRef<"input", RadioProps>((props, ref) => {
   );
 });
 
-Radio.displayName = "MplUI.Radio";
+Radio.displayName = "XooxUI.Radio";
 
 export default Radio;

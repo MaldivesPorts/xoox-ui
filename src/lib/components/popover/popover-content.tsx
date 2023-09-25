@@ -2,7 +2,7 @@ import type {AriaDialogProps} from "@react-aria/dialog";
 import type {HTMLMotionProps} from "framer-motion";
 
 import {DOMAttributes, ReactNode, useMemo, useRef} from "react";
-import {forwardRef, HTMLMplUIProps} from "../../core/system";
+import {forwardRef, HTMLXooxUIProps} from "../../core/system";
 import {DismissButton} from "@react-aria/overlays";
 import {TRANSITION_VARIANTS} from "../../utilities/framer-transitions";
 import {motion} from "framer-motion";
@@ -15,7 +15,7 @@ import {usePopoverContext} from "./popover-context";
 
 export interface PopoverContentProps
   extends AriaDialogProps,
-    Omit<HTMLMplUIProps, "children" | "role"> {
+    Omit<HTMLXooxUIProps, "children" | "role"> {
   children: ReactNode | ((titleProps: DOMAttributes<HTMLElement>) => ReactNode);
 }
 
@@ -109,6 +109,6 @@ const PopoverContent = forwardRef<"div", PopoverContentProps>((props, _) => {
   );
 });
 
-PopoverContent.displayName = "MplUI.PopoverContent";
+PopoverContent.displayName = "XooxUI.PopoverContent";
 
 export default PopoverContent;

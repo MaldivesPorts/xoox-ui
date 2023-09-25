@@ -30,6 +30,6 @@ const Modal = forwardRef<"div", ModalProps>((props, ref) => {
   );
 });
 
-Modal.displayName = "MplUI.Modal";
+Modal.displayName = "XooxUI.Modal";
 
 export default Modal;

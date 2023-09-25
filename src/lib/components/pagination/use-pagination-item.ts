@@ -1,5 +1,5 @@
 import type {Ref} from "react";
-import type {HTMLMplUIProps, PropGetter} from "../../core/system";
+import type {HTMLXooxUIProps, PropGetter} from "../../core/system";
 import type {PressEvent} from "@react-types/shared";
 
 import {useMemo} from "react";
@@ -10,7 +10,7 @@ import {useDOMRef} from "../../utilities/react-utils";
 import {useHover, usePress} from "@react-aria/interactions";
 import {useFocusRing} from "@react-aria/focus";
 
-export interface UsePaginationItemProps extends Omit<HTMLMplUIProps<"li">, "onClick"> {
+export interface UsePaginationItemProps extends Omit<HTMLXooxUIProps<"li">, "onClick"> {
   /**
    * Ref to the DOM node.
    */
@@ -34,7 +34,7 @@ export interface UsePaginationItemProps extends Omit<HTMLMplUIProps<"li">, "onCl
    * @param e MouseEvent
    * @deprecated Use `onPress` instead.
    */
-  onClick?: HTMLMplUIProps<"li">["onClick"];
+  onClick?: HTMLXooxUIProps<"li">["onClick"];
   /**
    * Callback fired when the item is clicked.
    * @param e PressEvent

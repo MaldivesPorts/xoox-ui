@@ -1,12 +1,12 @@
 import type {SkeletonVariantProps, SkeletonSlots, SlotsToClasses} from "../../core/theme";
-import type {HTMLMplUIProps, PropGetter} from "../../core/system";
+import type {HTMLXooxUIProps, PropGetter} from "../../core/system";
 
 import {mapPropsVariants} from "../../core/system";
 import {skeleton} from "../../core/theme";
 import {clsx, dataAttr} from "../../utilities/shared-utils";
 import {useMemo, Ref} from "react";
 
-interface Props extends HTMLMplUIProps<"div"> {
+interface Props extends HTMLXooxUIProps<"div"> {
   /**
    * Ref to the DOM node.
    */

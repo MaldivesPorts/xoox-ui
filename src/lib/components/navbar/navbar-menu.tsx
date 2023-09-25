@@ -1,4 +1,4 @@
-import {forwardRef, HTMLMplUIProps} from "../../core/system";
+import {forwardRef, HTMLXooxUIProps} from "../../core/system";
 import {useDOMRef} from "../../utilities/react-utils";
 import {clsx, dataAttr} from "../../utilities/shared-utils";
 import {AnimatePresence, HTMLMotionProps, motion} from "framer-motion";
@@ -10,7 +10,7 @@ import {Overlay} from "@react-aria/overlays";
 import {menuVariants} from "./navbar-menu-transitions";
 import {useNavbarContext} from "./navbar-context";
 
-export interface NavbarMenuProps extends HTMLMplUIProps<"ul"> {
+export interface NavbarMenuProps extends HTMLXooxUIProps<"ul"> {
   children?: React.ReactNode;
   /**
    * The container element in which the navbar menu overlay portal will be placed.
@@ -87,6 +87,6 @@ const NavbarMenu = forwardRef<"ul", NavbarMenuProps>((props, ref) => {
   return <Overlay portalContainer={portalContainer}>{contents}</Overlay>;
 });
 
-NavbarMenu.displayName = "MplUI.NavbarMenu";
+NavbarMenu.displayName = "XooxUI.NavbarMenu";
 
 export default NavbarMenu;

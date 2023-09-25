@@ -68,7 +68,7 @@ export type PropsOf<T extends As> = React.ComponentPropsWithoutRef<T> & {
 
 export type Merge<M, N> = N extends Record<string, unknown> ? M : Omit<M, keyof N> & N;
 
-export type HTMLMplUIProps<T extends As = "div", OmitKeys extends keyof any = never> = Omit<
+export type HTMLXooxUIProps<T extends As = "div", OmitKeys extends keyof any = never> = Omit<
   PropsOf<T>,
   "ref" | "color" | "slot" | OmitKeys
 > & {

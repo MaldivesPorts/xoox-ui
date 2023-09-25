@@ -137,6 +137,6 @@ const MenuSection = forwardRef<"li", MenuSectionProps>(
   },
 );
 
-MenuSection.displayName = "MplUI.MenuSection";
+MenuSection.displayName = "XooxUI.MenuSection";
 
 export default MenuSection;

@@ -1,10 +1,10 @@
-import {forwardRef, HTMLMplUIProps} from "../../core/system";
+import {forwardRef, HTMLXooxUIProps} from "../../core/system";
 import {useDOMRef} from "../../utilities/react-utils";
 import {clsx, dataAttr} from "../../utilities/shared-utils";
 
 import {useNavbarContext} from "./navbar-context";
 
-export interface NavbarItemProps extends HTMLMplUIProps<"li"> {
+export interface NavbarItemProps extends HTMLXooxUIProps<"li"> {
   children?: React.ReactNode;
   /**
    * Whether the item is active or not.
@@ -35,6 +35,6 @@ const NavbarItem = forwardRef<"li", NavbarItemProps>((props, ref) => {
   );
 });
 
-NavbarItem.displayName = "MplUI.NavbarItem";
+NavbarItem.displayName = "XooxUI.NavbarItem";
 
 export default NavbarItem;

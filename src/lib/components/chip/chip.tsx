@@ -48,6 +48,6 @@ const Chip = forwardRef<"div", ChipProps>((props, ref) => {
   );
 });
 
-Chip.displayName = "MplUI.Chip";
+Chip.displayName = "XooxUI.Chip";
 
 export default Chip;

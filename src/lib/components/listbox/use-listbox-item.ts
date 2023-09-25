@@ -2,7 +2,7 @@ import type {ListboxItemBaseProps} from "./base/listbox-item-base";
 
 import {useMemo, useRef, useCallback} from "react";
 import {listboxItem} from "../../core/theme";
-import {HTMLMplUIProps, mapPropsVariants, PropGetter} from "../../core/system";
+import {HTMLXooxUIProps, mapPropsVariants, PropGetter} from "../../core/system";
 import {useFocusRing} from "@react-aria/focus";
 import {Node} from "@react-types/shared";
 import {filterDOMProps} from "../../utilities/react-utils";
@@ -19,7 +19,7 @@ interface Props<T extends object> extends ListboxItemBaseProps<T> {
 }
 
 export type UseListboxItemProps<T extends object> = Props<T> &
-  Omit<HTMLMplUIProps<"li">, keyof Props<T>>;
+  Omit<HTMLXooxUIProps<"li">, keyof Props<T>>;
 
 export function useListboxItem<T extends object>(originalProps: UseListboxItemProps<T>) {
   const [props, variantProps] = mapPropsVariants(originalProps, listboxItem.variantKeys);

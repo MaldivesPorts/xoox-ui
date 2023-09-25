@@ -140,6 +140,6 @@ const Pagination = forwardRef<"nav", PaginationProps>((props, ref) => {
   );
 });
 
-Pagination.displayName = "MplUI.Pagination";
+Pagination.displayName = "XooxUI.Pagination";
 
 export default Pagination;

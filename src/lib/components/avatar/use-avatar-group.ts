@@ -1,7 +1,7 @@
 import type {ReactNode} from "react";
 
 import {avatarGroup} from "../../core/theme";
-import {HTMLMplUIProps, PropGetter} from "../../core/system";
+import {HTMLXooxUIProps, PropGetter} from "../../core/system";
 import {useDOMRef} from "../../utilities/react-utils";
 import {clsx, compact} from "../../utilities/shared-utils";
 import {ReactRef, getValidChildren} from "../../utilities/react-utils";
@@ -9,7 +9,7 @@ import {cloneElement, useMemo} from "react";
 
 import {AvatarProps} from "./index";
 
-interface Props extends HTMLMplUIProps<"div"> {
+interface Props extends HTMLXooxUIProps<"div"> {
   /**
    * Ref to the DOM node.
    */

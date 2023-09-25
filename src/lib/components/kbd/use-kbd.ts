@@ -1,5 +1,5 @@
 import type {KbdVariantProps, KbdSlots, SlotsToClasses} from "../../core/theme";
-import type {HTMLMplUIProps, PropGetter} from "../../core/system";
+import type {HTMLXooxUIProps, PropGetter} from "../../core/system";
 
 import {kbd} from "../../core/theme";
 import {clsx} from "../../utilities/shared-utils";
@@ -9,7 +9,7 @@ import {useMemo} from "react";
 import {KbdKey} from "./utils.ts";
 import {mapPropsVariants} from '../../core/system';
 
-interface Props extends HTMLMplUIProps<"kbd"> {
+interface Props extends HTMLXooxUIProps<"kbd"> {
   /**
    * Ref to the DOM node.
    */

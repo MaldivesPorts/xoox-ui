@@ -1,7 +1,7 @@
 import type {ChipVariantProps, ChipSlots, SlotsToClasses} from "../../core/theme";
 import type {ReactNode} from "react";
 
-import {HTMLMplUIProps, mapPropsVariants, PropGetter} from "../../core/system";
+import {HTMLXooxUIProps, mapPropsVariants, PropGetter} from "../../core/system";
 import {mergeProps} from "@react-aria/utils";
 import {usePress} from "@react-aria/interactions";
 import {useFocusRing} from "@react-aria/focus";
@@ -12,7 +12,7 @@ import {ReactRef} from "../../utilities/react-utils";
 import {useMemo, isValidElement, cloneElement} from "react";
 import {PressEvent} from "@react-types/shared";
 
-export interface UseChipProps extends HTMLMplUIProps, ChipVariantProps {
+export interface UseChipProps extends HTMLXooxUIProps, ChipVariantProps {
   /**
    * Ref to the DOM node.
    */

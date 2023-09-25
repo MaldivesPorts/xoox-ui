@@ -1,10 +1,10 @@
-import {forwardRef, HTMLMplUIProps} from "../../core/system";
+import {forwardRef, HTMLXooxUIProps} from "../../core/system";
 import {useDOMRef} from "../../utilities/react-utils";
 import {clsx} from "../../utilities/shared-utils";
 
 import {useCardContext} from "./card-context";
 
-const CardHeader = forwardRef<"div", HTMLMplUIProps<"div">>((props, ref) => {
+const CardHeader = forwardRef<"div", HTMLXooxUIProps<"div">>((props, ref) => {
   const {as, className, children, ...otherProps} = props;
   const Component = as || "div";
 
@@ -21,6 +21,6 @@ const CardHeader = forwardRef<"div", HTMLMplUIProps<"div">>((props, ref) => {
   );
 });
 
-CardHeader.displayName = "MplUI.CardHeader";
+CardHeader.displayName = "XooxUI.CardHeader";
 
 export default CardHeader;

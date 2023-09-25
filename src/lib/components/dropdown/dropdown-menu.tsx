@@ -19,6 +19,6 @@ const DropdownMenu = forwardRef<"ul", DropdownMenuProps>((props, ref) => {
   );
 });
 
-DropdownMenu.displayName = "MplUI.DropdownMenu";
+DropdownMenu.displayName = "XooxUI.DropdownMenu";
 
 export default DropdownMenu;

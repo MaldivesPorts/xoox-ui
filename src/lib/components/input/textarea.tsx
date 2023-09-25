@@ -101,6 +101,6 @@ const Textarea = forwardRef<"textarea", TextAreaProps>(
   },
 );
 
-Textarea.displayName = "MplUI.Textarea";
+Textarea.displayName = "XooxUI.Textarea";
 
 export default Textarea;

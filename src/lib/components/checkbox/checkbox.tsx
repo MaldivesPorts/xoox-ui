@@ -38,6 +38,6 @@ const Checkbox = forwardRef<"input", CheckboxProps>((props, ref) => {
   );
 });
 
-Checkbox.displayName = "MplUI.Checkbox";
+Checkbox.displayName = "XooxUI.Checkbox";
 
 export default Checkbox;

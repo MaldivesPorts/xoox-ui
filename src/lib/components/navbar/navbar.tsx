@@ -46,6 +46,6 @@ const Navbar = forwardRef<"div", NavbarProps>((props, ref) => {
   );
 });
 
-Navbar.displayName = "MplUI.Navbar";
+Navbar.displayName = "XooxUI.Navbar";
 
 export default Navbar;

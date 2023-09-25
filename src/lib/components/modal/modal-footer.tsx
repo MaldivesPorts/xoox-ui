@@ -1,10 +1,10 @@
-import {forwardRef, HTMLMplUIProps} from "../../core/system";
+import {forwardRef, HTMLXooxUIProps} from "../../core/system";
 import {useDOMRef} from "../../utilities/react-utils";
 import {clsx} from "../../utilities/shared-utils";
 
 import {useModalContext} from "./modal-context";
 
-export interface ModalFooterProps extends HTMLMplUIProps<"footer"> {}
+export interface ModalFooterProps extends HTMLXooxUIProps<"footer"> {}
 
 const ModalFooter = forwardRef<"footer", ModalFooterProps>((props, ref) => {
   const {as, children, className, ...otherProps} = props;
@@ -26,6 +26,6 @@ const ModalFooter = forwardRef<"footer", ModalFooterProps>((props, ref) => {
   );
 });
 
-ModalFooter.displayName = "MplUI.ModalFooter";
+ModalFooter.displayName = "XooxUI.ModalFooter";
 
 export default ModalFooter;

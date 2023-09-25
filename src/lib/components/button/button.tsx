@@ -37,6 +37,6 @@ const Button = forwardRef<"button", ButtonProps>((props, ref) => {
   );
 });
 
-Button.displayName = "MplUI.Button";
+Button.displayName = "XooxUI.Button";
 
 export default Button;

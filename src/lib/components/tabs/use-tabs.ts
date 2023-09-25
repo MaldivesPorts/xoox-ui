@@ -1,6 +1,6 @@
 import type {TabsVariantProps, SlotsToClasses, TabsSlots, TabsReturnType} from "../../core/theme";
 
-import {HTMLMplUIProps, mapPropsVariants, PropGetter} from "../../core/system";
+import {HTMLXooxUIProps, mapPropsVariants, PropGetter} from "../../core/system";
 import {tabs} from "../../core/theme";
 import {useDOMRef} from "../../utilities/react-utils";
 import {clsx} from "../../utilities/shared-utils";
@@ -13,7 +13,7 @@ import {CollectionProps} from "../../utilities/aria-utils";
 import {CollectionChildren} from "@react-types/shared";
 import {HTMLMotionProps} from "framer-motion";
 
-export interface Props extends Omit<HTMLMplUIProps, "children"> {
+export interface Props extends Omit<HTMLXooxUIProps, "children"> {
   /**
    * Ref to the DOM node.
    */

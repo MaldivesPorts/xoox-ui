@@ -1,6 +1,6 @@
 import type {GridNode} from "@react-types/grid";
 
-import {forwardRef, HTMLMplUIProps} from "../../core/system";
+import {forwardRef, HTMLXooxUIProps} from "../../core/system";
 import {useDOMRef, filterDOMProps} from "../../utilities/react-utils";
 import {clsx, dataAttr} from "../../utilities/shared-utils";
 import {useTableRow} from "@react-aria/table";
@@ -12,7 +12,7 @@ import {useMemo} from "react";
 import {ValuesType} from "./use-table";
 
 // @internal
-export interface TableRowProps<T = object> extends HTMLMplUIProps<"tr"> {
+export interface TableRowProps<T = object> extends HTMLXooxUIProps<"tr"> {
   /**
    * The table row.
    */
@@ -84,6 +84,6 @@ const TableRow = forwardRef<"tr", TableRowProps>((props, ref) => {
   );
 });
 
-TableRow.displayName = "MplUI.TableRow";
+TableRow.displayName = "XooxUI.TableRow";
 
 export default TableRow;

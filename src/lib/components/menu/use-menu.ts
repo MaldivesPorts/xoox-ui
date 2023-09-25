@@ -1,4 +1,4 @@
-import type {HTMLMplUIProps, PropGetter} from "../../core/system";
+import type {HTMLXooxUIProps, PropGetter} from "../../core/system";
 import type {AriaMenuProps} from "@react-types/menu";
 
 import {AriaMenuOptions, useMenu as useAriaMenu} from "@react-aria/menu";
@@ -47,7 +47,7 @@ interface Props<T> {
 }
 
 export type UseMenuProps<T = object> = Props<T> &
-  Omit<HTMLMplUIProps<"ul">, keyof AriaMenuProps<T>> &
+  Omit<HTMLXooxUIProps<"ul">, keyof AriaMenuProps<T>> &
   AriaMenuProps<T> &
   MenuVariantProps;
 

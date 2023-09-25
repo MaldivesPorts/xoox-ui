@@ -29,6 +29,6 @@ const Dropdown = (props: DropdownProps) => {
   );
 };
 
-Dropdown.displayName = "MplUI.Dropdown";
+Dropdown.displayName = "XooxUI.Dropdown";
 
 export default Dropdown;

@@ -163,9 +163,9 @@ export type ConfigThemes = Record<string, ConfigTheme>;
 
 /**
  * The NextUI config.
- * @see https://MplUI.org/docs/customization/customize-theme
+ * @see https://XooxUI.org/docs/customization/customize-theme
  */
-export type MplUIPluginConfig = {
+export type XooxUIPluginConfig = {
   /**
    * The prefix for the css variables.
    * @default "nextui"

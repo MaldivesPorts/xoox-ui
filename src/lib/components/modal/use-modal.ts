@@ -5,7 +5,7 @@ import {AriaModalOverlayProps} from "@react-aria/overlays";
 import {useAriaModalOverlay} from "../../hooks/use-aria-modal-overlay";
 import {useCallback, useId, useRef, useState, useMemo, ReactNode} from "react";
 import {modal} from "../../core/theme";
-import {HTMLMplUIProps, mapPropsVariants, PropGetter} from "../../core/system";
+import {HTMLXooxUIProps, mapPropsVariants, PropGetter} from "../../core/system";
 import {useAriaButton} from "../../hooks/use-aria-button";
 import {useFocusRing} from "@react-aria/focus";
 import {clsx, dataAttr} from "../../utilities/shared-utils";
@@ -14,7 +14,7 @@ import {useOverlayTriggerState} from "@react-stately/overlays";
 import {OverlayTriggerProps} from "@react-stately/overlays";
 import {mergeRefs, mergeProps} from "@react-aria/utils";
 
-interface Props extends HTMLMplUIProps<"section"> {
+interface Props extends HTMLXooxUIProps<"section"> {
   /**
    * Ref to the DOM node.
    */

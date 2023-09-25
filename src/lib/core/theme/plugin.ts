@@ -17,7 +17,7 @@ import {animations} from "./animations";
 import {utilities} from "./utilities";
 import {flattenThemeObject} from "./utils/object";
 import {createSpacingUnits, generateSpacingScale, isBaseTheme} from "./utils/theme";
-import {ConfigTheme, ConfigThemes, DefaultThemeType, MplUIPluginConfig} from "./types";
+import {ConfigTheme, ConfigThemes, DefaultThemeType, XooxUIPluginConfig} from "./types";
 import {lightLayout, darkLayout, defaultLayout} from "./default-layout";
 import {baseStyles} from "./utils/classes";
 
@@ -258,7 +258,7 @@ const corePlugin = (
   );
 };
 
-export const xooxui = (config: MplUIPluginConfig = {}): ReturnType<typeof plugin> => {
+export const xooxui = (config: XooxUIPluginConfig = {}): ReturnType<typeof plugin> => {
   const {
     themes: themeObject = {},
     defaultTheme = "light",

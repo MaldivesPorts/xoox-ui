@@ -45,6 +45,6 @@ const PopoverTrigger = forwardRef<"button", PopoverTriggerProps>((props, _) => {
   return cloneElement(child, mergeProps(rest, hasNextUIButton ? {onPress} : buttonProps));
 });
 
-PopoverTrigger.displayName = "MplUI.PopoverTrigger";
+PopoverTrigger.displayName = "XooxUI.PopoverTrigger";
 
 export default PopoverTrigger;

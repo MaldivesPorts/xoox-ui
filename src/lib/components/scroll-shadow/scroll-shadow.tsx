@@ -9,6 +9,6 @@ const ScrollShadow = forwardRef<"div", ScrollShadowProps>((props, ref) => {
   return <Component {...getBaseProps()}>{children}</Component>;
 });
 
-ScrollShadow.displayName = "MplUI.ScrollShadow";
+ScrollShadow.displayName = "XooxUI.ScrollShadow";
 
 export default ScrollShadow;

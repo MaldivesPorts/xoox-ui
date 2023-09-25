@@ -1,6 +1,6 @@
 import type {AriaTabPanelProps} from "@react-aria/tabs";
 
-import {forwardRef, HTMLMplUIProps} from "../../core/system";
+import {forwardRef, HTMLXooxUIProps} from "../../core/system";
 import {useDOMRef} from "../../utilities/react-utils";
 import {clsx} from "../../utilities/shared-utils";
 import {mergeProps} from "@react-aria/utils";
@@ -9,7 +9,7 @@ import {useFocusRing} from "@react-aria/focus";
 
 import {ValuesType} from "./use-tabs";
 
-interface Props extends HTMLMplUIProps<"div"> {
+interface Props extends HTMLXooxUIProps<"div"> {
   /**
    * The tab list state.
    */
@@ -62,6 +62,6 @@ const TabPanel = forwardRef<"div", TabPanelProps>((props, ref) => {
   );
 });
 
-TabPanel.displayName = "MplUI.TabPanel";
+TabPanel.displayName = "XooxUI.TabPanel";
 
 export default TabPanel;

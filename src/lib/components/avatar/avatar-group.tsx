@@ -29,6 +29,6 @@ const AvatarGroup = forwardRef<"div", AvatarGroupProps>((props, ref) => {
   );
 });
 
-AvatarGroup.displayName = "MplUI.AvatarGroup";
+AvatarGroup.displayName = "XooxUI.AvatarGroup";
 
 export default AvatarGroup;

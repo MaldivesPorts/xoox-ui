@@ -54,6 +54,6 @@ const AccordionGroup = forwardRef<"div", AccordionProps>((props, ref) => {
   );
 });
 
-AccordionGroup.displayName = "MplUI.Accordion";
+AccordionGroup.displayName = "XooxUI.Accordion";
 
 export default AccordionGroup;

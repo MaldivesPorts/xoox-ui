@@ -43,6 +43,6 @@ const Progress = forwardRef<"div", ProgressProps>((props, ref) => {
   );
 });
 
-Progress.displayName = "MplUI.Progress";
+Progress.displayName = "XooxUI.Progress";
 
 export default Progress;

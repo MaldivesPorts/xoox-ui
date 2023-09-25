@@ -1,7 +1,7 @@
 import type {CheckboxGroupSlots, SlotsToClasses} from "../../core/theme";
 import type {AriaCheckboxGroupProps} from "@react-types/checkbox";
 import type {Orientation} from "@react-types/shared";
-import type {HTMLMplUIProps, PropGetter} from "../../core/system";
+import type {HTMLXooxUIProps, PropGetter} from "../../core/system";
 import type {ReactRef} from "../../utilities/react-utils";
 
 import {useCallback, useMemo} from "react";
@@ -14,7 +14,7 @@ import {clsx, safeAriaLabel} from "../../utilities/shared-utils";
 
 import {CheckboxProps} from "./index";
 
-interface Props extends HTMLMplUIProps<"div"> {
+interface Props extends HTMLXooxUIProps<"div"> {
   /**
    * Ref to the DOM node.
    */

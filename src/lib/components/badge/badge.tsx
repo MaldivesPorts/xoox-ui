@@ -23,6 +23,6 @@ const Badge = forwardRef<"span", BadgeProps>((props, ref) => {
   );
 });
 
-Badge.displayName = "MplUI.Badge";
+Badge.displayName = "XooxUI.Badge";
 
 export default Badge;

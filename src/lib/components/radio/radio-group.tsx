@@ -35,6 +35,6 @@ const RadioGroup = forwardRef<"div", RadioGroupProps>((props, ref) => {
   );
 });
 
-RadioGroup.displayName = "MplUI.RadioGroup";
+RadioGroup.displayName = "XooxUI.RadioGroup";
 
 export default RadioGroup;

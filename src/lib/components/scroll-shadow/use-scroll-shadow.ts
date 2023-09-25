@@ -1,12 +1,12 @@
 import type {ScrollShadowVariantProps} from "../../core/theme";
 
-import {HTMLMplUIProps, mapPropsVariants, PropGetter} from "../../core/system";
+import {HTMLXooxUIProps, mapPropsVariants, PropGetter} from "../../core/system";
 import {scrollShadow} from "../../core/theme";
 import {ReactRef, useDOMRef} from "../../utilities/react-utils";
 import {useDataScrollOverflow} from "../../hooks/use-data-scroll-overflow";
 import {useMemo} from "react";
 
-interface Props extends HTMLMplUIProps<"div"> {
+interface Props extends HTMLXooxUIProps<"div"> {
   /**
    * Ref to the DOM node.
    */

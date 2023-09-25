@@ -1,6 +1,6 @@
 import type {GridNode} from "@react-types/grid";
 
-import {forwardRef, HTMLMplUIProps} from "../../core/system";
+import {forwardRef, HTMLXooxUIProps} from "../../core/system";
 import {useDOMRef, filterDOMProps} from "../../utilities/react-utils";
 import {clsx, dataAttr} from "../../utilities/shared-utils";
 import {useTableColumnHeader, useTableSelectAllCheckbox} from "@react-aria/table";
@@ -11,7 +11,7 @@ import {VisuallyHidden} from "@react-aria/visually-hidden";
 
 import {ValuesType} from "./use-table";
 
-export interface TableSelectAllCheckboxProps<T = object> extends HTMLMplUIProps<"th"> {
+export interface TableSelectAllCheckboxProps<T = object> extends HTMLXooxUIProps<"th"> {
   /**
    * The table column.
    */
@@ -86,6 +86,6 @@ const TableSelectAllCheckbox = forwardRef<"th", TableSelectAllCheckboxProps>((pr
   );
 });
 
-TableSelectAllCheckbox.displayName = "MplUI.TableSelectAllCheckbox";
+TableSelectAllCheckbox.displayName = "XooxUI.TableSelectAllCheckbox";
 
 export default TableSelectAllCheckbox;
