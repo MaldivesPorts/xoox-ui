@@ -1,6 +1,5 @@
 export * from "./core/system";
 export * from "./core/theme";
-export * from "./components/autocomplete";
 export * from "./components/accordion";
 export * from "./components/divider";
 export * from "./components/avatar";

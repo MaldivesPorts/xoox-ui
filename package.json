@@ -3,17 +3,17 @@
   "private": false,
   "version": "0.0.2",
   "type": "module",
-  "types": "dist/index.d.ts",
+  "types": "index.d.ts",
   "files": [
-    "dist"
+    "*"
   ],
-  "main": "./dist/mpl-uikit.umd.cjs",
-  "module": "./dist/mpl-uikit.js",
+  "main": "./mpl-uikit.umd.cjs",
+  "module": "./mpl-uikit.js",
   "exports": {
     ".": {
-      "import": "./dist/mpl-uikit.js",
-      "require": "./dist/mpl-uikit.umd.cjs",
-      "types": "./dist/index.d.ts"
+      "import": "./mpl-uikit.js",
+      "require": "./mpl-uikit.umd.cjs",
+      "types": "./index.d.ts"
     }
   },
   "publishConfig": {
@@ -23,7 +23,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "pack": "npm run build && cp -R package.json dist && cd dist && npm pack --pack-destination=\"../releases\""
   },
   "dependencies": {
     "mpl-uikit-test": "file:./releases/mpl-uikit-0.0.2.tgz",
