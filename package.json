@@ -3,17 +3,17 @@
   "private": false,
   "version": "0.0.4",
   "type": "module",
-  "types": "dist/index.d.ts",
+  "types": "index.d.ts",
   "files": [
     "dist"
   ],
-  "main": "./dist/xoox-ui.umd.cjs",
-  "module": "./dist/xoox-ui.js",
+  "main": "./xoox-ui.umd.cjs",
+  "module": "./xoox-ui.js",
   "exports": {
     ".": {
-      "import": "./dist/xoox-ui.js",
-      "require": "./dist/xoox-ui.umd.cjs",
-      "types": "./dist/index.d.ts"
+      "import": "./xoox-ui.js",
+      "require": "./xoox-ui.umd.cjs",
+      "types": "./index.d.ts"
     }
   },
   "publishConfig": {
@@ -24,7 +24,8 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "pack": "npm run build && cp -R package.json dist && cd dist && npm pack --pack-destination=\"../releases\""
+    "pack": "npm run build && cp -R package.json dist && cd dist && npm pack --pack-destination=\"../releases\"",
+    "build-prod": "npm run build && cp -R package.json dist"
   },
   "dependencies": {
     "react": "^18.2.0",
