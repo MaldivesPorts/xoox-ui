@@ -3,7 +3,7 @@ import type {VariantProps} from "tailwind-variants";
 import {dataFocusVisibleClasses} from "../utils";
 import {tv} from "../utils/tv";
 
-const select = tv({
+const autocomplete = tv({
   slots: {
     base: "group inline-flex flex-col relative w-full",
     label: "block text-small font-medium text-foreground-500 pointer-events-none",
@@ -42,7 +42,7 @@ const select = tv({
       bordered: {
         trigger: [
           "border-medium",
-          "border-default-300",
+          "border-default-200",
           "data-[hover=true]:border-default-400",
           "data-[open=true]:border-foreground",
           "data-[focus=true]:border-foreground",
@@ -89,7 +89,7 @@ const select = tv({
         value: "text-small",
       },
       md: {
-        trigger: "h-unit-10 min-h-unit-10 rounded-small",
+        trigger: "h-unit-10 min-h-unit-10 rounded-medium",
         value: "text-small",
       },
       lg: {
@@ -192,15 +192,16 @@ const select = tv({
     },
   },
   defaultVariants: {
+    isMultiline: false,
+    disableSelectorIconRotation: false,
     variant: "bordered",
     color: "default",
     size: "md",
-    labelPlacement: "outside",
+    radius: "sm",
     fullWidth: true,
+    labelPlacement: "outside",
     isDisabled: false,
-    isMultiline: false,
     disableAnimation: false,
-    disableSelectorIconRotation: false,
   },
   compoundVariants: [
     // flat & color
@@ -609,7 +610,7 @@ const select = tv({
   ],
 });
 
-export type SelectVariantProps = VariantProps<typeof select>;
-export type SelectSlots = keyof ReturnType<typeof select>;
+export type AutocompleteVariantProps = VariantProps<typeof autocomplete>;
+export type AutocompleteSlots = keyof ReturnType<typeof autocomplete>;
 
-export {select};
+export {autocomplete};

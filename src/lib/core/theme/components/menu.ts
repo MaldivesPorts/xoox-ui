@@ -147,6 +147,7 @@ const menuItem = tv({
           "data-[hover=true]:bg-default",
           "data-[hover=true]:text-default-foreground",
           "data-[selectable=true]:focus:bg-default",
+          "data-[focus=true]:bg-default",
           "data-[selectable=true]:focus:text-default-foreground",
         ],
       },

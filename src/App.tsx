@@ -41,9 +41,9 @@ import {
     TableHeader,
     TableColumn,
     TableCell,
-    TableBody, TableRow, Tabs, Tab, User
+    TableBody, TableRow, Tabs, Tab, User, Autocomplete, AutocompleteItem, ComboBox, Item, Toastify,
 } from './lib';
-import Autocomplete from './test/autocomplete';
+import {useRef} from 'react';
 
 
 function App() {
@@ -59,6 +59,8 @@ function App() {
         "outside-left",
     ];
 
+    const inputRef = useRef<Input>(null);
+
     const animals: any = [
         {label: "Cat", value: "cat", description: "The second most popular pet in the world"},
         {label: "Dog", value: "dog", description: "The most popular pet in the world"},
@@ -70,14 +72,67 @@ function App() {
     return (
         <div className="flex flex-col gap-3">
 
-            <Divider className="my-4" />
-            <div className="flex flex-col gap-3">
-                {/*<Autocomplete*/}
-                {/*    suggestions={animals}*/}
-                {/*    onInputChange={console.log}*/}
-                {/*    onSelect={console.log}*/}
-                {/*/>*/}
-            </div>
+            {/*<Toast/>*/}
+
+            <Button onPress={() => Toastify.add({
+                color: 'error',
+                title: 'hello',
+                description: 'Description',
+                showActionButton: true,
+                showDismissButton: true,
+                onAction: (data) => console.log('action'),
+                onDismiss: (data) => console.log('dismiss')
+            }, {
+                timeout: 4000
+            })}>SHow</Button>
+
+            {/*<ComboBox defaultInputValue={'cats'} label={'Select'} placeholder={'Input'}>*/}
+            {/*    <Item key="red panda" >Red Panda</Item>*/}
+            {/*    <Item key="cat"value={'cats'}>Cat</Item>*/}
+            {/*    <Item key="dog">Dog</Item>*/}
+            {/*    <Item key="aardvark">Aardvark</Item>*/}
+            {/*    <Item key="kangaroo">Kangaroo</Item>*/}
+            {/*    <Item key="snake">Snake</Item>*/}
+            {/*</ComboBox>*/}
+
+            {/*<Divider className="my-4" />*/}
+            {/*<div className="flex flex-col gap-3">*/}
+            {/*    <Select*/}
+            {/*        items={animals}*/}
+            {/*        label="Favorite Animal"*/}
+            {/*        placeholder="Select an animal"*/}
+            {/*        className="max-w-xs"*/}
+            {/*    >*/}
+            {/*        {(animal: any) => <SelectItem key={animal.value}>{animal.label}</SelectItem>}*/}
+            {/*    </Select>*/}
+            {/*</div>*/}
+
+            {/*<Divider className="my-4" />*/}
+            {/*<div className="flex flex-col gap-3">*/}
+            {/*        <Autocomplete*/}
+            {/*            items={animals}*/}
+            {/*            type="email"*/}
+            {/*            label="Email"*/}
+            {/*            placeholder="Enter your email"*/}
+            {/*            description={'No description'}*/}
+            {/*        >*/}
+            {/*            {(animal: any) => <AutocompleteItem key={animal.value}>{animal.label}</AutocompleteItem>}*/}
+            {/*        </Autocomplete>*/}
+            {/*</div>*/}
+
+            {/*<Divider className="my-4" />*/}
+            {/*<div className="flex flex-col gap-3">*/}
+            {/*            <Button color="primary" variant="solid" onPress={() => inputRef.current?.focus()}>*/}
+            {/*                Solid*/}
+            {/*            </Button>*/}
+            {/*    <Input*/}
+            {/*        ref={inputRef}*/}
+            {/*        type="email"*/}
+            {/*        label="Email"*/}
+            {/*        placeholder="Enter your email"*/}
+            {/*        description={'No description'}*/}
+            {/*    />*/}
+            {/*</div>*/}
 
 
             {/*<div className="flex flex-col gap-3">*/}

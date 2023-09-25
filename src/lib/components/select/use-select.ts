@@ -251,7 +251,7 @@ export function useSelect<T extends object>(originalProps: UseSelectProps<T>) {
       return "outside";
     }
 
-    return originalProps.labelPlacement ?? "inside";
+    return originalProps.labelPlacement ?? "outside";
   }, [originalProps.labelPlacement, label]);
 
   const hasHelper = !!description || !!errorMessage;

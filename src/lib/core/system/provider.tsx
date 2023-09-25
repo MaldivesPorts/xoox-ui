@@ -1,5 +1,6 @@
 import {I18nProvider, I18nProviderProps} from "@react-aria/i18n";
 import {OverlayProvider} from "@react-aria/overlays";
+import {GlobalToastRegion} from '../../components/toast';
 
 export interface MplUIProviderProps {
   children: React.ReactNode;
@@ -9,7 +10,12 @@ export interface MplUIProviderProps {
 export const MplUIProvider: React.FC<MplUIProviderProps> = ({children, locale = "en"}) => {
   return (
     <I18nProvider locale={locale}>
-      <OverlayProvider>{children}</OverlayProvider>
+      <OverlayProvider>
+          <>
+              {children}
+              <GlobalToastRegion/>
+          </>
+      </OverlayProvider>
     </I18nProvider>
   );
 };

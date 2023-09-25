@@ -1,5 +1,6 @@
 export * from "./core/system";
 export * from "./core/theme";
+export * from "./components/autocomplete";
 export * from "./components/accordion";
 export * from "./components/divider";
 export * from "./components/avatar";
@@ -31,5 +32,7 @@ export * from "./components/switch";
 export * from "./components/table";
 export * from "./components/tabs";
 export * from "./components/user";
+export * from "./components/combobox";
+export * from "./components/toast";
 
 export {VisuallyHidden} from "@react-aria/visually-hidden";
