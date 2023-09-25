@@ -11,7 +11,7 @@ export default defineConfig({
       // Could also be a dictionary or array of multiple entry points
       // @ts-ignore
       entry: resolve(__dirname, './src/lib/index.ts'),
-      name: 'MplUiKit',
+      name: 'XooxUi',
       // the proper extensions will be added
       fileName: 'xoox-ui',
     },
