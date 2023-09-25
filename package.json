@@ -1,19 +1,19 @@
 {
-  "name": "mpl-uikit",
+  "name": "xoox-ui",
   "private": false,
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
-  "types": "index.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
-    "*"
+    "dist"
   ],
-  "main": "./mpl-uikit.umd.cjs",
-  "module": "./mpl-uikit.js",
+  "main": "./dist/xoox-ui.umd.cjs",
+  "module": "./dist/xoox-ui.js",
   "exports": {
     ".": {
-      "import": "./mpl-uikit.js",
-      "require": "./mpl-uikit.umd.cjs",
-      "types": "./index.d.ts"
+      "import": "./dist/xoox-ui.js",
+      "require": "./dist/xoox-ui.umd.cjs",
+      "types": "./dist/index.d.ts"
     }
   },
   "publishConfig": {
@@ -27,7 +27,6 @@
     "pack": "npm run build && cp -R package.json dist && cd dist && npm pack --pack-destination=\"../releases\""
   },
   "dependencies": {
-    "mpl-uikit-test": "file:./releases/mpl-uikit-0.0.2.tgz",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

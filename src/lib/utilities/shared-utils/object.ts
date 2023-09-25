@@ -1,9 +1,7 @@
-import {Key} from "react";
-
 import {isObject} from "./assertion";
 
 export interface MergeObject {
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export const renameProp = (oldProp: string, newProp: string, {[oldProp]: old, ...others}) => ({
@@ -59,7 +57,7 @@ export const cleanObjectKeys = (obj: any, keys: string[] = []) => {
   return newObj;
 };
 
-export const getKeyValue = (obj: any, key: Key) => {
+export const getKeyValue = (obj: unknown, key: string) => {
   if (!isObject(obj)) return obj;
   if (obj instanceof Array) return [...obj];
 

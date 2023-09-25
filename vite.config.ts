@@ -13,7 +13,7 @@ export default defineConfig({
       entry: resolve(__dirname, './src/lib/index.ts'),
       name: 'MplUiKit',
       // the proper extensions will be added
-      fileName: 'mpl-uikit',
+      fileName: 'xoox-ui',
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled

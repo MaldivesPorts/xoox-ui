@@ -21,7 +21,7 @@ import {ConfigTheme, ConfigThemes, DefaultThemeType, MplUIPluginConfig} from "./
 import {lightLayout, darkLayout, defaultLayout} from "./default-layout";
 import {baseStyles} from "./utils/classes";
 
-const DEFAULT_PREFIX = "mplui";
+const DEFAULT_PREFIX = "xooxui";
 
 // @internal
 const resolveConfig = (
@@ -258,7 +258,7 @@ const corePlugin = (
   );
 };
 
-export const mplui = (config: MplUIPluginConfig = {}): ReturnType<typeof plugin> => {
+export const xooxui = (config: MplUIPluginConfig = {}): ReturnType<typeof plugin> => {
   const {
     themes: themeObject = {},
     defaultTheme = "light",
