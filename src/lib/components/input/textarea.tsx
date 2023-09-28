@@ -1,6 +1,6 @@
 import {forwardRef} from "../../core/system";
 import {mergeProps} from "@react-aria/utils";
-import TextareaAutosize from "react-textarea-autosize";
+// import TextareaAutosize from "react-textarea-autosize";
 
 import {UseInputProps, useInput} from "./use-input";
 
@@ -80,13 +80,13 @@ const Textarea = forwardRef<"textarea", TextAreaProps>(
         {shouldLabelBeOutside ? labelContent : null}
         <div {...getInputWrapperProps()}>
           {shouldLabelBeInside ? labelContent : null}
-          <TextareaAutosize
+          <textarea
             {...inputProps}
-            cacheMeasurements={cacheMeasurements}
-            maxRows={maxRows}
-            minRows={minRows}
+            // cacheMeasurements={cacheMeasurements}
+            // maxRows={maxRows}
+            rows={minRows}
             style={mergeProps(inputProps.style as TextareaAutoSizeStyle, style ?? {})}
-            onHeightChange={onHeightChange}
+            // onHeightChange={onHeightChange}
           />
         </div>
         <div {...getHelperWrapperProps()}>

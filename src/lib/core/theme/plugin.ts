@@ -25,16 +25,16 @@ const DEFAULT_PREFIX = "xooxui";
 
 // @internal
 const resolveConfig = (
-  themes: ConfigThemes = {},
-  defaultTheme: DefaultThemeType,
-  prefix: string,
+    themes: ConfigThemes = {},
+    defaultTheme: DefaultThemeType,
+    prefix: string,
 ) => {
   const resolved: {
     variants: {name: string; definition: string[]}[];
     utilities: Record<string, Record<string, any>>;
     colors: Record<
-      string,
-      ({opacityValue, opacityVariable}: {opacityValue: string; opacityVariable: string}) => string
+        string,
+        ({opacityValue, opacityVariable}: {opacityValue: string; opacityVariable: string}) => string
     >;
   } = {
     variants: [],
@@ -52,15 +52,15 @@ const resolveConfig = (
     }
 
     resolved.utilities[cssSelector] = scheme
-      ? {
+        ? {
           "color-scheme": scheme,
         }
-      : {};
+        : {};
 
     // flatten color definitions
     const flatColors = flattenThemeObject(colors);
 
-    const flatLayout = layout ? mapKeys(layout, (_value, key) => kebabCase(key)) : {};
+    const flatLayout = layout ? mapKeys(layout, (_, key) => kebabCase(key)) : {};
 
     // resolved.variants
     resolved.variants.push({
@@ -146,10 +146,10 @@ const resolveConfig = (
 };
 
 const corePlugin = (
-  themes: ConfigThemes = {},
-  defaultTheme: DefaultThemeType,
-  prefix: string,
-  addCommonColors: boolean,
+    themes: ConfigThemes = {},
+    defaultTheme: DefaultThemeType,
+    prefix: string,
+    addCommonColors: boolean,
 ) => {
   const resolved = resolveConfig(themes, defaultTheme, prefix);
   const minSizes = {
@@ -172,89 +172,92 @@ const corePlugin = (
   };
 
   return plugin(
-    ({addBase, addUtilities, addVariant}) => {
-      // add base classNames
-      addBase({
-        [":root, [data-theme]"]: {
-          ...baseStyles(prefix),
-        },
-      });
-      // add the css variables to "@layer utilities"
-      addUtilities({...resolved.utilities, ...utilities});
-      // add the theme as variant e.g. "[theme-name]:text-2xl"
-      resolved.variants.forEach((variant) => {
-        addVariant(variant.name, variant.definition);
-      });
-    },
-    // extend the colors config
-    {
-      theme: {
-        extend: {
-          // @ts-ignore
-          colors: {
-            ...(addCommonColors ? commonColors : {}),
-            ...resolved.colors,
+      ({addBase, addUtilities, addVariant}) => {
+        // add base classNames
+        addBase({
+          [":root, [data-theme]"]: {
+            ...baseStyles(prefix),
           },
-          height: {
-            divider: `var(--${prefix}-divider-weight)`,
+        });
+        // add the css variables to "@layer utilities"
+        addUtilities({...resolved.utilities, ...utilities});
+        // add the theme as variant e.g. "[theme-name]:text-2xl"
+        resolved.variants.forEach((variant) => {
+          addVariant(variant.name, variant.definition);
+        });
+      },
+      // extend the colors config
+      {
+        theme: {
+          extend: {
+            // @ts-ignore
+            colors: {
+              ...(addCommonColors ? commonColors : {}),
+              ...resolved.colors,
+            },
+            scale: {
+              "80": "0.8",
+            },
+            height: {
+              divider: `var(--${prefix}-divider-weight)`,
+            },
+            width: {
+              divider: `var(--${prefix}-divider-weight)`,
+            },
+            spacing: {
+              unit: `var(--${prefix}-spacing-unit)`,
+              ...createSpacingUnits(prefix),
+            },
+            minWidth: {
+              ...minSizes,
+            },
+            minHeight: {
+              ...minSizes,
+            },
+            fontSize: {
+              tiny: [`var(--${prefix}-font-size-tiny)`, `var(--${prefix}-line-height-tiny)`],
+              small: [`var(--${prefix}-font-size-small)`, `var(--${prefix}-line-height-small)`],
+              medium: [`var(--${prefix}-font-size-medium)`, `var(--${prefix}-line-height-medium)`],
+              large: [`var(--${prefix}-font-size-large)`, `var(--${prefix}-line-height-large)`],
+            },
+            borderRadius: {
+              small: `var(--${prefix}-radius-small)`,
+              medium: `var(--${prefix}-radius-medium)`,
+              large: `var(--${prefix}-radius-large)`,
+            },
+            opacity: {
+              disabled: `var(--${prefix}-disabled-opacity)`,
+            },
+            borderWidth: {
+              small: `var(--${prefix}-border-width-small)`,
+              medium: `var(--${prefix}-border-width-medium)`,
+              large: `var(--${prefix}-border-width-large)`,
+              1: "1px",
+              1.5: "1.5px",
+              3: "3px",
+              5: "5px",
+            },
+            boxShadow: {
+              small: `var(--${prefix}-box-shadow-small)`,
+              medium: `var(--${prefix}-box-shadow-medium)`,
+              large: `var(--${prefix}-box-shadow-large)`,
+            },
+            backgroundImage: {
+              "stripe-gradient":
+                  "linear-gradient(45deg, rgba(0, 0, 0, 0.1) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.1) 75%, transparent 75%, transparent)",
+            },
+            transitionDuration: {
+              0: "0ms",
+              250: "250ms",
+              400: "400ms",
+            },
+            transitionTimingFunction: {
+              "soft-spring": "cubic-bezier(0.155, 1.105, 0.295, 1.12)",
+            },
+            ...animations,
           },
-          width: {
-            divider: `var(--${prefix}-divider-weight)`,
-          },
-          spacing: {
-            unit: `var(--${prefix}-spacing-unit)`,
-            ...createSpacingUnits(prefix),
-          },
-          minWidth: {
-            ...minSizes,
-          },
-          minHeight: {
-            ...minSizes,
-          },
-          fontSize: {
-            tiny: [`var(--${prefix}-font-size-tiny)`, `var(--${prefix}-line-height-tiny)`],
-            small: [`var(--${prefix}-font-size-small)`, `var(--${prefix}-line-height-small)`],
-            medium: [`var(--${prefix}-font-size-medium)`, `var(--${prefix}-line-height-medium)`],
-            large: [`var(--${prefix}-font-size-large)`, `var(--${prefix}-line-height-large)`],
-          },
-          borderRadius: {
-            small: `var(--${prefix}-radius-small)`,
-            medium: `var(--${prefix}-radius-medium)`,
-            large: `var(--${prefix}-radius-large)`,
-          },
-          opacity: {
-            disabled: `var(--${prefix}-disabled-opacity)`,
-          },
-          borderWidth: {
-            small: `var(--${prefix}-border-width-small)`,
-            medium: `var(--${prefix}-border-width-medium)`,
-            large: `var(--${prefix}-border-width-large)`,
-            1: "1px",
-            1.5: "1.5px",
-            3: "3px",
-            5: "5px",
-          },
-          boxShadow: {
-            small: `var(--${prefix}-box-shadow-small)`,
-            medium: `var(--${prefix}-box-shadow-medium)`,
-            large: `var(--${prefix}-box-shadow-large)`,
-          },
-          backgroundImage: {
-            "stripe-gradient":
-              "linear-gradient(45deg, rgba(0, 0, 0, 0.1) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.1) 75%, transparent 75%, transparent)",
-          },
-          transitionDuration: {
-            0: "0ms",
-            250: "250ms",
-            400: "400ms",
-          },
-          transitionTimingFunction: {
-            "soft-spring": "cubic-bezier(0.155, 1.105, 0.295, 1.12)",
-          },
-          ...animations,
         },
       },
-    },
   );
 };
 
@@ -272,9 +275,9 @@ export const xooxui = (config: XooxUIPluginConfig = {}): ReturnType<typeof plugi
   const userDarkColors = get(themeObject, "dark.colors", {});
 
   const defaultLayoutObj =
-    userLayout && typeof userLayout === "object"
-      ? deepMerge(defaultLayout, userLayout)
-      : defaultLayout;
+      userLayout && typeof userLayout === "object"
+          ? deepMerge(defaultLayout, userLayout)
+          : defaultLayout;
 
   const baseLayouts = {
     light: {
@@ -298,8 +301,8 @@ export const xooxui = (config: XooxUIPluginConfig = {}): ReturnType<typeof plugi
     }
     if (layout && typeof layout === "object") {
       otherThemes[themeName].layout = deepMerge(
-        extend ? baseLayouts[extend] : defaultLayoutObj,
-        layout,
+          extend ? baseLayouts[extend] : defaultLayoutObj,
+          layout,
       );
     }
   });
@@ -319,6 +322,5 @@ export const xooxui = (config: XooxUIPluginConfig = {}): ReturnType<typeof plugi
     dark,
     ...otherThemes,
   };
-
   return corePlugin(themes, defaultTheme, defaultPrefix, addCommonColors);
 };

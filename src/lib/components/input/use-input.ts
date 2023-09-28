@@ -181,6 +181,8 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
   const isLabelOutsideAsPlaceholder =
     labelPlacement === "outside" && !hasPlaceholder && !hasStartContent;
 
+  console.log(isLabelOutsideAsPlaceholder, labelPlacement);
+
   const slots = useMemo(
     () =>
       input({

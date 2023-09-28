@@ -1,5 +1,6 @@
+import {xooxui} from "./src/lib/core/theme";
+
 /** @type {import('tailwindcss').Config} */
-const {mplui} = require("./src/lib/core/theme/plugin.ts");
 export default {
   content: [
     "./index.html",
@@ -8,6 +9,6 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [mplui()],
+  plugins: [xooxui()],
 }
 

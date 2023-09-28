@@ -115,7 +115,6 @@ const Input = forwardRef<"input", InputProps>((props, ref) => {
     getErrorMessageProps,
     getDescriptionProps,
   ]);
-
   return (
     <Component {...getBaseProps()}>
       {isLabelOutside ? labelContent : null}

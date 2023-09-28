@@ -3,17 +3,17 @@
   "private": false,
   "version": "0.0.4",
   "type": "module",
-  "types": "dist/index.d.ts",
+  "types": "index.d.ts",
   "files": [
-    "dist"
+    "*"
   ],
-  "main": "./dist/xoox-ui.umd.cjs",
-  "module": "./dist/xoox-ui.js",
+  "main": "./xoox-ui.umd.cjs",
+  "module": "./xoox-ui.js",
   "exports": {
     ".": {
-      "import": "./dist/xoox-ui.js",
-      "require": "./dist/xoox-ui.umd.cjs",
-      "types": "./dist/index.d.ts"
+      "import": "./xoox-ui.js",
+      "require": "./xoox-ui.umd.cjs",
+      "types": "./index.d.ts"
     }
   },
   "publishConfig": {
@@ -28,7 +28,8 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "xoox-ui": "file:./releases/xoox-ui-0.0.4.tgz"
   },
   "devDependencies": {
     "@react-aria/accordion": "^3.0.0-alpha.20",
@@ -74,7 +75,7 @@
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
-    "autoprefixer": "^10.4.15",
+    "autoprefixer": "^10.4.16",
     "color": "^4.2.3",
     "color2k": "^2.0.2",
     "deepmerge": "^4.3.1",
@@ -88,7 +89,7 @@
     "lodash.kebabcase": "^4.1.1",
     "lodash.mapkeys": "^4.6.0",
     "lodash.omit": "^4.5.0",
-    "postcss": "^8.4.29",
+    "postcss": "^8.4.30",
     "react-remove-scroll": "^2.5.6",
     "react-textarea-autosize": "^8.5.3",
     "scroll-into-view-if-needed": "^3.0.10",
