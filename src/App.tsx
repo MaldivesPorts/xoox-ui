@@ -1,17 +1,39 @@
 import './App.css';
-import {Input, Textarea} from './lib';
+import {ComboBox, Item} from './lib';
+import {useState} from 'react';
 // const {Divider} = require('../dist/xoox-ui.js');
+
+const DATA = [
+    {key: 'red panda',  value: 'Red Panda'},
+    {key: 'cat',  value: 'Cats'},
+    {key: 'dog',  value: 'Dog'},
+    {key: 'aardvark',  value: 'Aardvark'},
+    {key: 'kangaroo',  value: 'Kangaroo'},
+    {key: 'snake',  value: 'Snake'},
+]
 
 function App() {
 
+    const [search, setSearch] = useState<string>('');
+
+    const filterData = DATA.filter((item: any)=>  item.value.toLowerCase().indexOf(search.toLowerCase()) === 0);
+
     return (
         <div>
-            <Input
-                 type="email"
-                 label="Email"
-                 description={'No description'}
-             />
-            {/*<Divider className="my-4" />*/}
+            <ComboBox
+                errorMessage={'asas'}
+                onInputChange={(value: any) => setSearch(value)}
+                label={'Select Animal'} placeholder={'Select Animal'}>
+                {
+                    filterData.map((animal: any) => <Item key={animal.key}>{animal.value}</Item>)
+                }
+
+                {/*<Item key="cat"value={'cats'}>Cat</Item>*/}
+                {/*<Item key="dog">Dog</Item>*/}
+                {/*<Item key="aardvark">Aardvark</Item>*/}
+                {/*<Item key="kangaroo">Kangaroo</Item>*/}
+                {/*<Item key="snake">Snake</Item>*/}
+            </ComboBox>
         </div>
     )
     // const defaultContent =

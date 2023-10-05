@@ -2,13 +2,15 @@ import {FreeSoloPopover,} from '../popover';
 import {Input} from '../input';
 import {ListboxItem} from '../listbox';
 import {ScrollShadow} from '../scroll-shadow';
-import {useComboBox} from './use-combobox';
+import {useComboBox, useComboBoxProps} from './use-combobox';
 import {forwardRef} from '../../core/system';
 import {useFilter} from '@react-aria/i18n';
 import {useComboBoxState} from '@react-stately/combobox';
 import {ComboBoxList} from './combobox-list.tsx';
 
-const ComboBox = forwardRef((props, _) => {
+export interface ComboBoxProps extends useComboBoxProps {};
+
+const ComboBox = forwardRef((props: ComboBoxProps, _) => {
     const { contains } = useFilter({ sensitivity: "base" });
     const state = useComboBoxState({ ...props, defaultFilter: contains });
     const {
