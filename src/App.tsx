@@ -1,5 +1,5 @@
 import './App.css';
-import {ComboBox, Item} from './lib';
+import {Button, ComboBox, Input, Item} from './lib';
 import {useState} from 'react';
 // const {Divider} = require('../dist/xoox-ui.js');
 
@@ -21,9 +21,11 @@ function App() {
     return (
         <div>
             <ComboBox
-                errorMessage={'asas'}
+                description={'This is description'}
+                errorMessage={'This is error message'}
                 onInputChange={(value: any) => setSearch(value)}
-                label={'Select Animal'} placeholder={'Select Animal'}>
+                label={'Select Animal'}
+                placeholder={'Select Animal'}>
                 {
                     filterData.map((animal: any) => <Item key={animal.key}>{animal.value}</Item>)
                 }
@@ -34,6 +36,17 @@ function App() {
                 {/*<Item key="kangaroo">Kangaroo</Item>*/}
                 {/*<Item key="snake">Snake</Item>*/}
             </ComboBox>
+            <br/><br/>
+            <Input
+                type="email"
+                label="Email"
+                variant="bordered"
+                labelPlacement={'inside'}
+                defaultValue="junior2nextui.org"
+                isInvalid={true}
+                errorMessage="Please enter a valid email"
+                className="max-w-xs"
+            />
         </div>
     )
     // const defaultContent =
@@ -102,13 +115,7 @@ function App() {
     //                     <Button color="primary" variant="solid" onPress={() => inputRef.current?.focus()}>
     //                         Solid
     //                     </Button>
-    //             <Input
-    //                 ref={inputRef}
-    //                 type="email"
-    //                 label="Email"
-    //                 placeholder="Enter your email"
-    //                 description={'No description'}
-    //             />
+
     //         </div>
     //
     //

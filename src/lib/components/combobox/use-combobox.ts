@@ -1,12 +1,12 @@
 import {ComboBoxState} from '@react-stately/combobox';
 import * as React from 'react';
 import {useCallback, useEffect, useMemo} from 'react';
-import {As, DOMAttributes, PropGetter, PropsOf, RightJoinProps} from '../../core/system';
+import {DOMAttributes, PropGetter} from '../../core/system';
 import {PopoverProps} from '../popover';
 import {useComboBox as useAriaComboBox} from '@react-aria/combobox';
 import {clsx} from '../../utilities/shared-utils';
 import {mergeProps} from '@react-aria/utils';
-import {combobox} from '../../core/theme';
+import {combobox, InputVariantProps} from '../../core/theme';
 import {InputProps} from '../input';
 import {ComboBoxProps as AriaComboBoxProps} from '@react-types/combobox';
 
@@ -16,10 +16,10 @@ export type useComboBoxProps = AriaComboBoxProps<any> & {
     className: any;
     classNames: any;
     listBoxProps: any;
-};
+} & InputVariantProps
 
 
-export function useComboBox(props: RightJoinProps<PropsOf<As>, object> & { as?: As }, state: ComboBoxState<any>) {
+export function useComboBox(props: useComboBoxProps, state: ComboBoxState<any>) {
     // const [props, variantProps] = mapPropsVariants(originalProps, combobox.variantKeys);
     const {
         popoverProps,
@@ -37,7 +37,9 @@ export function useComboBox(props: RightJoinProps<PropsOf<As>, object> & { as?: 
     let {
         inputProps,
         listBoxProps,
-        labelProps
+        labelProps,
+        descriptionProps,
+        errorMessageProps,
     } = useAriaComboBox(
         {
             ...props,
@@ -95,9 +97,12 @@ export function useComboBox(props: RightJoinProps<PropsOf<As>, object> & { as?: 
     const getInputProps = useCallback(
         (_ = {}) => {
             return {
+                ...props,
                 ref: inputRef,
                 ...labelProps,
                 ...inputProps,
+                ...descriptionProps,
+                ...errorMessageProps,
             } as InputProps;
         },
         [
