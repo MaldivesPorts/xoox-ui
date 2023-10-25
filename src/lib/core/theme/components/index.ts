@@ -34,3 +34,4 @@ export * from "./listbox";
 export * from "./scroll-shadow";
 export * from "./combobox";
 export * from "./toast";
+export * from "./autocomplete";

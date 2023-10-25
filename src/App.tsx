@@ -1,5 +1,5 @@
 import './App.css';
-import {Button, ComboBox, Input, Item} from './lib';
+import {ComboBox, Input, Item, Select, SelectItem} from './lib';
 import {useState} from 'react';
 // const {Divider} = require('../dist/xoox-ui.js');
 
@@ -20,6 +20,44 @@ function App() {
 
     return (
         <div>
+            <Input
+                type="email"
+                label="Email"
+                placeholder={'Enter email'}/>
+            <div className="flex flex-row">
+                <div className="flex-auto">
+                                 <Select
+                                     onChange={console.log}
+                                     items={DATA}
+                                     label="Favorite Animal"
+                                     placeholder="Select an animal"
+                                     className="max-w-xs"
+                                 >
+                                     {(animal: any) => <SelectItem key={animal.key}>{animal.value}</SelectItem>}
+                                 </Select>
+                </div>
+                <div className="flex-auto">
+                    {/*<Autocomplete*/}
+                    {/*    className={'w-full'}*/}
+                    {/*    errorMessage={'This is error message'}*/}
+                    {/*    placeholder="Select animal"*/}
+                    {/*    onInputChange={(value: any) => setSearch(value)}*/}
+                    {/*    label="Favorite Animal">*/}
+                    {/*    {*/}
+                    {/*        filterData.map((animal: any) => <AutocompleteItem key={animal.key}>{animal.value}</AutocompleteItem>)*/}
+                    {/*    }*/}
+                    {/*    /!*<AutocompleteItem key="red panda">Red Panda</AutocompleteItem>*!/*/}
+                    {/*    /!*<AutocompleteItem key="cat">Cat</AutocompleteItem>*!/*/}
+                    {/*    /!*<AutocompleteItem key="dog">Dog</AutocompleteItem>*!/*/}
+                    {/*    /!*<AutocompleteItem key="aardvark">Aardvark</AutocompleteItem>*!/*/}
+                    {/*    /!*<AutocompleteItem key="kangaroo">Kangaroo</AutocompleteItem>*!/*/}
+                    {/*    /!*<AutocompleteItem key="snake">Snake</AutocompleteItem>*!/*/}
+                    {/*</Autocomplete>*/}
+                </div>
+            </div>
+
+
+
             <ComboBox
                 description={'This is description'}
                 errorMessage={'This is error message'}
@@ -40,12 +78,10 @@ function App() {
             <Input
                 type="email"
                 label="Email"
-                variant="bordered"
-                labelPlacement={'inside'}
-                defaultValue="junior2nextui.org"
-                isInvalid={true}
-                errorMessage="Please enter a valid email"
-                className="max-w-xs"
+                placeholder={'Enter email'}
+                // isInvalid={true}
+                // errorMessage="Please enter a valid email"
+                // className="max-w-xs"
             />
         </div>
     )
