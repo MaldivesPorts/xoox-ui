@@ -1,5 +1,5 @@
 import './App.css';
-import {ComboBox, Input, Item, Select, SelectItem} from './lib';
+import {ComboBox, Input, ComboBoxItem, Select, SelectItem} from './lib';
 import {useState} from 'react';
 // const {Divider} = require('../dist/xoox-ui.js');
 
@@ -25,17 +25,16 @@ function App() {
                 label="Email"
                 placeholder={'Enter email'}/>
             <div className="flex flex-row">
-                <div className="flex-auto">
-                                 <Select
-                                     onChange={console.log}
-                                     items={DATA}
-                                     label="Favorite Animal"
-                                     placeholder="Select an animal"
-                                     className="max-w-xs"
-                                 >
-                                     {(animal: any) => <SelectItem key={animal.key}>{animal.value}</SelectItem>}
-                                 </Select>
-                </div>
+                {/*<div className="flex-auto">*/}
+                {/*                 <Select*/}
+                {/*                     items={DATA}*/}
+                {/*                     label="Favorite Animal"*/}
+                {/*                     placeholder="Select an animal"*/}
+                {/*                     className="max-w-xs"*/}
+                {/*                 >*/}
+                {/*                     {(animal: any) => <SelectItem key={animal.key}>{animal.value}</SelectItem>}*/}
+                {/*                 </Select>*/}
+                {/*</div>*/}
                 <div className="flex-auto">
                     {/*<Autocomplete*/}
                     {/*    className={'w-full'}*/}
@@ -65,7 +64,7 @@ function App() {
                 label={'Select Animal'}
                 placeholder={'Select Animal'}>
                 {
-                    filterData.map((animal: any) => <Item key={animal.key}>{animal.value}</Item>)
+                    filterData.map((animal: any) => <ComboBoxItem key={animal.key}>{animal.value}</ComboBoxItem>)
                 }
 
                 {/*<Item key="cat"value={'cats'}>Cat</Item>*/}

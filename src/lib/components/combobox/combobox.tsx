@@ -1,6 +1,5 @@
 import {FreeSoloPopover,} from '../popover';
 import {Input} from '../input';
-import {ListboxItem} from '../listbox';
 import {ScrollShadow} from '../scroll-shadow';
 import {useComboBox, useComboBoxProps} from './use-combobox';
 import {forwardRef} from '../../core/system';
@@ -36,4 +35,4 @@ const ComboBox = forwardRef((props: ComboBoxProps, _) => {
     );
 });
 
-export {ListboxItem as Item, ComboBox}
+export default ComboBox; // {ListboxItem as ComboBoxItem, ComboBox}
