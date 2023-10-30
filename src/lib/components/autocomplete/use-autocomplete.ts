@@ -46,13 +46,13 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
 
   // apply the same with to the popover as the select
   useEffect(() => {
-    state.setOpen(true);
+    // state.setOpen(true);
     if (state.isOpen && popoverRef.current && inputBaseRef.current) {
       let rect = inputBaseRef.current.getBoundingClientRect();
 
       // console.log(rect.width);
       let popover = popoverRef.current;
-
+      console.log(popover);
       popover.style.width = rect.width + "px";
     }
   }, [state.isOpen]);

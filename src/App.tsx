@@ -1,87 +1,97 @@
 import './App.css';
-import {ComboBox, Input, ComboBoxItem, Select, SelectItem} from './lib';
-import {useState} from 'react';
+import {Autocomplete, AutocompleteItem, ComboBox, ComboBoxItem} from './lib';
+import {useEffect, useState} from 'react';
 // const {Divider} = require('../dist/xoox-ui.js');
 
 const DATA = [
-    {key: 'red panda',  value: 'Red Panda'},
-    {key: 'cat',  value: 'Cats'},
-    {key: 'dog',  value: 'Dog'},
-    {key: 'aardvark',  value: 'Aardvark'},
-    {key: 'kangaroo',  value: 'Kangaroo'},
-    {key: 'snake',  value: 'Snake'},
+    {key: 1,  value: 'Red Panda'},
+    {key: 2,  value: 'Cats'},
+    {key: 3,  value: 'Dog'},
+    {key: 4,  value: 'Aardvark'},
+    {key: 5,  value: 'Kangaroo'},
+    {key: 6,  value: 'Snake'},
 ]
 
 function App() {
+    const [data, setData] = useState([]);
 
-    const [search, setSearch] = useState<string>('');
-
-    const filterData = DATA.filter((item: any)=>  item.value.toLowerCase().indexOf(search.toLowerCase()) === 0);
+    // useEffect(() => {
+    //     fetch(
+    //         // `${props.api}=${filterText}`,
+    //         `https://hr-api.test/api/test`,
+    //     ).then(res => res.json()).then(result => setData(result));
+    // },[]);
 
     return (
         <div>
-            <Input
-                type="email"
-                label="Email"
-                placeholder={'Enter email'}/>
-            <div className="flex flex-row">
-                {/*<div className="flex-auto">*/}
-                {/*                 <Select*/}
-                {/*                     items={DATA}*/}
-                {/*                     label="Favorite Animal"*/}
-                {/*                     placeholder="Select an animal"*/}
-                {/*                     className="max-w-xs"*/}
-                {/*                 >*/}
-                {/*                     {(animal: any) => <SelectItem key={animal.key}>{animal.value}</SelectItem>}*/}
-                {/*                 </Select>*/}
-                {/*</div>*/}
-                <div className="flex-auto">
-                    {/*<Autocomplete*/}
-                    {/*    className={'w-full'}*/}
-                    {/*    errorMessage={'This is error message'}*/}
-                    {/*    placeholder="Select animal"*/}
-                    {/*    onInputChange={(value: any) => setSearch(value)}*/}
-                    {/*    label="Favorite Animal">*/}
-                    {/*    {*/}
-                    {/*        filterData.map((animal: any) => <AutocompleteItem key={animal.key}>{animal.value}</AutocompleteItem>)*/}
-                    {/*    }*/}
-                    {/*    /!*<AutocompleteItem key="red panda">Red Panda</AutocompleteItem>*!/*/}
-                    {/*    /!*<AutocompleteItem key="cat">Cat</AutocompleteItem>*!/*/}
-                    {/*    /!*<AutocompleteItem key="dog">Dog</AutocompleteItem>*!/*/}
-                    {/*    /!*<AutocompleteItem key="aardvark">Aardvark</AutocompleteItem>*!/*/}
-                    {/*    /!*<AutocompleteItem key="kangaroo">Kangaroo</AutocompleteItem>*!/*/}
-                    {/*    /!*<AutocompleteItem key="snake">Snake</AutocompleteItem>*!/*/}
-                    {/*</Autocomplete>*/}
-                </div>
-            </div>
+            {/*<ComboBox*/}
+            {/*    items={data}*/}
+            {/*    label={'Select Animal'}*/}
+            {/*    defaultSelectedKey={'1'}*/}
+            {/*    placeholder={'Select Animal'}>*/}
+            {/*    {*/}
+            {/*        (animal: any) => <ComboBoxItem key={animal.id}>{animal.name}</ComboBoxItem>*/}
+            {/*    }*/}
+            {/*</ComboBox>*/}
+            {/*<Input*/}
+            {/*    type="email"*/}
+            {/*    label="Email"*/}
+            {/*    placeholder={'Enter email'}/>*/}
+            {/*<div className="flex flex-row">*/}
+            {/*    /!*<div className="flex-auto">*!/*/}
+            {/*    /!*                 <Select*!/*/}
+            {/*    /!*                     items={DATA}*!/*/}
+            {/*    /!*                     label="Favorite Animal"*!/*/}
+            {/*    /!*                     placeholder="Select an animal"*!/*/}
+            {/*    /!*                     className="max-w-xs"*!/*/}
+            {/*    /!*                 >*!/*/}
+            {/*    /!*                     {(animal: any) => <SelectItem key={animal.key}>{animal.name}</SelectItem>}*!/*/}
+            {/*    /!*                 </Select>*!/*/}
+            {/*    /!*</div>*!/*/}
+            {/*<div className="flex-auto">*/}
+                <Autocomplete
+                    items={DATA}
+                    placeholder="Select animal"
+                    // onInputChange={(value: any) => setSearch(value)}
+                    label="Favorite Animal">
+                    {
+                        (animal: any) => <AutocompleteItem key={animal.key}>{animal.value}</AutocompleteItem>
+                    }
+                    {/*<AutocompleteItem key="red">Red Panda</AutocompleteItem>*/}
+                    {/*<AutocompleteItem key="cat">Cat</AutocompleteItem>*/}
+                    {/*<AutocompleteItem key="dog">Dog</AutocompleteItem>*/}
+                    {/*<AutocompleteItem key="aardvark">Aardvark</AutocompleteItem>*/}
+                    {/*<AutocompleteItem key="kangaroo">Kangaroo</AutocompleteItem>*/}
+                    {/*<AutocompleteItem key="snake">Snake</AutocompleteItem>*/}
+                </Autocomplete>
+            {/*</div>*/}
+            {/*</div>*/}
+
+            {/*<Select*/}
+            {/*    autocomplete={true}*/}
+            {/*    items={DATA}*/}
+            {/*    label="Favorite Animal"*/}
+            {/*    placeholder="Select an animal"*/}
+            {/*    className="max-w-xs"*/}
+            {/*    selectedKeys={['1']}*/}
+            {/*    onChange={(e) => {*/}
+            {/*        console.log(e.target)*/}
+            {/*    }}*/}
+            {/*>*/}
+            {/*    {(animal: any) => <SelectItem key={animal.key}>{animal.value}</SelectItem>}*/}
+            {/*</Select>*/}
 
 
 
-            <ComboBox
-                description={'This is description'}
-                errorMessage={'This is error message'}
-                onInputChange={(value: any) => setSearch(value)}
-                label={'Select Animal'}
-                placeholder={'Select Animal'}>
-                {
-                    filterData.map((animal: any) => <ComboBoxItem key={animal.key}>{animal.value}</ComboBoxItem>)
-                }
-
-                {/*<Item key="cat"value={'cats'}>Cat</Item>*/}
-                {/*<Item key="dog">Dog</Item>*/}
-                {/*<Item key="aardvark">Aardvark</Item>*/}
-                {/*<Item key="kangaroo">Kangaroo</Item>*/}
-                {/*<Item key="snake">Snake</Item>*/}
-            </ComboBox>
-            <br/><br/>
-            <Input
-                type="email"
-                label="Email"
-                placeholder={'Enter email'}
-                // isInvalid={true}
-                // errorMessage="Please enter a valid email"
-                // className="max-w-xs"
-            />
+            {/*<br/><br/>*/}
+            {/*<Input*/}
+            {/*    type="email"*/}
+            {/*    label="Email"*/}
+            {/*    placeholder={'Enter email'}*/}
+            {/*    // isInvalid={true}*/}
+            {/*    // errorMessage="Please enter a valid email"*/}
+            {/*    // className="max-w-xs"*/}
+            {/*/>*/}
         </div>
     )
     // const defaultContent =
