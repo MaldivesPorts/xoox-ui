@@ -11,11 +11,12 @@ import {UseAutocompleteProps, useAutocomplete} from "./use-autocomplete";
 
 interface Props<T> extends UseAutocompleteProps<T> {}
 
-function Autocomplete<T extends object>(props: Props<T>, ref: ForwardedRef<HTMLSelectElement>) {
+function Autocomplete<T extends object>(props: Props<T>, ref: ForwardedRef<HTMLInputElement>) {
     const {
         Component,
         state,
-        triggerRef,
+        selectorIcon = <ChevronDownIcon />,
+        clearIcon = <CloseIcon />,
         getBaseProps,
         getSelectorButtonProps,
         getInputProps,
@@ -24,10 +25,10 @@ function Autocomplete<T extends object>(props: Props<T>, ref: ForwardedRef<HTMLS
         getClearButtonProps,
         getListBoxWrapperProps,
         getEndContentWrapperProps,
-    } = useAutocomplete({...props, ref});
+    } = useAutocomplete<T>({...props, ref});
 
     const popoverContent = state.isOpen ? (
-        <FreeSoloPopover {...getPopoverProps()} state={state} triggerRef={triggerRef}>
+        <FreeSoloPopover {...getPopoverProps()} state={state}>
             <ScrollShadow {...getListBoxWrapperProps()}>
                 <Listbox {...getListBoxProps()} />
             </ScrollShadow>
@@ -40,27 +41,12 @@ function Autocomplete<T extends object>(props: Props<T>, ref: ForwardedRef<HTMLS
                 {...getInputProps()}
                 endContent={
                     <div {...getEndContentWrapperProps()}>
-                        <Button isIconOnly radius="full" size="sm" variant="light" {...getClearButtonProps()}>
-                            <CloseIcon />
-                        </Button>
-                        <Button
-                            isIconOnly
-                            radius="full"
-                            size="sm"
-                            variant="light"
-                            {...getSelectorButtonProps()}
-                        >
-                            <ChevronDownIcon />
-                        </Button>
+                        <Button {...getClearButtonProps()}>{clearIcon}</Button>
+                        <Button {...getSelectorButtonProps()}>{selectorIcon}</Button>
                     </div>
                 }
             />
             {popoverContent}
-            {/* <FreeSoloPopover {...getPopoverProps()} state={state} triggerRef={triggerRef}>
-        <ScrollShadow {...getListBoxWrapperProps()}>
-          <Listbox {...getListBoxProps()} />
-        </ScrollShadow>
-      </FreeSoloPopover> */}
         </Component>
     );
 }
@@ -72,4 +58,4 @@ export default forwardRef(Autocomplete) as <T = object>(
     props: AutocompleteProps<T>,
 ) => ReactElement;
 
-Autocomplete.displayName = "NextUI.Autocomplete";
+Autocomplete.displayName = "XooxUI.Autocomplete";

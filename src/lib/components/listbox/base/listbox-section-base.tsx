@@ -26,7 +26,7 @@ export interface ListboxSectionBaseProps<T extends object = {}> extends SectionP
 }
 
 const ListboxSectionBase = BaseSection as <T extends object>(
-  props: ListboxSectionBaseProps<T>,
+    props: ListboxSectionBaseProps<T>,
 ) => JSX.Element;
 
 export default ListboxSectionBase;

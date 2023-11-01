@@ -29,29 +29,29 @@ type FreeSoloPopoverWrapperProps = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const FreeSoloPopoverWrapper = ({
-  children,
-  motionProps,
-  placement,
-  disableAnimation,
-  style = {},
-  ...otherProps
-}: FreeSoloPopoverWrapperProps) => {
+                                  children,
+                                  motionProps,
+                                  placement,
+                                  disableAnimation,
+                                  style = {},
+                                  ...otherProps
+                                }: FreeSoloPopoverWrapperProps) => {
   return disableAnimation ? (
-    <div {...otherProps}>{children}</div>
+      <div {...otherProps}>{children}</div>
   ) : (
-    <motion.div
-      animate="enter"
-      exit="exit"
-      initial="initial"
-      style={{
-        ...style,
-        ...getTransformOrigins(placement === "center" ? "top" : placement),
-      }}
-      variants={TRANSITION_VARIANTS.scaleSpringOpacity}
-      {...mergeProps(otherProps, motionProps)}
-    >
-      {children}
-    </motion.div>
+      <motion.div
+          animate="enter"
+          exit="exit"
+          initial="initial"
+          style={{
+            ...style,
+            ...getTransformOrigins(placement === "center" ? "top" : placement),
+          }}
+          variants={TRANSITION_VARIANTS.scaleSpringOpacity}
+          {...mergeProps(otherProps, motionProps)}
+      >
+        {children}
+      </motion.div>
   );
 };
 
@@ -62,7 +62,6 @@ const FreeSoloPopover = forwardRef<"div", FreeSoloPopoverProps>((props, ref) => 
     children,
     placement,
     backdrop,
-    showArrow,
     portalContainer,
     disableAnimation,
     motionProps,
@@ -70,19 +69,13 @@ const FreeSoloPopover = forwardRef<"div", FreeSoloPopoverProps>((props, ref) => 
     getPopoverProps,
     getBackdropProps,
     getDialogProps,
-    getArrowProps,
+    getContentProps,
   } = usePopover({
     ...props,
     // avoid closing the popover when navigating with the keyboard
     shouldCloseOnInteractOutside: undefined,
     ref,
   });
-
-  const arrowContent = React.useMemo(() => {
-    if (!showArrow) return null;
-
-    return <span {...getArrowProps()} />;
-  }, [showArrow, getArrowProps]);
 
   const backdropContent = React.useMemo(() => {
     if (backdrop === "transparent") {
@@ -94,34 +87,33 @@ const FreeSoloPopover = forwardRef<"div", FreeSoloPopoverProps>((props, ref) => 
     }
 
     return (
-      <motion.div
-        animate="enter"
-        exit="exit"
-        initial="exit"
-        variants={TRANSITION_VARIANTS.fade}
-        {...(getBackdropProps() as HTMLMotionProps<"div">)}
-      />
+        <motion.div
+            animate="enter"
+            exit="exit"
+            initial="exit"
+            variants={TRANSITION_VARIANTS.fade}
+            {...(getBackdropProps() as HTMLMotionProps<"div">)}
+        />
     );
   }, [backdrop, disableAnimation, getBackdropProps]);
 
   return (
-    <Overlay portalContainer={portalContainer}>
-      {!isNonModal && backdropContent}
-      <Component {...getPopoverProps()}>
-        <FreeSoloPopoverWrapper
-          disableAnimation={disableAnimation}
-          motionProps={motionProps}
-          placement={placement}
-          tabIndex={-1}
-          {...getDialogProps()}
-        >
-          {!isNonModal && <DismissButton onDismiss={state.close} />}
-          {children}
-          {arrowContent}
-          <DismissButton onDismiss={state.close} />
-        </FreeSoloPopoverWrapper>
-      </Component>
-    </Overlay>
+      <Overlay portalContainer={portalContainer}>
+        {!isNonModal && backdropContent}
+        <Component {...getPopoverProps()}>
+          <FreeSoloPopoverWrapper
+              disableAnimation={disableAnimation}
+              motionProps={motionProps}
+              placement={placement}
+              tabIndex={-1}
+              {...getDialogProps()}
+          >
+            {!isNonModal && <DismissButton onDismiss={state.close} />}
+            <div {...getContentProps()}>{children}</div>
+            <DismissButton onDismiss={state.close} />
+          </FreeSoloPopoverWrapper>
+        </Component>
+      </Overlay>
   );
 });
 

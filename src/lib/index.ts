@@ -35,6 +35,7 @@ export * from "./components/toast";
 
 export * from "./components/input";
 export * from "./components/combobox";
+export * from "./components/autocomplete";
 
 
 export {VisuallyHidden} from "@react-aria/visually-hidden";

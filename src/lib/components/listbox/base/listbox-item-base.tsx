@@ -56,6 +56,11 @@ interface Props<T extends object = {}> extends Omit<ItemProps<"li", T>, "childre
    */
   selectedIcon?: ReactNode | ((props: ListboxItemSelectedIconProps) => ReactNode) | null;
   /**
+   * Whether the item should be highlighted on focus.
+   * @default false
+   */
+  shouldHighlightOnFocus?: boolean;
+  /**
    * Whether to disable the items animation.
    * @default false
    */
@@ -80,13 +85,13 @@ interface Props<T extends object = {}> extends Omit<ItemProps<"li", T>, "childre
 }
 
 export type ListboxItemBaseProps<T extends object = {}> = Props<T> &
-  ListboxItemVariantProps &
-  AriaOptionProps &
-  FocusableProps &
-  PressEvents;
+    ListboxItemVariantProps &
+    AriaOptionProps &
+    FocusableProps &
+    PressEvents;
 
 const ListboxItemBase = BaseItem as <T extends object>(
-  props: ListboxItemBaseProps<T>,
+    props: ListboxItemBaseProps<T>,
 ) => JSX.Element;
 
 export default ListboxItemBase;

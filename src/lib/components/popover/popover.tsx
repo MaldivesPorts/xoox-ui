@@ -23,14 +23,14 @@ const Popover = forwardRef<"div", PopoverProps>((props, ref) => {
   const overlay = <Overlay portalContainer={context.portalContainer}>{content}</Overlay>;
 
   return (
-    <PopoverProvider value={context}>
-      {trigger}
-      {context.disableAnimation && context.isOpen ? (
-        overlay
-      ) : (
-        <AnimatePresence>{context.isOpen ? overlay : null}</AnimatePresence>
-      )}
-    </PopoverProvider>
+      <PopoverProvider value={context}>
+        {trigger}
+        {context.disableAnimation && context.isOpen ? (
+            overlay
+        ) : (
+            <AnimatePresence>{context.isOpen ? overlay : null}</AnimatePresence>
+        )}
+      </PopoverProvider>
   );
 });
 

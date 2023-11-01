@@ -28,8 +28,8 @@ export interface AriaHiddenSelectProps {
 }
 
 type NativeHTMLSelectProps = Omit<
-  React.SelectHTMLAttributes<HTMLSelectElement>,
-  keyof AriaHiddenSelectProps
+    React.SelectHTMLAttributes<HTMLSelectElement>,
+    keyof AriaHiddenSelectProps
 >;
 
 type CombinedAriaSelectProps = NativeHTMLSelectProps & AriaHiddenSelectProps;
@@ -58,9 +58,9 @@ export interface AriaHiddenSelectOptions<T> extends CombinedAriaSelectProps {
  * navigation, and native HTML form submission.
  */
 export function useHiddenSelect<T>(
-  props: AriaHiddenSelectOptions<T>,
-  state: MultiSelectState<T>,
-  triggerRef: RefObject<FocusableElement>,
+    props: AriaHiddenSelectOptions<T>,
+    state: MultiSelectState<T>,
+    triggerRef: RefObject<FocusableElement>,
 ) {
   let {autoComplete, name, isDisabled, isRequired, selectionMode, onChange} = props;
   let modality = useInteractionModality();
@@ -95,9 +95,9 @@ export function useHiddenSelect<T>(
       disabled: isDisabled,
       size: state.collection.size,
       value:
-        selectionMode === "multiple"
-          ? [...state.selectedKeys].map((k) => String(k))
-          : [...state.selectedKeys][0],
+          selectionMode === "multiple"
+              ? [...state.selectedKeys].map((k) => String(k))
+              : [...state.selectedKeys][0],
       multiple: selectionMode === "multiple",
       onChange: (e: React.ChangeEvent<HTMLSelectElement>) => {
         state.setSelectedKeys(e.target.value);
@@ -115,9 +115,9 @@ export function HiddenSelect<T>(props: HiddenSelectProps<T>) {
   let {state, triggerRef, selectRef, label, name, isDisabled} = props;
 
   let {containerProps, inputProps, selectProps} = useHiddenSelect(
-    {...props, selectRef},
-    state,
-    triggerRef,
+      {...props, selectRef},
+      state,
+      triggerRef,
   );
 
   // If used in a <form>, use a hidden input so the value can be submitted to a server.
@@ -125,36 +125,36 @@ export function HiddenSelect<T>(props: HiddenSelectProps<T>) {
   // autofill will work. Otherwise, use an <input type="hidden">.
   if (state.collection.size <= 300) {
     return (
-      <div {...containerProps} data-testid="hidden-select-container">
-        <input {...inputProps} />
-        <label>
-          {label}
-          <select {...selectProps as any} ref={selectRef}>
-            <option />
-            {[...state.collection.getKeys()].map((key) => {
-              let item = state.collection.getItem(key);
+        <div {...containerProps} data-testid="hidden-select-container">
+          <input {...inputProps} />
+          <label>
+            {label}
+            <select {...selectProps} ref={selectRef}>
+              <option />
+              {[...state.collection.getKeys()].map((key) => {
+                let item = state.collection.getItem(key);
 
-              if (item?.type === "item") {
-                return (
-                  <option key={item.key} value={item.key as any}>
-                    {item.textValue}
-                  </option>
-                );
-              }
-            })}
-          </select>
-        </label>
-      </div>
+                if (item?.type === "item") {
+                  return (
+                      <option key={item.key} value={item.key}>
+                        {item.textValue}
+                      </option>
+                  );
+                }
+              })}
+            </select>
+          </label>
+        </div>
     );
   } else if (name) {
     return (
-      <input
-        autoComplete={selectProps.autoComplete}
-        disabled={isDisabled}
-        name={name}
-        type="hidden"
-        value={[...state.selectedKeys].join(",") ?? ""}
-      />
+        <input
+            autoComplete={selectProps.autoComplete}
+            disabled={isDisabled}
+            name={name}
+            type="hidden"
+            value={[...state.selectedKeys].join(",") ?? ""}
+        />
     );
   }
 

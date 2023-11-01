@@ -15,7 +15,6 @@ const Input = forwardRef<"input", InputProps>((props, ref) => {
     startContent,
     endContent,
     labelPlacement,
-    hasPlaceholder,
     hasHelper,
     isLabelOutside,
     isLabelOutsideAsPlaceholder,
@@ -47,13 +46,13 @@ const Input = forwardRef<"input", InputProps>((props, ref) => {
     if (!hasHelper) return null;
 
     return (
-      <div {...getHelperWrapperProps()}>
-        {errorMessage ? (
-          <div {...getErrorMessageProps()}>{errorMessage}</div>
-        ) : description ? (
-          <div {...getDescriptionProps()}>{description}</div>
-        ) : null}
-      </div>
+        <div {...getHelperWrapperProps()}>
+          {errorMessage ? (
+              <div {...getErrorMessageProps()}>{errorMessage}</div>
+          ) : description ? (
+              <div {...getDescriptionProps()}>{description}</div>
+          ) : null}
+        </div>
     );
   }, [
     hasHelper,
@@ -67,45 +66,48 @@ const Input = forwardRef<"input", InputProps>((props, ref) => {
   const innerWrapper = useMemo(() => {
     if (startContent || end) {
       return (
-        <div {...getInnerWrapperProps()}>
-          {startContent}
-          <input {...getInputProps()} />
-          {end}
-        </div>
+          <div {...getInnerWrapperProps()}>
+            {startContent}
+            <input {...getInputProps()} />
+            {end}
+          </div>
       );
     }
 
-    return <input {...getInputProps()} />;
+    return (
+        <div {...getInnerWrapperProps()}>
+          <input {...getInputProps()} />
+        </div>
+    );
   }, [startContent, end, getInputProps, getInnerWrapperProps]);
 
   const mainWrapper = useMemo(() => {
     if (shouldLabelBeOutside) {
       return (
-        <div {...getMainWrapperProps()}>
-          <div {...getInputWrapperProps()}>
-            {isLabelOutsideAsPlaceholder ? labelContent : null}
-            {innerWrapper}
+          <div {...getMainWrapperProps()}>
+            <div {...getInputWrapperProps()}>
+              {isLabelOutsideAsPlaceholder ? labelContent : null}
+              {innerWrapper}
+            </div>
+            {helperWrapper}
           </div>
-          {helperWrapper}
-        </div>
       );
     }
 
     return (
-      <>
-        <div {...getInputWrapperProps()}>
-          {labelContent}
-          {innerWrapper}
-        </div>
-        {helperWrapper}
-      </>
+        <>
+          <div {...getInputWrapperProps()}>
+            {labelContent}
+            {innerWrapper}
+          </div>
+          {helperWrapper}
+        </>
     );
   }, [
     labelPlacement,
     helperWrapper,
     shouldLabelBeOutside,
     isLabelOutsideAsPlaceholder,
-    hasPlaceholder,
     labelContent,
     innerWrapper,
     errorMessage,
@@ -115,6 +117,7 @@ const Input = forwardRef<"input", InputProps>((props, ref) => {
     getErrorMessageProps,
     getDescriptionProps,
   ]);
+
   return (
     <Component {...getBaseProps()}>
       {isLabelOutside ? labelContent : null}

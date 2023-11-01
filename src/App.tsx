@@ -1,5 +1,15 @@
 import './App.css';
-import {Autocomplete, AutocompleteItem, ComboBox, ComboBoxItem} from './lib';
+import {
+    Autocomplete,
+    AutocompleteItem, Button,
+    ComboBox,
+    ComboBoxItem,
+    Dropdown, DropdownItem, DropdownMenu,
+    DropdownTrigger,
+    Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Popover, PopoverContent, PopoverTrigger,
+    Select,
+    SelectItem, useDisclosure
+} from './lib';
 import {useEffect, useState} from 'react';
 // const {Divider} = require('../dist/xoox-ui.js');
 
@@ -14,6 +24,7 @@ const DATA = [
 
 function App() {
     const [data, setData] = useState([]);
+    const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
     // useEffect(() => {
     //     fetch(
@@ -24,15 +35,15 @@ function App() {
 
     return (
         <div>
-            {/*<ComboBox*/}
-            {/*    items={data}*/}
-            {/*    label={'Select Animal'}*/}
-            {/*    defaultSelectedKey={'1'}*/}
-            {/*    placeholder={'Select Animal'}>*/}
-            {/*    {*/}
-            {/*        (animal: any) => <ComboBoxItem key={animal.id}>{animal.name}</ComboBoxItem>*/}
-            {/*    }*/}
-            {/*</ComboBox>*/}
+            <ComboBox
+                items={data}
+                label={'Select Animal'}
+                defaultSelectedKey={'1'}
+                placeholder={'Select Animal'}>
+                {
+                    (animal: any) => <ComboBoxItem key={animal.id}>{animal.name}</ComboBoxItem>
+                }
+            </ComboBox>
             {/*<Input*/}
             {/*    type="email"*/}
             {/*    label="Email"*/}
@@ -50,48 +61,116 @@ function App() {
             {/*    /!*</div>*!/*/}
             {/*<div className="flex-auto">*/}
                 <Autocomplete
-                    items={DATA}
+                    // items={DATA}
                     placeholder="Select animal"
                     // onInputChange={(value: any) => setSearch(value)}
                     label="Favorite Animal">
-                    {
-                        (animal: any) => <AutocompleteItem key={animal.key}>{animal.value}</AutocompleteItem>
-                    }
-                    {/*<AutocompleteItem key="red">Red Panda</AutocompleteItem>*/}
-                    {/*<AutocompleteItem key="cat">Cat</AutocompleteItem>*/}
-                    {/*<AutocompleteItem key="dog">Dog</AutocompleteItem>*/}
-                    {/*<AutocompleteItem key="aardvark">Aardvark</AutocompleteItem>*/}
-                    {/*<AutocompleteItem key="kangaroo">Kangaroo</AutocompleteItem>*/}
-                    {/*<AutocompleteItem key="snake">Snake</AutocompleteItem>*/}
+                    {/*{*/}
+                    {/*    (animal: any) => <AutocompleteItem key={animal.value}>{animal.value}</AutocompleteItem>*/}
+                    {/*}*/}
+                    <AutocompleteItem key="red">Red Panda</AutocompleteItem>
+                    <AutocompleteItem key="cat">Cat</AutocompleteItem>
+                    <AutocompleteItem key="dog">Dog</AutocompleteItem>
+                    <AutocompleteItem key="aardvark">Aardvark</AutocompleteItem>
+                    <AutocompleteItem key="kangaroo">Kangaroo</AutocompleteItem>
+                    <AutocompleteItem key="snake">Snake</AutocompleteItem>
                 </Autocomplete>
             {/*</div>*/}
             {/*</div>*/}
+            <br/>
+            <br/>
+            <br/>
 
-            {/*<Select*/}
-            {/*    autocomplete={true}*/}
-            {/*    items={DATA}*/}
-            {/*    label="Favorite Animal"*/}
-            {/*    placeholder="Select an animal"*/}
-            {/*    className="max-w-xs"*/}
-            {/*    selectedKeys={['1']}*/}
-            {/*    onChange={(e) => {*/}
-            {/*        console.log(e.target)*/}
-            {/*    }}*/}
-            {/*>*/}
-            {/*    {(animal: any) => <SelectItem key={animal.key}>{animal.value}</SelectItem>}*/}
-            {/*</Select>*/}
+            <Select
+                // labelPlacement={'outside'}
+                items={DATA}
+                label="Favorite Animal"
+                placeholder="Select an animal"
+            >
+                {(animal: any) => <SelectItem key={animal.key}>{animal.value}</SelectItem>}
+            </Select>
 
 
 
-            {/*<br/><br/>*/}
-            {/*<Input*/}
-            {/*    type="email"*/}
-            {/*    label="Email"*/}
-            {/*    placeholder={'Enter email'}*/}
-            {/*    // isInvalid={true}*/}
-            {/*    // errorMessage="Please enter a valid email"*/}
-            {/*    // className="max-w-xs"*/}
-            {/*/>*/}
+            <br/><br/>
+            <Input
+                type="email"
+                label="Email"
+                placeholder={'Enter email'}
+                // isInvalid={true}
+                // errorMessage="Please enter a valid email"
+                // className="max-w-xs"
+            />
+
+            {/*<Popover placement="right">*/}
+            {/*    <PopoverTrigger>*/}
+            {/*        <Button>Open Popover</Button>*/}
+            {/*    </PopoverTrigger>*/}
+            {/*    <PopoverContent>*/}
+            {/*        <div className="px-1 py-2">*/}
+            {/*            <div className="text-small font-bold">Popover Content</div>*/}
+            {/*            <div className="text-tiny">This is the popover content</div>*/}
+            {/*        </div>*/}
+            {/*    </PopoverContent>*/}
+            {/*</Popover>*/}
+
+            {/*<Dropdown>*/}
+            {/*    <DropdownTrigger>*/}
+            {/*        <Button*/}
+            {/*            variant="bordered"*/}
+            {/*        >*/}
+            {/*            Open Menu*/}
+            {/*        </Button>*/}
+            {/*    </DropdownTrigger>*/}
+            {/*    <DropdownMenu aria-label="Static Actions">*/}
+            {/*        <DropdownItem key="new">New file</DropdownItem>*/}
+            {/*        <DropdownItem key="copy">Copy link</DropdownItem>*/}
+            {/*        <DropdownItem key="edit">Edit file</DropdownItem>*/}
+            {/*        <DropdownItem key="delete" className="text-danger" color="danger">*/}
+            {/*            Delete file*/}
+            {/*        </DropdownItem>*/}
+            {/*    </DropdownMenu>*/}
+            {/*</Dropdown>*/}
+
+            {/*<div className="flex flex-col gap-3">*/}
+            {/*    <Button onPress={onOpen}>Open Modal</Button>*/}
+            {/*    <Modal isOpen={isOpen} onOpenChange={onOpenChange}>*/}
+            {/*        <ModalContent>*/}
+            {/*            {(onClose: any) => (*/}
+            {/*                <>*/}
+            {/*                    <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>*/}
+            {/*                    <ModalBody>*/}
+            {/*                        <p>*/}
+            {/*                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.*/}
+            {/*                            Nullam pulvinar risus non risus hendrerit venenatis.*/}
+            {/*                            Pellentesque sit amet hendrerit risus, sed porttitor quam.*/}
+            {/*                        </p>*/}
+            {/*                        <p>*/}
+            {/*                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.*/}
+            {/*                            Nullam pulvinar risus non risus hendrerit venenatis.*/}
+            {/*                            Pellentesque sit amet hendrerit risus, sed porttitor quam.*/}
+            {/*                        </p>*/}
+            {/*                        <p>*/}
+            {/*                            Magna exercitation reprehenderit magna aute tempor cupidatat consequat elit*/}
+            {/*                            dolor adipisicing. Mollit dolor eiusmod sunt ex incididunt cillum quis.*/}
+            {/*                            Velit duis sit officia eiusmod Lorem aliqua enim laboris do dolor eiusmod.*/}
+            {/*                            Et mollit incididunt nisi consectetur esse laborum eiusmod pariatur*/}
+            {/*                            proident Lorem eiusmod et. Culpa deserunt nostrud ad veniam.*/}
+            {/*                        </p>*/}
+            {/*                    </ModalBody>*/}
+            {/*                    <ModalFooter>*/}
+            {/*                        <Button color="danger" variant="light" onPress={onClose}>*/}
+            {/*                            Close*/}
+            {/*                        </Button>*/}
+            {/*                        <Button color="primary" onPress={onClose}>*/}
+            {/*                            Action*/}
+            {/*                        </Button>*/}
+            {/*                    </ModalFooter>*/}
+            {/*                </>*/}
+            {/*            )}*/}
+            {/*        </ModalContent>*/}
+            {/*    </Modal>*/}
+            {/*</div>*/}
         </div>
     )
     // const defaultContent =

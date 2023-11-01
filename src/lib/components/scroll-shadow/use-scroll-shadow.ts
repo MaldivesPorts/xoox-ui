@@ -3,10 +3,10 @@ import type {ScrollShadowVariantProps} from "../../core/theme";
 import {HTMLXooxUIProps, mapPropsVariants, PropGetter} from "../../core/system";
 import {scrollShadow} from "../../core/theme";
 import {ReactRef, useDOMRef} from "../../utilities/react-utils";
-import {useDataScrollOverflow} from "../../hooks/use-data-scroll-overflow";
+import {useDataScrollOverflow, UseDataScrollOverflowProps} from "../../hooks/use-data-scroll-overflow";
 import {useMemo} from "react";
 
-interface Props extends HTMLXooxUIProps<"div"> {
+interface Props extends HTMLXooxUIProps<"div">, Omit<UseDataScrollOverflowProps, "domRef"> {
   /**
    * Ref to the DOM node.
    */
@@ -38,10 +38,12 @@ export function useScrollShadow(originalProps: UseScrollShadowProps) {
     as,
     children,
     className,
+    style,
     size = 40,
     offset = 0,
+    visibility = "auto",
     isEnabled = true,
-    style,
+    onVisibilityChange,
     ...otherProps
   } = props;
 
@@ -52,17 +54,19 @@ export function useScrollShadow(originalProps: UseScrollShadowProps) {
   useDataScrollOverflow({
     domRef,
     offset,
+    visibility,
     isEnabled,
+    onVisibilityChange,
     overflowCheck: originalProps.orientation ?? "vertical",
   });
 
   const styles = useMemo(
-    () =>
-      scrollShadow({
-        ...variantProps,
-        className,
-      }),
-    [...Object.values(variantProps), className],
+      () =>
+          scrollShadow({
+            ...variantProps,
+            className,
+          }),
+      [...Object.values(variantProps), className],
   );
 
   const getBaseProps: PropGetter = (props = {}) => ({

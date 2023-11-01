@@ -12,8 +12,6 @@ export interface ListboxItemProps<T extends object = object> extends UseListboxI
 const ListboxItem = forwardRef<"li", ListboxItemProps>((props, _) => {
   const {
     Component,
-    slots,
-    classNames,
     rendered,
     description,
     isSelectable,
@@ -25,13 +23,14 @@ const ListboxItem = forwardRef<"li", ListboxItemProps>((props, _) => {
     disableAnimation,
     getItemProps,
     getLabelProps,
+    getWrapperProps,
     getDescriptionProps,
     getSelectedIconProps,
   } = useListboxItem(props);
 
   const selectedContent = useMemo<ReactNode | null>(() => {
     const defaultIcon = (
-      <ListboxSelectedIcon disableAnimation={disableAnimation} isSelected={isSelected} />
+        <ListboxSelectedIcon disableAnimation={disableAnimation} isSelected={isSelected} />
     );
 
     if (typeof selectedIcon === "function") {
@@ -44,22 +43,21 @@ const ListboxItem = forwardRef<"li", ListboxItemProps>((props, _) => {
   }, [selectedIcon, isSelected, isDisabled, disableAnimation]);
 
   return (
-    <Component {...getItemProps()}>
-      {startContent}
-      {description ? (
-        <div className={slots.wrapper({class: classNames?.wrapper})}>
-          <span {...getLabelProps()}>{rendered}</span>
-          <span {...getDescriptionProps()}>{description}</span>
-        </div>
-      ) : (
-        <span {...getLabelProps()}>{rendered}</span>
-      )}
-      {isSelectable && <span {...getSelectedIconProps()}>{selectedContent}</span>}
-      {endContent}
-    </Component>
+      <Component {...getItemProps()}>
+        {startContent}
+        {description ? (
+            <div {...getWrapperProps()}>
+              <span {...getLabelProps()}>{rendered}</span>
+              <span {...getDescriptionProps()}>{description}</span>
+            </div>
+        ) : (
+            <span {...getLabelProps()}>{rendered}</span>
+        )}
+        {isSelectable && <span {...getSelectedIconProps()}>{selectedContent}</span>}
+        {endContent}
+      </Component>
   );
 });
-
 ListboxItem.displayName = "XooxUI.ListboxItem";
 
 export default ListboxItem;

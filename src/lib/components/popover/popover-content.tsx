@@ -14,27 +14,26 @@ import {getTransformOrigins} from "../../utilities/aria-utils";
 import {usePopoverContext} from "./popover-context";
 
 export interface PopoverContentProps
-  extends AriaDialogProps,
-    Omit<HTMLXooxUIProps, "children" | "role"> {
+    extends AriaDialogProps,
+        Omit<HTMLXooxUIProps, "children" | "role"> {
   children: ReactNode | ((titleProps: DOMAttributes<HTMLElement>) => ReactNode);
 }
 
 const PopoverContent = forwardRef<"div", PopoverContentProps>((props, _) => {
-  const {as, children, ...otherProps} = props;
+  const {as, children, className, ...otherProps} = props;
 
   const {
     Component: OverlayComponent,
     isOpen,
     placement,
-    showArrow,
     motionProps,
     backdrop,
     disableAnimation,
     shouldBlockScroll,
     getPopoverProps,
-    getArrowProps,
     getDialogProps,
     getBackdropProps,
+    getContentProps,
     isNonModal,
     onClose,
   } = usePopoverContext();
@@ -47,21 +46,16 @@ const PopoverContent = forwardRef<"div", PopoverContentProps>((props, _) => {
   // Not needed in the popover context, the popover role comes from getPopoverProps
   delete dialogProps.role;
 
-  const arrowContent = useMemo(() => {
-    if (!showArrow) return null;
-
-    return <span {...getArrowProps()} />;
-  }, [showArrow, getArrowProps]);
-
   const content = (
-    <>
-      {!isNonModal && <DismissButton onDismiss={onClose} />}
-      <Component {...getDialogProps(mergeProps(dialogProps, otherProps))} ref={dialogRef}>
-        {typeof children === "function" ? children(titleProps) : children}
-      </Component>
-      {arrowContent}
-      <DismissButton onDismiss={onClose} />
-    </>
+      <>
+        {!isNonModal && <DismissButton onDismiss={onClose} />}
+        <Component {...getDialogProps(mergeProps(dialogProps, otherProps))} ref={dialogRef}>
+          <div {...getContentProps({className})}>
+            {typeof children === "function" ? children(titleProps) : children}
+          </div>
+        </Component>
+        <DismissButton onDismiss={onClose} />
+      </>
   );
 
   const backdropContent = useMemo(() => {
@@ -74,38 +68,38 @@ const PopoverContent = forwardRef<"div", PopoverContentProps>((props, _) => {
     }
 
     return (
-      <motion.div
-        animate="enter"
-        exit="exit"
-        initial="exit"
-        variants={TRANSITION_VARIANTS.fade}
-        {...(getBackdropProps() as HTMLMotionProps<"div">)}
-      />
+        <motion.div
+            animate="enter"
+            exit="exit"
+            initial="exit"
+            variants={TRANSITION_VARIANTS.fade}
+            {...(getBackdropProps() as HTMLMotionProps<"div">)}
+        />
     );
   }, [backdrop, disableAnimation, getBackdropProps]);
 
   return (
-    <div {...getPopoverProps()}>
-      {backdropContent}
-      <RemoveScroll forwardProps enabled={shouldBlockScroll && isOpen} removeScrollBar={false}>
-        {disableAnimation ? (
-          content
-        ) : (
-          <motion.div
-            animate="enter"
-            exit="exit"
-            initial="initial"
-            style={{
-              ...getTransformOrigins(placement === "center" ? "top" : placement),
-            }}
-            variants={TRANSITION_VARIANTS.scaleSpringOpacity}
-            {...motionProps}
-          >
-            {content}
-          </motion.div>
-        )}
-      </RemoveScroll>
-    </div>
+      <div {...getPopoverProps()}>
+        {backdropContent}
+        <RemoveScroll forwardProps enabled={shouldBlockScroll && isOpen} removeScrollBar={false}>
+          {disableAnimation ? (
+              content
+          ) : (
+              <motion.div
+                  animate="enter"
+                  exit="exit"
+                  initial="initial"
+                  style={{
+                    ...getTransformOrigins(placement === "center" ? "top" : placement),
+                  }}
+                  variants={TRANSITION_VARIANTS.scaleSpringOpacity}
+                  {...motionProps}
+              >
+                {content}
+              </motion.div>
+          )}
+        </RemoveScroll>
+      </div>
   );
 });
 

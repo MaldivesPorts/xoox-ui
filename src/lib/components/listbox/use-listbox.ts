@@ -2,12 +2,15 @@ import type {KeyboardDelegate} from "@react-types/shared";
 
 import {AriaListBoxProps, useListBox as useAriaListbox} from "@react-aria/listbox";
 import {HTMLXooxUIProps, PropGetter} from "../../core/system";
-import {listbox, ListboxVariantProps} from "../../core/theme";
+import {listbox, ListboxSlots, ListboxVariantProps, SlotsToClasses} from '../../core/theme';
 import {ListState, useListState} from "@react-stately/list";
 import {filterDOMProps, ReactRef, useDOMRef} from "../../utilities/react-utils";
 import {useMemo} from "react";
 
 import {ListboxItemProps} from "./listbox-item";
+import {clsx} from '../../utilities/shared-utils';
+import {createCollectionChildren} from '../../utilities/aria-utils';
+import ListboxItemBase from './base/listbox-item-base.tsx';
 
 interface AriaListBoxOptions<T> extends AriaListBoxProps<T> {
   /** Whether the listbox uses virtual scrolling. */
@@ -25,6 +28,8 @@ interface AriaListBoxOptions<T> extends AriaListBoxProps<T> {
   shouldSelectOnPressUp?: boolean;
   /** Whether options should be focused when the user hovers over them. */
   shouldFocusOnHover?: boolean;
+  /** Whether the item should display the same "hover" styles as when it is focused. */
+  shouldHighlightOnFocus?: boolean;
 }
 
 interface Props<T> extends Omit<HTMLXooxUIProps<"ul">, "children"> {
@@ -45,10 +50,28 @@ interface Props<T> extends Omit<HTMLXooxUIProps<"ul">, "children"> {
    */
   color?: ListboxItemProps["color"];
   /**
+   *  Provides content to display when there are no items.
+   * @default "No items."
+   */
+  emptyContent?: React.ReactNode;
+  /**
    * Whether to disable the items animation.
    * @default false
    */
   disableAnimation?: boolean;
+  /**
+   * Classname or List of classes to change the classNames of the element.
+   * if `className` is passed, it will be added to the base slot.
+   *
+   * @example
+   * ```ts
+   * <Listbox classNames={{
+   *    base:"base-classes",
+   *    emptyContent: "empty-content-classes",
+   * }} />
+   * ```
+   */
+  classNames?: SlotsToClasses<ListboxSlots>;
   /**
    * The menu items classNames.
    */
@@ -65,33 +88,49 @@ export function useListbox<T extends object>(props: UseListboxProps<T>) {
     variant,
     color,
     onAction,
+    children: childrenProp,
     onSelectionChange,
     disableAnimation,
     itemClasses,
     className,
+    emptyContent = "No items.",
+    shouldHighlightOnFocus,
+    classNames,
     ...otherProps
   } = props;
+
+  const children = createCollectionChildren(childrenProp, ListboxItemBase, props?.items);
 
   const Component = as || "ul";
   const shouldFilterDOMProps = typeof Component === "string";
 
   const domRef = useDOMRef(ref);
 
-  const innerState = useListState({...props, onSelectionChange});
+  const innerState = useListState({...props, children, onSelectionChange});
   const state = propState || innerState;
 
   const {listBoxProps} = useAriaListbox({...props, onAction}, state, domRef);
 
-  const styles = useMemo(() => listbox({className}), [className]);
+  const slots = useMemo(() => listbox({className}), [className]);
+
+  const baseStyles = clsx(classNames?.base, className);
 
   const getBaseProps: PropGetter = (props = {}) => {
     return {
       ref: domRef,
-      className: styles,
+      className: slots.base({class: baseStyles}),
       ...listBoxProps,
       ...filterDOMProps(otherProps, {
         enabled: shouldFilterDOMProps,
       }),
+      ...props,
+    };
+  };
+
+  const getEmptyContentProps: PropGetter = (props = {}) => {
+    return {
+      children: emptyContent,
+      className: slots.emptyContent({class: classNames?.emptyContent}),
       ...props,
     };
   };
@@ -101,10 +140,13 @@ export function useListbox<T extends object>(props: UseListboxProps<T>) {
     state,
     variant,
     color,
+    emptyContent,
+    shouldHighlightOnFocus,
     disableAnimation,
     className,
     itemClasses,
     getBaseProps,
+    getEmptyContentProps,
   };
 }
 

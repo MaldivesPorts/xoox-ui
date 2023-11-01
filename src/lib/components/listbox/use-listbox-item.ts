@@ -19,7 +19,8 @@ interface Props<T extends object> extends ListboxItemBaseProps<T> {
 }
 
 export type UseListboxItemProps<T extends object> = Props<T> &
-  Omit<HTMLXooxUIProps<"li">, keyof Props<T>>;
+    Omit<HTMLXooxUIProps<"li">, keyof Props<T>>;
+
 
 export function useListboxItem<T extends object>(originalProps: UseListboxItemProps<T>) {
   const [props, variantProps] = mapPropsVariants(originalProps, listboxItem.variantKeys);
@@ -38,6 +39,7 @@ export function useListboxItem<T extends object>(originalProps: UseListboxItemPr
     autoFocus,
     onPress,
     onClick,
+    shouldHighlightOnFocus,
     isReadOnly = false,
     ...otherProps
   } = props;
@@ -46,7 +48,7 @@ export function useListboxItem<T extends object>(originalProps: UseListboxItemPr
 
   const domRef = useRef<HTMLLIElement>(null);
 
-  const Component = as || "li";
+  const Component = as || originalProps.href ? "a" : "li";
   const shouldFilterDOMProps = typeof Component === "string";
 
   const {rendered, key} = item;
@@ -71,26 +73,26 @@ export function useListboxItem<T extends object>(originalProps: UseListboxItemPr
   });
 
   const {isFocused, isSelected, optionProps, labelProps, descriptionProps} = useOption(
-    {
-      key,
-      isDisabled,
-      "aria-label": props["aria-label"],
-      isVirtualized,
-    },
-    state,
-    domRef,
+      {
+        key,
+        isDisabled,
+        "aria-label": props["aria-label"],
+        isVirtualized,
+      },
+      state,
+      domRef,
   );
 
   let itemProps = optionProps;
 
   const slots = useMemo(
-    () =>
-      listboxItem({
-        ...variantProps,
-        isDisabled,
-        disableAnimation,
-      }),
-    [...Object.values(variantProps), isDisabled, disableAnimation],
+      () =>
+          listboxItem({
+            ...variantProps,
+            isDisabled,
+            disableAnimation,
+          }),
+      [...Object.values(variantProps), isDisabled, disableAnimation],
   );
 
   const baseStyles = clsx(classNames?.base, className);
@@ -99,21 +101,29 @@ export function useListboxItem<T extends object>(originalProps: UseListboxItemPr
     itemProps = removeEvents(itemProps);
   }
 
+  const isHighlighted = useMemo(() => {
+    if (shouldHighlightOnFocus && isFocused) {
+      return true;
+    }
+
+    return isMobile ? isHovered || isPressed : isHovered;
+  }, [isHovered, isPressed, isFocused, isMobile, shouldHighlightOnFocus]);
+
   const getItemProps: PropGetter = (props = {}) => ({
     ref: domRef,
     ...mergeProps(
-      {onClick},
-      itemProps,
-      isReadOnly ? {} : mergeProps(focusProps, pressProps),
-      hoverProps,
-      filterDOMProps(otherProps, {
-        enabled: shouldFilterDOMProps,
-      }),
-      props,
+        {onClick},
+        itemProps,
+        isReadOnly ? {} : mergeProps(focusProps, pressProps),
+        hoverProps,
+        filterDOMProps(otherProps, {
+          enabled: shouldFilterDOMProps,
+        }),
+        props,
     ),
     "data-selectable": dataAttr(isSelectable),
     "data-focus": dataAttr(isFocused),
-    "data-hover": dataAttr(isMobile ? isHovered || isPressed : isHovered),
+    "data-hover": dataAttr(isHighlighted),
     "data-disabled": dataAttr(isDisabled),
     "data-selected": dataAttr(isSelected),
     "data-pressed": dataAttr(isPressed),
@@ -132,16 +142,21 @@ export function useListboxItem<T extends object>(originalProps: UseListboxItemPr
     className: slots.description({class: classNames?.description}),
   });
 
+  const getWrapperProps: PropGetter = (props = {}) => ({
+    ...mergeProps(props),
+    className: slots.wrapper({class: classNames?.wrapper}),
+  });
+
   const getSelectedIconProps = useCallback<PropGetter>(
-    (props = {}) => {
-      return {
-        "aria-hidden": dataAttr(true),
-        "data-disabled": dataAttr(isDisabled),
-        className: slots.selectedIcon({class: classNames?.selectedIcon}),
-        ...props,
-      };
-    },
-    [isDisabled, slots, classNames],
+      (props = {}) => {
+        return {
+          "aria-hidden": dataAttr(true),
+          "data-disabled": dataAttr(isDisabled),
+          className: slots.selectedIcon({class: classNames?.selectedIcon}),
+          ...props,
+        };
+      },
+      [isDisabled, slots, classNames],
   );
 
   return {
@@ -160,6 +175,7 @@ export function useListboxItem<T extends object>(originalProps: UseListboxItemPr
     disableAnimation,
     getItemProps,
     getLabelProps,
+    getWrapperProps,
     getDescriptionProps,
     getSelectedIconProps,
   };

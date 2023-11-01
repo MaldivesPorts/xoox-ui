@@ -35,8 +35,8 @@ export type ReactAriaPopoverProps = Props & Omit<AriaPopoverProps, "placement"> 
  * A popover is an overlay element positioned relative to a trigger.
  */
 export function useReactAriaPopover(
-  props: ReactAriaPopoverProps,
-  state: OverlayTriggerState,
+    props: ReactAriaPopoverProps,
+    state: OverlayTriggerState,
 ): PopoverAria {
   const {
     triggerRef,
@@ -59,22 +59,22 @@ export function useReactAriaPopover(
   const isNonModal = isNonModalProp || true;
 
   const {overlayProps, underlayProps} = useOverlay(
-    {
-      isOpen: state.isOpen,
-      onClose: state.close,
-      shouldCloseOnBlur,
-      isDismissable: !isNonModal,
-      isKeyboardDismissDisabled,
-      shouldCloseOnInteractOutside: shouldCloseOnInteractOutside
-        ? shouldCloseOnInteractOutside
-        : (element) => {
-            // Don't close if the click is within the trigger or the popover itself
-            let trigger = triggerRef?.current;
+      {
+        isOpen: state.isOpen,
+        onClose: state.close,
+        shouldCloseOnBlur,
+        isDismissable: true,
+        isKeyboardDismissDisabled,
+        shouldCloseOnInteractOutside: shouldCloseOnInteractOutside
+            ? shouldCloseOnInteractOutside
+            : (element) => {
+              // Don't close if the click is within the trigger or the popover itself
+              let trigger = triggerRef?.current;
 
-            return !trigger || !trigger.contains(element);
-          },
-    },
-    popoverRef,
+              return !trigger || !trigger.contains(element);
+            },
+      },
+      popoverRef,
   );
 
   const {

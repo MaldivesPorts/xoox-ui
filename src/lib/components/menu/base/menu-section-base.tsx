@@ -4,7 +4,6 @@ import {BaseSection, SectionProps} from "../../../utilities/aria-utils";
 import {DividerProps} from "../../divider";
 
 import {MenuItemProps} from "../menu-item";
-
 export interface MenuSectionBaseProps<T extends object = {}> extends SectionProps<"ul", T> {
   /**
    * The menu section classNames.

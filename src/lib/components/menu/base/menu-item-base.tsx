@@ -84,10 +84,10 @@ interface Props<T extends object = {}> extends Omit<ItemProps<"li", T>, "childre
 }
 
 export type MenuItemBaseProps<T extends object = {}> = Props<T> &
-  MenuItemVariantProps &
-  AriaMenuItemProps &
-  FocusableProps &
-  PressEvents;
+    MenuItemVariantProps &
+    AriaMenuItemProps &
+    FocusableProps &
+    PressEvents;
 
 const MenuItemBase = BaseItem as <T extends object>(props: MenuItemBaseProps<T>) => JSX.Element;
 

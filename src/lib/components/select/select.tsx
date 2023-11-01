@@ -1,15 +1,15 @@
-import {Listbox} from "../listbox";
-import {FreeSoloPopover} from "../popover";
-import {ChevronDownIcon} from "../../utilities/shared-icons";
-import {Spinner} from "../spinner";
-import {forwardRef} from "../../core/system";
-import {ScrollShadow} from "../scroll-shadow";
-import {cloneElement, ForwardedRef, ReactElement, Ref, useMemo} from "react";
-import {VisuallyHidden} from "@react-aria/visually-hidden";
-import {AnimatePresence} from "framer-motion";
+import {Listbox} from '../listbox';
+import {FreeSoloPopover} from '../popover';
+import {ChevronDownIcon} from '../../utilities/shared-icons';
+import {Spinner} from '../spinner';
+import {forwardRef} from '../../core/system';
+import {ScrollShadow} from '../scroll-shadow';
+import {cloneElement, ForwardedRef, ReactElement, Ref, useMemo} from 'react';
+import {VisuallyHidden} from '@react-aria/visually-hidden';
+import {AnimatePresence} from 'framer-motion';
 
-import {HiddenSelect} from "./hidden-select";
-import {UseSelectProps, useSelect} from "./use-select";
+import {HiddenSelect} from './hidden-select';
+import {useSelect, UseSelectProps} from './use-select';
 
 interface Props<T> extends Omit<UseSelectProps<T>, "isLabelPlaceholder"> {}
 
@@ -55,13 +55,13 @@ function Select<T extends object>(props: Props<T>, ref: ForwardedRef<HTMLSelectE
     if (!hasHelper) return null;
 
     return (
-      <div {...getHelperWrapperProps()}>
-        {errorMessage ? (
-          <div {...getErrorMessageProps()}>{errorMessage}</div>
-        ) : description ? (
-          <div {...getDescriptionProps()}>{description}</div>
-        ) : null}
-      </div>
+        <div {...getHelperWrapperProps()}>
+          {errorMessage ? (
+              <div {...getErrorMessageProps()}>{errorMessage}</div>
+          ) : description ? (
+              <div {...getDescriptionProps()}>{description}</div>
+          ) : null}
+        </div>
     );
   }, [
     hasHelper,
@@ -89,8 +89,8 @@ function Select<T extends object>(props: Props<T>, ref: ForwardedRef<HTMLSelectE
       return renderValue(mappedItems);
     }
 
-    return state.selectedItems.map((item: any) => item.textValue).join(", ");
-  }, [state.selectedItems, renderValue]);
+    return state.selectedItems.map((item) => item.textValue).join(", ");
+  }, [state.selectedItems, renderValue, placeholder]);
 
   const renderIndicator = useMemo(() => {
     if (isLoading) {
@@ -101,38 +101,38 @@ function Select<T extends object>(props: Props<T>, ref: ForwardedRef<HTMLSelectE
   }, [isLoading, clonedIcon, getSpinnerProps]);
 
   const popoverContent = useMemo(
-    () =>
-      state.isOpen ? (
-        <FreeSoloPopover {...getPopoverProps()} state={state} triggerRef={triggerRef}>
-          <ScrollShadow {...getListboxWrapperProps()}>
-            <Listbox {...getListboxProps()} />
-          </ScrollShadow>
-        </FreeSoloPopover>
-      ) : null,
-    [state.isOpen, getPopoverProps, state, triggerRef, getListboxWrapperProps, getListboxProps],
+      () =>
+          state.isOpen ? (
+              <FreeSoloPopover {...getPopoverProps()} state={state} triggerRef={triggerRef}>
+                <ScrollShadow {...getListboxWrapperProps()}>
+                  <Listbox {...getListboxProps()} />
+                </ScrollShadow>
+              </FreeSoloPopover>
+          ) : null,
+      [state.isOpen, getPopoverProps, state, triggerRef, getListboxWrapperProps, getListboxProps],
   );
 
   return (
-    <div {...getBaseProps()}>
-      <HiddenSelect {...getHiddenSelectProps()} />
-      {shouldLabelBeOutside ? labelContent : null}
-      <div {...getMainWrapperProps()}>
-        <Component {...getTriggerProps()}>
-          {!shouldLabelBeOutside ? labelContent : null}
-          <div {...getInnerWrapperProps()}>
-            {startContent}
-            <span {...getValueProps()}>
+      <div {...getBaseProps()}>
+        <HiddenSelect {...getHiddenSelectProps()} />
+        {shouldLabelBeOutside ? labelContent : null}
+        <div {...getMainWrapperProps()}>
+          <Component {...getTriggerProps()}>
+            {!shouldLabelBeOutside ? labelContent : null}
+            <div {...getInnerWrapperProps()}>
+              {startContent}
+              <span {...getValueProps()}>
               {renderSelectedItem}
-              {state.selectedItems && <VisuallyHidden>,</VisuallyHidden>}
+                {state.selectedItems && <VisuallyHidden>,</VisuallyHidden>}
             </span>
-            {endContent}
-          </div>
-          {renderIndicator}
-        </Component>
-        {helperWrapper}
+              {endContent}
+            </div>
+            {renderIndicator}
+          </Component>
+          {helperWrapper}
+        </div>
+        {disableAnimation ? popoverContent : <AnimatePresence>{popoverContent}</AnimatePresence>}
       </div>
-      {disableAnimation ? popoverContent : <AnimatePresence>{popoverContent}</AnimatePresence>}
-    </div>
   );
 }
 
