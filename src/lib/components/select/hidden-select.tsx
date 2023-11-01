@@ -129,14 +129,14 @@ export function HiddenSelect<T>(props: HiddenSelectProps<T>) {
           <input {...inputProps} />
           <label>
             {label}
-            <select {...selectProps} ref={selectRef}>
+            <select {...selectProps as any} ref={selectRef}>
               <option />
               {[...state.collection.getKeys()].map((key) => {
                 let item = state.collection.getItem(key);
 
                 if (item?.type === "item") {
                   return (
-                      <option key={item.key} value={item.key}>
+                      <option key={item.key} value={item.key as any}>
                         {item.textValue}
                       </option>
                   );
