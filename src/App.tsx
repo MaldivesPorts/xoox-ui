@@ -25,6 +25,7 @@ const DATA = [
 function App() {
     const [data, setData] = useState([]);
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
+    const [valid, setInvalid] = useState(true);
 
     // useEffect(() => {
     //     fetch(
@@ -33,17 +34,35 @@ function App() {
     //     ).then(res => res.json()).then(result => setData(result));
     // },[]);
 
+    useEffect(() => {
+        setTimeout(() => {
+            setInvalid(false);
+        }, 3000)
+    }, []);
+
     return (
         <div>
-            <ComboBox
-                items={data}
-                label={'Select Animal'}
-                defaultSelectedKey={'1'}
-                placeholder={'Select Animal'}>
-                {
-                    (animal: any) => <ComboBoxItem key={animal.id}>{animal.name}</ComboBoxItem>
-                }
-            </ComboBox>
+            {/*<br/><br/>*/}
+            <Input
+                type="email"
+                label="Email"
+                // placeholder={'Enter email'}
+                // isInvalid={true}
+                description={'New description'}
+                // errorMessage={'Please enter a valid email'}
+            />
+
+            <br/><br/>
+            {/*<Input*/}
+            {/*    type="email"*/}
+            {/*    label="Email"*/}
+            {/*    placeholder={'Enter email'}*/}
+            {/*    isInvalid={!valid}*/}
+            {/*    // description={'New description'}*/}
+            {/*    errorMessage={valid ? '' : 'Please enter a valid email'}*/}
+            {/*/>*/}
+
+
             {/*<Input*/}
             {/*    type="email"*/}
             {/*    label="Email"*/}
@@ -60,24 +79,24 @@ function App() {
             {/*    /!*                 </Select>*!/*/}
             {/*    /!*</div>*!/*/}
             {/*<div className="flex-auto">*/}
-                <Autocomplete
-                    // items={DATA}
-                    placeholder="Select animal"
-                    // onInputChange={(value: any) => setSearch(value)}
-                    label="Favorite Animal">
-                    {/*{*/}
-                    {/*    (animal: any) => <AutocompleteItem key={animal.value}>{animal.value}</AutocompleteItem>*/}
-                    {/*}*/}
-                    <AutocompleteItem key="red">Red Panda</AutocompleteItem>
-                    <AutocompleteItem key="cat">Cat</AutocompleteItem>
-                    <AutocompleteItem key="dog">Dog</AutocompleteItem>
-                    <AutocompleteItem key="aardvark">Aardvark</AutocompleteItem>
-                    <AutocompleteItem key="kangaroo">Kangaroo</AutocompleteItem>
-                    <AutocompleteItem key="snake">Snake</AutocompleteItem>
-                </Autocomplete>
+            {/*    <Autocomplete*/}
+            {/*        // items={DATA}*/}
+            {/*        placeholder="Select animal"*/}
+            {/*        // onInputChange={(value: any) => setSearch(value)}*/}
+            {/*        label="Favorite Animal">*/}
+            {/*        /!*{*!/*/}
+            {/*        /!*    (animal: any) => <AutocompleteItem key={animal.value}>{animal.value}</AutocompleteItem>*!/*/}
+            {/*        /!*}*!/*/}
+            {/*        <AutocompleteItem key="red">Red Panda</AutocompleteItem>*/}
+            {/*        <AutocompleteItem key="cat">Cat</AutocompleteItem>*/}
+            {/*        <AutocompleteItem key="dog">Dog</AutocompleteItem>*/}
+            {/*        <AutocompleteItem key="aardvark">Aardvark</AutocompleteItem>*/}
+            {/*        <AutocompleteItem key="kangaroo">Kangaroo</AutocompleteItem>*/}
+            {/*        <AutocompleteItem key="snake">Snake</AutocompleteItem>*/}
+            {/*    </Autocomplete>*/}
             {/*</div>*/}
             {/*</div>*/}
-            <br/>
+            {/*<br/>*/}
             <br/>
             <br/>
 
@@ -85,22 +104,16 @@ function App() {
                 // labelPlacement={'outside'}
                 items={DATA}
                 label="Favorite Animal"
-                placeholder="Select an animal"
+                // placeholder="Select an animal"
+                // isInvalid={true}
+                // errorMessage={'Please enter a valid email'}
             >
                 {(animal: any) => <SelectItem key={animal.key}>{animal.value}</SelectItem>}
             </Select>
 
 
 
-            <br/><br/>
-            <Input
-                type="email"
-                label="Email"
-                placeholder={'Enter email'}
-                // isInvalid={true}
-                // errorMessage="Please enter a valid email"
-                // className="max-w-xs"
-            />
+
 
             {/*<Popover placement="right">*/}
             {/*    <PopoverTrigger>*/}

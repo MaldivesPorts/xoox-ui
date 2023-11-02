@@ -188,7 +188,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
 
     const isClearable = !!onClear || originalProps.isClearable;
     const hasElements = !!label || !!description || !!errorMessage;
-    const hasPlaceholder = !!props.placeholder;
+    const hasPlaceholder = true; //!!props.placeholder;
     const hasHelper = !!description || !!errorMessage;
 
     const shouldLabelBeOutside = labelPlacement === "outside" || labelPlacement === "outside-left";
@@ -276,6 +276,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
     const getLabelProps: PropGetter = useCallback(
         (props = {}) => {
             return {
+                "data-slot": "label",
                 className: slots.label({class: classNames?.label}),
                 ...labelProps,
                 ...props,
@@ -284,12 +285,16 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
         [slots, labelProps, classNames?.label],
     );
 
+
     const getInputProps: PropGetter = useCallback(
         (props = {}) => {
             return {
                 ref: domRef,
+                "data-slot": "input",
                 "data-filled": dataAttr(isFilled),
                 "data-filled-within": dataAttr(isFilledWithin),
+                "data-has-start-content": dataAttr(hasStartContent),
+                "data-has-end-content": dataAttr(!!endContent),
                 className: slots.input({class: clsx(classNames?.input, !!inputValue ? "is-filled" : "")}),
                 ...mergeProps(
                     focusProps,
@@ -400,6 +405,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
             return {
                 ...props,
                 ...descriptionProps,
+                "data-slot": "description",
                 className: slots.description({class: clsx(classNames?.description, props?.className)}),
             };
         },
@@ -411,6 +417,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
             return {
                 ...props,
                 ...errorMessageProps,
+                "data-slot": "error-message",
                 className: slots.errorMessage({class: clsx(classNames?.errorMessage, props?.className)}),
             };
         },

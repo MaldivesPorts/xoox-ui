@@ -253,7 +253,7 @@ export function useSelect<T extends object>(originalProps: UseSelectProps<T>) {
     }, [originalProps.labelPlacement, label]);
 
     const hasHelper = !!description || !!errorMessage;
-    const hasPlaceholder = !!placeholder;
+    const hasPlaceholder = true; //!!placeholder;
     const isInvalid = validationState === "invalid" || originalProps.isInvalid;
     const shouldLabelBeOutside =
         labelPlacement === "outside-left" || (labelPlacement === "outside" && hasPlaceholder);
