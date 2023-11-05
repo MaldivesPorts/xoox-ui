@@ -8,6 +8,7 @@ import {Input} from "../input";
 import {ForwardedRef, ReactElement, Ref} from "react";
 
 import {UseAutocompleteProps, useAutocomplete} from "./use-autocomplete";
+import {AnimatePresence} from 'framer-motion';
 
 interface Props<T> extends UseAutocompleteProps<T> {}
 
@@ -15,6 +16,8 @@ function Autocomplete<T extends object>(props: Props<T>, ref: ForwardedRef<HTMLI
     const {
         Component,
         state,
+        isOpen,
+        disableAnimation,
         selectorIcon = <ChevronDownIcon />,
         clearIcon = <CloseIcon />,
         getBaseProps,
@@ -27,7 +30,7 @@ function Autocomplete<T extends object>(props: Props<T>, ref: ForwardedRef<HTMLI
         getEndContentWrapperProps,
     } = useAutocomplete<T>({...props, ref});
 
-    const popoverContent = state.isOpen ? (
+    const popoverContent = isOpen ? (
         <FreeSoloPopover {...getPopoverProps()} state={state}>
             <ScrollShadow {...getListBoxWrapperProps()}>
                 <Listbox {...getListBoxProps()} />
@@ -46,7 +49,7 @@ function Autocomplete<T extends object>(props: Props<T>, ref: ForwardedRef<HTMLI
                     </div>
                 }
             />
-            {popoverContent}
+            {disableAnimation ? popoverContent : <AnimatePresence>{popoverContent}</AnimatePresence>}
         </Component>
     );
 }

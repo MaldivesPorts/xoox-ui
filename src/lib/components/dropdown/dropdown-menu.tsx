@@ -2,23 +2,29 @@ import {PopoverContent} from "../popover";
 import {FocusScope} from "@react-aria/focus";
 import {forwardRef} from "../../core/system";
 import {Menu, MenuProps} from "../menu";
-
 import {useDropdownContext} from "./dropdown-context";
+import {ForwardedRef, ReactElement, Ref} from 'react';
 
-export interface DropdownMenuProps extends Omit<MenuProps, "menuProps"> {}
+interface Props<T> extends Omit<MenuProps<T>, "menuProps"> {}
 
-const DropdownMenu = forwardRef<"ul", DropdownMenuProps>((props, ref) => {
-  const {getMenuProps} = useDropdownContext();
+function DropdownMenu<T extends object>(props: Props<T>, ref: ForwardedRef<HTMLUListElement>) {
+    const {getMenuProps} = useDropdownContext();
 
-  return (
-    <PopoverContent>
-      <FocusScope contain restoreFocus>
-        <Menu {...getMenuProps(props, ref)} />
-      </FocusScope>
-    </PopoverContent>
-  );
-});
+    return (
+        <PopoverContent>
+            <FocusScope contain restoreFocus>
+                <Menu {...getMenuProps<T>(props, ref)} />
+            </FocusScope>
+        </PopoverContent>
+    );
+}
+
+export type DropdownMenuProps<T = object> = Props<T> & {ref?: Ref<HTMLElement>};
+
+// forwardRef doesn't support generic parameters, so cast the result to the correct type
+export default forwardRef(DropdownMenu) as <T = object>(
+    props: DropdownMenuProps<T>,
+) => ReactElement;
 
 DropdownMenu.displayName = "XooxUI.DropdownMenu";
 
-export default DropdownMenu;

@@ -80,17 +80,17 @@ export function useDropdown(props: UseDropdownProps) {
   });
 
   const {menuTriggerProps, menuProps} = useMenuTrigger<object>(
-    {type, trigger, isDisabled},
-    state,
-    menuTriggerRef,
+      {type, trigger, isDisabled},
+      state,
+      menuTriggerRef,
   );
 
   const classNames = useMemo(
-    () =>
-      dropdown({
-        className,
-      }),
-    [className],
+      () =>
+          dropdown({
+            className,
+          }),
+      [className],
   );
 
   const onMenuAction = (menuCloseOnSelect?: boolean) => {
@@ -114,14 +114,13 @@ export function useDropdown(props: UseDropdownProps) {
     classNames: {
       ...classNamesProp,
       ...props.classNames,
-      base: clsx(classNames, classNamesProp?.base, props.className),
-      arrow: clsx(classNamesProp?.arrow),
+      content: clsx(classNames, classNamesProp?.content, props.className),
     },
   });
 
   const getMenuTriggerProps: PropGetter = (
-    props = {},
-    _ref: Ref<any> | null | undefined = null,
+      props = {},
+      _ref: Ref<any> | null | undefined = null,
   ) => {
     // These props are not needed for the menu trigger since it is handled by the popover trigger.
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -133,7 +132,10 @@ export function useDropdown(props: UseDropdownProps) {
     };
   };
 
-  const getMenuProps = (props?: Partial<MenuProps>, _ref: Ref<any> | null | undefined = null) => {
+  const getMenuProps = <T>(
+      props?: Partial<MenuProps<T>>,
+      _ref: Ref<any> | null | undefined = null,
+  ) => {
     return {
       ref: mergeRefs(_ref, menuRef),
       menuProps,

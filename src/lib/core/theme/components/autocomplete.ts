@@ -4,26 +4,36 @@ import {tv} from "../utils/tv";
 
 const autocomplete = tv({
   slots: {
-    base: "inline-flex flex-column",
+    base: "group inline-flex flex-column w-full",
     listboxWrapper: "scroll-py-6 max-h-64 w-full",
     listbox: "",
     popoverContent: "w-full p-1 overflow-hidden",
-    endContentWrapper: "relative flex",
+    endContentWrapper: "relative flex h-full items-center -mr-2",
     clearButton: [
-      "opacity-0",
       "text-medium",
       "translate-x-1",
-      "text-default-500",
       "cursor-text",
+      "opacity-0",
+      "text-default-500",
+      "group-data-[invalid=true]:text-danger",
       "data-[visible=true]:opacity-100", // on mobile is always visible when there is a value
-      "group-data-[hover=true]:data-[visible=true]:md:opacity-100",
-      "group-data-[hover=true]:data-[visible=true]:md:cursor-pointer",
+      "data-[visible=true]:cursor-pointer",
+      "sm:data-[visible=true]:opacity-0", // only visible on hover
+      "sm:group-data-[hover=true]:data-[visible=true]:opacity-100",
     ],
     selectorButton: "text-medium",
   },
   variants: {
+    disableClearable: {
+      true: {
+        clearButton: "hidden",
+      },
+      false: {},
+    },
     disableAnimation: {
-      true: {},
+      true: {
+        selectorButton: "transition-none",
+      },
       false: {
         selectorButton: "transition-transform duration-150 ease motion-reduce:transition-none",
       },
@@ -37,6 +47,7 @@ const autocomplete = tv({
   },
   defaultVariants: {
     disableAnimation: false,
+    disableClearable: false,
     disableSelectorIconRotation: false,
   },
 });

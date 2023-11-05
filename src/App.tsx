@@ -1,14 +1,29 @@
 import './App.css';
 import {
     Autocomplete,
-    AutocompleteItem, Button,
+    AutocompleteItem, BreadcrumbItem,
+    Breadcrumbs,
+    Button,
     ComboBox,
     ComboBoxItem,
-    Dropdown, DropdownItem, DropdownMenu,
+    Dropdown,
+    DropdownItem,
+    DropdownMenu,
     DropdownTrigger,
-    Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Popover, PopoverContent, PopoverTrigger,
+    Input,
+    Listbox,
+    ListboxItem,
+    Modal,
+    ModalBody,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
     Select,
-    SelectItem, useDisclosure
+    SelectItem, Slider,
+    useDisclosure
 } from './lib';
 import {useEffect, useState} from 'react';
 // const {Divider} = require('../dist/xoox-ui.js');
@@ -42,17 +57,32 @@ function App() {
 
     return (
         <div>
-            {/*<br/><br/>*/}
-            <Input
-                type="email"
-                label="Email"
-                // placeholder={'Enter email'}
-                // isInvalid={true}
-                description={'New description'}
-                // errorMessage={'Please enter a valid email'}
+            <Slider
+                label="Temperature"
+                step={0.01}
+                maxValue={1}
+                minValue={0}
+                defaultValue={0.4}
+                className="max-w-md"
             />
+            {/*<Breadcrumbs>*/}
+            {/*    <BreadcrumbItem>Home</BreadcrumbItem>*/}
+            {/*    <BreadcrumbItem>Music</BreadcrumbItem>*/}
+            {/*    <BreadcrumbItem>Artist</BreadcrumbItem>*/}
+            {/*    <BreadcrumbItem>Album</BreadcrumbItem>*/}
+            {/*    <BreadcrumbItem>Song</BreadcrumbItem>*/}
+            {/*</Breadcrumbs>*/}
+            {/*<br/><br/>*/}
+            {/*<Input*/}
+            {/*    type="email"*/}
+            {/*    label="Email"*/}
+            {/*    // placeholder={'Enter email'}*/}
+            {/*    // isInvalid={true}*/}
+            {/*    description={'New description'}*/}
+            {/*    // errorMessage={'Please enter a valid email'}*/}
+            {/*/>*/}
 
-            <br/><br/>
+            {/*<br/><br/>*/}
             {/*<Input*/}
             {/*    type="email"*/}
             {/*    label="Email"*/}
@@ -97,19 +127,19 @@ function App() {
             {/*</div>*/}
             {/*</div>*/}
             {/*<br/>*/}
-            <br/>
-            <br/>
+            {/*<br/>*/}
+            {/*<br/>*/}
 
-            <Select
-                // labelPlacement={'outside'}
-                items={DATA}
-                label="Favorite Animal"
-                // placeholder="Select an animal"
-                // isInvalid={true}
-                // errorMessage={'Please enter a valid email'}
-            >
-                {(animal: any) => <SelectItem key={animal.key}>{animal.value}</SelectItem>}
-            </Select>
+            {/*<Select*/}
+            {/*    // labelPlacement={'outside'}*/}
+            {/*    items={DATA}*/}
+            {/*    label="Favorite Animal"*/}
+            {/*    // placeholder="Select an animal"*/}
+            {/*    // isInvalid={true}*/}
+            {/*    // errorMessage={'Please enter a valid email'}*/}
+            {/*>*/}
+            {/*    {(animal: any) => <SelectItem key={animal.key}>{animal.value}</SelectItem>}*/}
+            {/*</Select>*/}
 
 
 
@@ -131,6 +161,7 @@ function App() {
             {/*    <DropdownTrigger>*/}
             {/*        <Button*/}
             {/*            variant="bordered"*/}
+            {/*            color={'secondary'}*/}
             {/*        >*/}
             {/*            Open Menu*/}
             {/*        </Button>*/}
@@ -184,6 +215,17 @@ function App() {
             {/*        </ModalContent>*/}
             {/*    </Modal>*/}
             {/*</div>*/}
+            {/*<Listbox*/}
+            {/*    aria-label="Actions"*/}
+            {/*    onAction={(key: string) => alert(key)}*/}
+            {/*>*/}
+            {/*    <ListboxItem key="new">New file</ListboxItem>*/}
+            {/*    <ListboxItem key="copy">Copy link</ListboxItem>*/}
+            {/*    <ListboxItem key="edit">Edit file</ListboxItem>*/}
+            {/*    <ListboxItem key="delete" className="text-danger" color="danger">*/}
+            {/*        Delete file*/}
+            {/*    </ListboxItem>*/}
+            {/*</Listbox>*/}
         </div>
     )
     // const defaultContent =

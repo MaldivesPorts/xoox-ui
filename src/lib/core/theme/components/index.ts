@@ -35,3 +35,5 @@ export * from "./scroll-shadow";
 export * from "./combobox";
 export * from "./toast";
 export * from "./autocomplete";
+export * from "./breadcrumbs";
+export * from "./slider";

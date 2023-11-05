@@ -5,12 +5,10 @@ import {HTMLXooxUIProps, PropGetter} from "../../core/system";
 import {listbox, ListboxSlots, ListboxVariantProps, SlotsToClasses} from '../../core/theme';
 import {ListState, useListState} from "@react-stately/list";
 import {filterDOMProps, ReactRef, useDOMRef} from "../../utilities/react-utils";
-import {useMemo} from "react";
+import {ReactNode, useMemo} from 'react';
 
 import {ListboxItemProps} from "./listbox-item";
 import {clsx} from '../../utilities/shared-utils';
-import {createCollectionChildren} from '../../utilities/aria-utils';
-import ListboxItemBase from './base/listbox-item-base.tsx';
 
 interface AriaListBoxOptions<T> extends AriaListBoxProps<T> {
   /** Whether the listbox uses virtual scrolling. */
@@ -50,10 +48,28 @@ interface Props<T> extends Omit<HTMLXooxUIProps<"ul">, "children"> {
    */
   color?: ListboxItemProps["color"];
   /**
+   * Provides content to include a component in the top of the table.
+   */
+  topContent?: ReactNode;
+  /**
+   * Provides content to include a component in the bottom of the table.
+   */
+  bottomContent?: ReactNode;
+  /**
+   * Whether to not display the empty content when there are no items.
+   * @default false
+   */
+  hideEmptyContent?: boolean;
+  /**
    *  Provides content to display when there are no items.
    * @default "No items."
    */
-  emptyContent?: React.ReactNode;
+  emptyContent?: ReactNode;
+  /**
+   * Whether to hide the check icon when the items are selected.
+   * @default false
+   */
+  hideSelectedIcon?: boolean;
   /**
    * Whether to disable the items animation.
    * @default false
@@ -88,18 +104,20 @@ export function useListbox<T extends object>(props: UseListboxProps<T>) {
     variant,
     color,
     onAction,
-    children: childrenProp,
+    children,
     onSelectionChange,
     disableAnimation,
     itemClasses,
     className,
+    topContent,
+    bottomContent,
     emptyContent = "No items.",
-    shouldHighlightOnFocus,
+    hideSelectedIcon = false,
+    hideEmptyContent = false,
+    shouldHighlightOnFocus = false,
     classNames,
     ...otherProps
   } = props;
-
-  const children = createCollectionChildren(childrenProp, ListboxItemBase, props?.items);
 
   const Component = as || "ul";
   const shouldFilterDOMProps = typeof Component === "string";
@@ -118,8 +136,8 @@ export function useListbox<T extends object>(props: UseListboxProps<T>) {
   const getBaseProps: PropGetter = (props = {}) => {
     return {
       ref: domRef,
+      "data-slot": "base",
       className: slots.base({class: baseStyles}),
-      ...listBoxProps,
       ...filterDOMProps(otherProps, {
         enabled: shouldFilterDOMProps,
       }),
@@ -127,8 +145,18 @@ export function useListbox<T extends object>(props: UseListboxProps<T>) {
     };
   };
 
+  const getListProps: PropGetter = (props = {}) => {
+    return {
+      "data-slot": "list",
+      className: slots.list({class: classNames?.list}),
+      ...listBoxProps,
+      ...props,
+    };
+  };
+
   const getEmptyContentProps: PropGetter = (props = {}) => {
     return {
+      "data-slot": "empty-content",
       children: emptyContent,
       className: slots.emptyContent({class: classNames?.emptyContent}),
       ...props,
@@ -140,12 +168,19 @@ export function useListbox<T extends object>(props: UseListboxProps<T>) {
     state,
     variant,
     color,
+    slots,
+    classNames,
+    topContent,
+    bottomContent,
     emptyContent,
+    hideEmptyContent,
     shouldHighlightOnFocus,
+    hideSelectedIcon,
     disableAnimation,
     className,
     itemClasses,
     getBaseProps,
+    getListProps,
     getEmptyContentProps,
   };
 }
