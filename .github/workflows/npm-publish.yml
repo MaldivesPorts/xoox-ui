@@ -25,6 +25,12 @@ jobs:
       - name: Install Npm Dependencies
         run: npm ci
 
+      - name: Configure git
+        run: |
+          git config --global user.name 'Auto Dev'
+          git config --global user.email 'dev@port.mv'
+          git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }}
+
       - name: Increment package version
         run: npm version patch
 
