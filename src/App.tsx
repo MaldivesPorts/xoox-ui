@@ -49,11 +49,11 @@ function App() {
     //     ).then(res => res.json()).then(result => setData(result));
     // },[]);
 
-    useEffect(() => {
-        setTimeout(() => {
-            setInvalid(false);
-        }, 3000)
-    }, []);
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setInvalid(false);
+    //     }, 3000)
+    // }, []);
 
     return (
         <div>
