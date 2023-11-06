@@ -40,8 +40,8 @@ jobs:
 #      - name: Create git release
 #        run: git tag -a v<version_number> HEAD
 #
-#      - name: Push git release tag
-#        run: git push origin v<version_number>
+      - name: Push git release tag
+        run: git push origin main
 
       - name: Build New Release
         run: npm run build-prod
