@@ -29,7 +29,7 @@ jobs:
         run: |
           git config --global user.name 'Auto Dev'
           git config --global user.email 'dev@port.mv'
-          git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }}
+          git remote set-url origin https://${{ secrets.PAT }}:${{ secrets.PAT }}@github.com/${{ github.repository }}
 
       - name: Increment package version
         run: npm version patch
