@@ -37,11 +37,11 @@ jobs:
 #      - name: Commit version changes
 #        run: git add package.json && git commit -m "Increment version to v<version_number>"
 
-      - name: Create git release
-        run: git tag -a v<version_number> HEAD
-
-      - name: Push git release tag
-        run: git push origin v<version_number>
+#      - name: Create git release
+#        run: git tag -a v<version_number> HEAD
+#
+#      - name: Push git release tag
+#        run: git push origin v<version_number>
 
       - name: Build New Release
         run: npm run build-prod
