@@ -34,8 +34,8 @@ jobs:
       - name: Increment package version
         run: npm version patch
 
-      - name: Commit version changes
-        run: git add package.json && git commit -m "Increment version to v<version_number>"
+#      - name: Commit version changes
+#        run: git add package.json && git commit -m "Increment version to v<version_number>"
 
       - name: Create git release
         run: git tag -a v<version_number> HEAD
