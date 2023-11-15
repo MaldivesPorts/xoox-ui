@@ -8,6 +8,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
 
   publish-npm:
@@ -29,7 +32,7 @@ jobs:
         run: |
           git config --global user.name 'Auto Dev'
           git config --global user.email 'dev@port.mv'
-          git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }}
+          git remote set-url origin https://${{ secrets.PAT }}:${{ secrets.PAT }}@github.com/${{ github.repository }}
 
       - name: Increment package version
         run: npm version patch
@@ -40,8 +43,8 @@ jobs:
 #      - name: Create git release
 #        run: git tag -a v<version_number> HEAD
 #
-#      - name: Push git release tag
-#        run: git push origin v<version_number>
+      - name: Push git release tag
+        run: git push origin main
 
       - name: Build New Release
         run: npm run build-prod
