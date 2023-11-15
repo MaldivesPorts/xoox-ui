@@ -26,6 +26,7 @@ import {
     useDisclosure
 } from './lib';
 import {useEffect, useState} from 'react';
+import {FileUploader} from './lib/components/file-uploader';
 // const {Divider} = require('../dist/xoox-ui.js');
 
 const DATA = [
@@ -55,16 +56,22 @@ function App() {
     //     }, 3000)
     // }, []);
 
+    const selectFiles = (files) => {
+        console.log(files);
+        files.map(console.log)
+    }
+
     return (
         <div>
-            <Slider
-                label="Temperature"
-                step={0.01}
-                maxValue={1}
-                minValue={0}
-                defaultValue={0.4}
-                className="max-w-md"
-            />
+            {/*<Slider*/}
+            {/*    label="Temperature"*/}
+            {/*    step={0.01}*/}
+            {/*    maxValue={1}*/}
+            {/*    minValue={0}*/}
+            {/*    defaultValue={0.4}*/}
+            {/*    className="max-w-md"*/}
+            {/*/>*/}
+            <FileUploader allowsMultiple={true} onSelect={selectFiles}/>
             {/*<Breadcrumbs>*/}
             {/*    <BreadcrumbItem>Home</BreadcrumbItem>*/}
             {/*    <BreadcrumbItem>Music</BreadcrumbItem>*/}
