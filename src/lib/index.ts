@@ -37,6 +37,8 @@ export * from "./components/input";
 export * from "./components/autocomplete";
 export * from "./components/breadcrumbs";
 export * from "./components/slider";
+export * from "./components/dropzone";
+export * from "./components/file-uploader";
 
 
 export {VisuallyHidden} from "@react-aria/visually-hidden";
