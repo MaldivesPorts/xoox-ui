@@ -20,17 +20,17 @@ const CheckboxGroup = forwardRef<"div", CheckboxGroupProps>((props, ref) => {
   } = useCheckboxGroup({...props, ref});
 
   return (
-    <div {...getGroupProps()}>
-      {label && <span {...getLabelProps()}>{label}</span>}
-      <div {...getWrapperProps()}>
-        <CheckboxGroupProvider value={context}>{children}</CheckboxGroupProvider>
+      <div {...getGroupProps()}>
+        {label && <span {...getLabelProps()}>{label}</span>}
+        <div {...getWrapperProps()}>
+          <CheckboxGroupProvider value={context}>{children}</CheckboxGroupProvider>
+        </div>
+        {errorMessage ? (
+            <div {...getErrorMessageProps()}>{errorMessage as any}</div>
+        ) : description ? (
+            <div {...getDescriptionProps()}>{description}</div>
+        ) : null}
       </div>
-      {errorMessage ? (
-        <div {...getErrorMessageProps()}>{errorMessage}</div>
-      ) : description ? (
-        <div {...getDescriptionProps()}>{description}</div>
-      ) : null}
-    </div>
   );
 });
 

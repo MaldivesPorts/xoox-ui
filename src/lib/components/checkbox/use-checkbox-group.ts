@@ -47,19 +47,20 @@ interface Props extends HTMLXooxUIProps<"div"> {
 }
 
 export type UseCheckboxGroupProps = Props &
-  AriaCheckboxGroupProps &
-  Partial<
-    Pick<
-      CheckboxProps,
-      "color" | "size" | "radius" | "lineThrough" | "isDisabled" | "disableAnimation"
-    >
-  >;
+    AriaCheckboxGroupProps &
+    Partial<
+        Pick<
+            CheckboxProps,
+            "color" | "size" | "radius" | "lineThrough" | "isDisabled" | "disableAnimation"
+        >
+    >;
 
 export type ContextType = {
   groupState: CheckboxGroupState;
   color?: CheckboxProps["color"];
   size?: CheckboxProps["size"];
   radius?: CheckboxProps["radius"];
+  isInvalid?: UseCheckboxGroupProps["isInvalid"];
   lineThrough?: CheckboxProps["lineThrough"];
   isDisabled?: CheckboxProps["isDisabled"];
   disableAnimation?: CheckboxProps["disableAnimation"];
@@ -83,6 +84,7 @@ export function useCheckboxGroup(props: UseCheckboxGroupProps) {
     isDisabled = false,
     disableAnimation = false,
     validationState,
+    isInvalid = validationState === "invalid",
     isReadOnly,
     isRequired,
     onValueChange,
@@ -97,66 +99,71 @@ export function useCheckboxGroup(props: UseCheckboxGroupProps) {
   const domRef = useDOMRef(ref);
 
   const checkboxGroupProps = useMemo(
-    () => ({
-      value,
-      name,
-      "aria-label": safeAriaLabel(otherProps["aria-label"], label),
-      defaultValue,
-      isRequired,
-      isReadOnly,
-      orientation,
-      onChange: onValueChange,
-      validationState,
-      ...otherProps,
-    }),
-    [
-      value,
-      name,
-      label,
-      defaultValue,
-      isRequired,
-      isReadOnly,
-      orientation,
-      onValueChange,
-      validationState,
-      otherProps["aria-label"],
-      otherProps,
-    ],
+      () => ({
+        value,
+        name,
+        "aria-label": safeAriaLabel(otherProps["aria-label"], label),
+        defaultValue,
+        isRequired,
+        isInvalid,
+        isReadOnly,
+        orientation,
+        onChange: onValueChange,
+        ...otherProps,
+      }),
+      [
+        value,
+        name,
+        label,
+        defaultValue,
+        isRequired,
+        isReadOnly,
+        isInvalid,
+        orientation,
+        onValueChange,
+        otherProps["aria-label"],
+        otherProps,
+      ],
   );
 
   const groupState = useCheckboxGroupState(checkboxGroupProps);
 
   const {labelProps, groupProps, descriptionProps, errorMessageProps} = useReactAriaCheckboxGroup(
-    checkboxGroupProps,
-    groupState,
+      checkboxGroupProps,
+      groupState,
   );
 
   const context = useMemo<ContextType>(
-    () => ({
-      size,
-      color,
-      radius,
-      lineThrough,
-      isDisabled,
-      disableAnimation,
-      groupState,
-    }),
-    [
-      size,
-      color,
-      radius,
-      lineThrough,
-      isDisabled,
-      disableAnimation,
-      groupState?.value,
-      groupState?.isDisabled,
-      groupState?.isReadOnly,
-      groupState?.validationState,
-      groupState?.isSelected,
-    ],
+      () => ({
+        size,
+        color,
+        radius,
+        lineThrough,
+        isInvalid,
+        isDisabled,
+        disableAnimation,
+        groupState,
+      }),
+      [
+        size,
+        color,
+        radius,
+        lineThrough,
+        isDisabled,
+        disableAnimation,
+        isInvalid,
+        groupState?.value,
+        groupState?.isDisabled,
+        groupState?.isReadOnly,
+        groupState?.isInvalid,
+        groupState?.isSelected,
+      ],
   );
 
-  const slots = useMemo(() => checkboxGroup(), []);
+  const slots = useMemo(
+      () => checkboxGroup({isRequired, isInvalid, disableAnimation}),
+      [isRequired, isInvalid, disableAnimation],
+  );
 
   const baseStyles = clsx(classNames?.base, className);
 
@@ -184,25 +191,25 @@ export function useCheckboxGroup(props: UseCheckboxGroupProps) {
   }, [slots, orientation, classNames?.wrapper]);
 
   const getDescriptionProps: PropGetter = useCallback(
-    (props = {}) => {
-      return {
-        ...props,
-        ...descriptionProps,
-        className: slots.description({class: clsx(classNames?.description, props?.className)}),
-      };
-    },
-    [slots, descriptionProps, classNames?.description],
+      (props = {}) => {
+        return {
+          ...props,
+          ...descriptionProps,
+          className: slots.description({class: clsx(classNames?.description, props?.className)}),
+        };
+      },
+      [slots, descriptionProps, classNames?.description],
   );
 
   const getErrorMessageProps: PropGetter = useCallback(
-    (props = {}) => {
-      return {
-        ...props,
-        ...errorMessageProps,
-        className: slots.errorMessage({class: clsx(classNames?.errorMessage, props?.className)}),
-      };
-    },
-    [slots, errorMessageProps, classNames?.errorMessage],
+      (props = {}) => {
+        return {
+          ...props,
+          ...errorMessageProps,
+          className: slots.errorMessage({class: clsx(classNames?.errorMessage, props?.className)}),
+        };
+      },
+      [slots, errorMessageProps, classNames?.errorMessage],
   );
 
   return {

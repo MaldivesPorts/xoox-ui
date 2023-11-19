@@ -99,6 +99,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
         endContent,
         onClear,
         onChange,
+        // @ts-ignore
         validationState,
         innerWrapperRef: innerWrapperRefProp,
         onValueChange = () => {},
@@ -112,11 +113,8 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
         [onValueChange],
     );
 
-    const [inputValue, setInputValue] = useControlledState<string | undefined>(
-        props.value,
-        props.defaultValue,
-        handleValueChange,
-    );
+    // @ts-ignore
+    const [inputValue, setInputValue] = useControlledState<string | undefined>(props.value, props.defaultValue, handleValueChange);
     const [isFocusWithin, setFocusWithin] = useState(false);
 
     const Component = as || "div";
@@ -173,7 +171,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
         onPress: handleClear,
     });
 
-    const isInvalid = props.validationState === "invalid" || originalProps.isInvalid;
+    const isInvalid = validationState === "invalid" || originalProps.isInvalid;
 
     const labelPlacement = useMemo<InputVariantProps["labelPlacement"]>(() => {
         if ((!originalProps.labelPlacement || originalProps.labelPlacement === "inside") && !label) {

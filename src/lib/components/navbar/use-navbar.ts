@@ -121,11 +121,8 @@ export function useNavbar(originalProps: UseNavbarProps) {
     [onMenuOpenChange],
   );
 
-  const [isMenuOpen, setIsMenuOpen] = useControlledState<boolean | undefined>(
-    isMenuOpenProp,
-    isMenuDefaultOpen,
-    handleMenuOpenChange,
-  );
+  // @ts-ignore
+  const [isMenuOpen, setIsMenuOpen] = useControlledState<boolean | undefined>(isMenuOpenProp, isMenuDefaultOpen, handleMenuOpenChange);
 
   const updateWidth = () => {
     if (domRef.current) {

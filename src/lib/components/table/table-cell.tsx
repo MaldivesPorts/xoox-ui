@@ -37,6 +37,7 @@ const TableCell = forwardRef<"td", TableCellProps>((props, ref) => {
 
   const tdStyles = clsx(classNames?.td, className, node.props?.className);
   const {isFocusVisible, focusProps} = useFocusRing();
+  // @ts-ignore
   const isRowSelected = state.selectionManager.isSelected(rowKey);
 
   const cell = useMemo(() => {

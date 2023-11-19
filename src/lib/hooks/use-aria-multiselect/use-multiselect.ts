@@ -39,6 +39,7 @@ export function useMultiSelect<T>(
 
   const collator = useCollator({usage: "search", sensitivity: "base"});
   const delegate = useMemo(
+      // @ts-ignore
     () => new ListKeyboardDelegate(state.collection, state.disabledKeys, null as never, collator),
     [state.collection, state.disabledKeys, collator],
   );

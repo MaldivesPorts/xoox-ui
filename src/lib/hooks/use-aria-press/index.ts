@@ -175,6 +175,7 @@ export function usePress(props: PressHookProps): PressResult {
 
     if (state.isPressed) {
       if (state.isOverTarget && state.target) {
+        // @ts-ignore
         triggerPressEnd(createEvent(state.target, e), state.pointerType, false);
       }
       state.isPressed = false;
@@ -214,7 +215,7 @@ export function usePress(props: PressHookProps): PressResult {
           if (!state.isPressed && !e.repeat) {
             state.target = e.currentTarget;
             state.isPressed = true;
-            shouldStopPropagation = triggerPressStart(e, "keyboard");
+            shouldStopPropagation = !!triggerPressStart(e, "keyboard");
 
             // Focus may move before the key up event, so register the event on the document
             // instead of the same element where the key down event occurred.
@@ -278,7 +279,7 @@ export function usePress(props: PressHookProps): PressResult {
             let stopPressUp = triggerPressUp(e, "virtual");
             let stopPressEnd = triggerPressEnd(e, "virtual");
 
-            shouldStopPropagation = stopPressStart && stopPressUp && stopPressEnd;
+            shouldStopPropagation = !!(stopPressStart && stopPressUp && stopPressEnd);
           }
 
           state.ignoreEmulatedMouseEvents = false;
@@ -382,7 +383,7 @@ export function usePress(props: PressHookProps): PressResult {
             disableTextSelection(state.target);
           }
 
-          shouldStopPropagation = triggerPressStart(e, state.pointerType);
+          shouldStopPropagation = !!triggerPressStart(e, state.pointerType);
 
           addGlobalListener(getOwnerDocument(e.currentTarget), "pointermove", onPointerMove, false);
           addGlobalListener(getOwnerDocument(e.currentTarget), "pointerup", onPointerUp, false);
@@ -441,11 +442,14 @@ export function usePress(props: PressHookProps): PressResult {
         if (isOverTarget(e, state.target)) {
           if (!state.isOverTarget) {
             state.isOverTarget = true;
+            // @ts-ignore
             triggerPressStart(createEvent(state.target, e as EventBase), state.pointerType);
           }
         } else if (state.isOverTarget) {
           state.isOverTarget = false;
+          // @ts-ignore
           triggerPressEnd(createEvent(state.target, e as EventBase), state.pointerType, false);
+          // @ts-ignore
           cancelOnPointerExit(e);
         }
       };
@@ -458,8 +462,10 @@ export function usePress(props: PressHookProps): PressResult {
           state.target
         ) {
           if (isOverTarget(e, state.target)) {
+            // @ts-ignore
             triggerPressEnd(createEvent(state.target, e as EventBase), state.pointerType);
           } else if (state.isOverTarget) {
+            // @ts-ignore
             triggerPressEnd(createEvent(state.target, e as EventBase), state.pointerType);
           }
 
@@ -475,6 +481,7 @@ export function usePress(props: PressHookProps): PressResult {
       };
 
       let onPointerCancel = (e: PointerEvent) => {
+        // @ts-ignore
         cancel(e);
       };
 
@@ -532,6 +539,7 @@ export function usePress(props: PressHookProps): PressResult {
 
         if (state.isPressed && !state.ignoreEmulatedMouseEvents) {
           state.isOverTarget = true;
+          // @ts-ignore
           shouldStopPropagation = triggerPressStart(e, state.pointerType);
         }
 
@@ -549,6 +557,7 @@ export function usePress(props: PressHookProps): PressResult {
 
         if (state.isPressed && !state.ignoreEmulatedMouseEvents) {
           state.isOverTarget = false;
+          // @ts-ignore
           shouldStopPropagation = triggerPressEnd(e, state.pointerType, false);
           cancelOnPointerExit(e);
         }
@@ -588,8 +597,10 @@ export function usePress(props: PressHookProps): PressResult {
         }
 
         if (isOverTarget(e, state.target)) {
+          // @ts-ignore
           triggerPressEnd(createEvent(state.target, e as EventBase), state.pointerType);
         } else if (state.isOverTarget) {
+          // @ts-ignore
           triggerPressEnd(createEvent(state.target, e as EventBase), state.pointerType, false);
         }
 
@@ -649,10 +660,12 @@ export function usePress(props: PressHookProps): PressResult {
         if (touch && isOverTarget(touch, e.currentTarget)) {
           if (!state.isOverTarget) {
             state.isOverTarget = true;
+            // @ts-ignore
             shouldStopPropagation = triggerPressStart(e, state.pointerType);
           }
         } else if (state.isOverTarget) {
           state.isOverTarget = false;
+          // @ts-ignore
           shouldStopPropagation = triggerPressEnd(e, state.pointerType, false);
           cancelOnPointerExit(e);
         }
@@ -677,9 +690,12 @@ export function usePress(props: PressHookProps): PressResult {
         let shouldStopPropagation = true;
 
         if (touch && isOverTarget(touch, e.currentTarget)) {
+          // @ts-ignore
           triggerPressUp(e, state.pointerType);
+          // @ts-ignore
           shouldStopPropagation = triggerPressEnd(e, state.pointerType);
         } else if (state.isOverTarget) {
+          // @ts-ignore
           shouldStopPropagation = triggerPressEnd(e, state.pointerType, false);
         }
 
@@ -711,6 +727,7 @@ export function usePress(props: PressHookProps): PressResult {
       let onScroll = (e: Event) => {
         if (state.isPressed && (e.target as Element).contains(state.target)) {
           cancel({
+            // @ts-ignore
             currentTarget: state.target,
             shiftKey: false,
             ctrlKey: false,

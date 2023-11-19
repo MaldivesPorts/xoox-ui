@@ -62,6 +62,7 @@ const TableCheckboxCell = forwardRef<"td", TableCheckboxCellProps>((props, ref) 
   const isSingleSelectionMode = selectionMode === "single";
 
   const {onChange, ...otherCheckboxProps} = checkboxProps;
+  // @ts-ignore
   const isRowSelected = state.selectionManager.isSelected(rowKey);
 
   return (

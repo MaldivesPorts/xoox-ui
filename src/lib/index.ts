@@ -34,7 +34,6 @@ export * from "./components/user";
 export * from "./components/toast";
 
 export * from "./components/input";
-export * from "./components/combobox";
 export * from "./components/autocomplete";
 export * from "./components/breadcrumbs";
 export * from "./components/slider";

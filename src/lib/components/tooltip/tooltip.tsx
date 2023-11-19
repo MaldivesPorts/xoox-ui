@@ -1,4 +1,3 @@
-import {useMemo} from "react";
 import {forwardRef} from "../../core/system";
 import {OverlayContainer} from "@react-aria/overlays";
 import {AnimatePresence, motion} from "framer-motion";
@@ -8,6 +7,7 @@ import {Children, cloneElement} from "react";
 import {getTransformOrigins} from "../../utilities/aria-utils";
 
 import {UseTooltipProps, useTooltip} from "./use-tooltip";
+import {mergeProps} from '@react-aria/utils';
 
 export interface TooltipProps extends Omit<UseTooltipProps, "disableTriggerFocus" | "backdrop"> {}
 
@@ -21,18 +21,15 @@ const Tooltip = forwardRef<"div", TooltipProps>((props, ref) => {
     placement,
     disableAnimation,
     motionProps,
-    showArrow,
     getTriggerProps,
     getTooltipProps,
-    getArrowProps,
+    getTooltipContentProps,
   } = useTooltip({
     ...props,
     ref,
   });
 
   let trigger: React.ReactElement;
-
-  const {className, ...otherTooltipProps} = getTooltipProps();
 
   try {
     /**
@@ -48,50 +45,42 @@ const Tooltip = forwardRef<"div", TooltipProps>((props, ref) => {
     warn("Tooltip must have only one child node. Please, check your code.");
   }
 
-  const arrowContent = useMemo(() => {
-    if (!showArrow) return null;
+  const {ref: tooltipRef, id, style, ...otherTooltipProps} = getTooltipProps();
 
-    return <span {...getArrowProps()} />;
-  }, [showArrow, getArrowProps]);
-
-  const animatedContent = useMemo(() => {
-    return (
-      <div {...otherTooltipProps}>
+  const animatedContent = (
+      <div ref={tooltipRef} id={id} style={style}>
         <motion.div
-          animate="enter"
-          exit="exit"
-          initial="exit"
-          style={{
-            ...getTransformOrigins(placement),
-          }}
-          variants={TRANSITION_VARIANTS.scaleSpring}
-          {...motionProps}
+            animate="enter"
+            exit="exit"
+            initial="exit"
+            variants={TRANSITION_VARIANTS.scaleSpring}
+            {...mergeProps(motionProps, otherTooltipProps)}
+            style={{
+              ...getTransformOrigins(placement),
+            }}
         >
-          <Component className={className}>{content}</Component>
-          {arrowContent}
+          <Component {...getTooltipContentProps()}>{content}</Component>
         </motion.div>
       </div>
-    );
-  }, [otherTooltipProps, className, placement, motionProps, Component, content, arrowContent]);
+  );
 
   return (
-    <>
-      {trigger}
-      {disableAnimation && isOpen ? (
-        <OverlayContainer portalContainer={portalContainer}>
-          <div {...otherTooltipProps}>
-            <Component className={className}>{content}</Component>
-            {arrowContent}
-          </div>
-        </OverlayContainer>
-      ) : (
-        <AnimatePresence>
-          {isOpen ? (
-            <OverlayContainer portalContainer={portalContainer}>{animatedContent}</OverlayContainer>
-          ) : null}
-        </AnimatePresence>
-      )}
-    </>
+      <>
+        {trigger}
+        {disableAnimation && isOpen ? (
+            <OverlayContainer portalContainer={portalContainer}>
+              <div ref={tooltipRef} id={id} style={style} {...otherTooltipProps}>
+                <Component {...getTooltipContentProps()}>{content}</Component>
+              </div>
+            </OverlayContainer>
+        ) : (
+            <AnimatePresence>
+              {isOpen ? (
+                  <OverlayContainer portalContainer={portalContainer}>{animatedContent}</OverlayContainer>
+              ) : null}
+            </AnimatePresence>
+        )}
+      </>
   );
 });
 

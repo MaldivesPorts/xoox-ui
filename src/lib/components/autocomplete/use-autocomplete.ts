@@ -114,7 +114,15 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
     const [props, variantProps] = mapPropsVariants(originalProps, autocomplete.variantKeys);
     const disableAnimation = originalProps.disableAnimation ?? false;
 
-    let {
+    // TODO: Remove disableClearable prop in the next minor release.
+    const isClearable =
+        // @ts-ignore
+        originalProps.disableClearable !== undefined
+            // @ts-ignore
+            ? !originalProps.disableClearable
+            : originalProps.isClearable;
+
+    const {
         ref,
         as,
         label,
@@ -128,6 +136,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
         clearIcon,
         scrollRef: scrollRefProp,
         defaultFilter,
+        endContent,
         allowsEmptyCollection = true,
         shouldCloseOnBlur = true,
         popoverProps = {},
@@ -145,10 +154,9 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
         ...otherProps
     } = props;
 
-    // const children = createCollectionChildren(childrenProp, AutocompleteItemBase, props?.items);
-
     // Setup filter function and state.
     const {contains} = useFilter(filterOptions);
+
     const state = useComboBoxState({
         ...originalProps,
         children,
@@ -166,10 +174,10 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
 
     // Setup refs and get props for child elements.
     const buttonRef = useRef<HTMLButtonElement>(null);
-    const inputRef = useRef<HTMLInputElement>(null);
     const inputWrapperRef = useRef<HTMLDivElement>(null);
     const listBoxRef = useRef<HTMLUListElement>(null);
     const popoverRef = useRef<HTMLDivElement>(null);
+    const inputRef = useDOMRef<HTMLInputElement>(ref);
     const scrollShadowRef = useDOMRef<HTMLElement>(scrollRefProp);
 
     const slotsProps: {
@@ -282,16 +290,15 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
 
     const Component = as || "div";
 
-    const domRef = useDOMRef(ref);
-
     const slots = useMemo(
         () =>
             autocomplete({
                 ...variantProps,
+                isClearable,
                 disableAnimation,
                 className,
             }),
-        [...Object.values(variantProps), disableAnimation, className],
+        [...Object.values(variantProps), isClearable, disableAnimation, className],
     );
 
     const onClear = useCallback(() => {
@@ -308,7 +315,6 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
     );
 
     const getBaseProps: PropGetter = () => ({
-        ref: domRef,
         "data-invalid": dataAttr(originalProps?.isInvalid),
         "data-open": dataAttr(state.isOpen),
         className: slots.base({class: baseStyles}),
@@ -407,7 +413,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
 
     return {
         Component,
-        domRef,
+        inputRef,
         label,
         state,
         slots,
@@ -415,6 +421,8 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
         isLoading,
         clearIcon,
         isOpen,
+        endContent,
+        isClearable,
         disableAnimation,
         allowsCustomValue,
         selectorIcon,
@@ -428,5 +436,4 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
         getEndContentWrapperProps,
     };
 }
-
 export type UseAutocompleteReturn = ReturnType<typeof useAutocomplete>;

@@ -85,14 +85,15 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
     isReadOnly: isReadOnlyProp = false,
     autoFocus = false,
     isSelected: isSelectedProp,
+    validationState,
     size = groupContext?.size ?? "md",
     color = groupContext?.color ?? "primary",
     radius = groupContext?.radius,
     lineThrough = groupContext?.lineThrough ?? false,
     isDisabled: isDisabledProp = groupContext?.isDisabled ?? false,
     disableAnimation = groupContext?.disableAnimation ?? false,
+    isInvalid = validationState ? validationState === "invalid" : groupContext?.isInvalid ?? false,
     isIndeterminate = false,
-    validationState,
     defaultSelected,
     classNames,
     onChange,
@@ -104,14 +105,14 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
   if (groupContext && __DEV__) {
     if (isSelectedProp) {
       warn(
-        "The Checkbox.Group is being used, `isSelected` will be ignored. Use the `value` of the Checkbox.Group instead.",
-        "Checkbox",
+          "The Checkbox.Group is being used, `isSelected` will be ignored. Use the `value` of the Checkbox.Group instead.",
+          "Checkbox",
       );
     }
     if (defaultSelected) {
       warn(
-        "The Checkbox.Group is being used, `defaultSelected` will be ignored. Use the `defaultValue` of the Checkbox.Group instead.",
-        "Checkbox",
+          "The Checkbox.Group is being used, `defaultSelected` will be ignored. Use the `defaultValue` of the Checkbox.Group instead.",
+          "Checkbox",
       );
     }
   }
@@ -132,10 +133,10 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
       defaultSelected,
       isIndeterminate,
       isRequired,
+      isInvalid,
       isSelected: isSelectedProp,
       isDisabled: isDisabledProp,
       isReadOnly: isReadOnlyProp,
-      validationState,
       "aria-label": safeAriaLabel(otherProps["aria-label"], children),
       "aria-labelledby": otherProps["aria-labelledby"] || labelId,
       onChange: onValueChange,
@@ -146,12 +147,12 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
     labelId,
     children,
     autoFocus,
+    isInvalid,
     isIndeterminate,
     isDisabledProp,
     isReadOnlyProp,
     isSelectedProp,
     defaultSelected,
-    validationState,
     otherProps["aria-label"],
     otherProps["aria-labelledby"],
     onValueChange,
@@ -164,18 +165,17 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
     isReadOnly,
     isPressed: isPressedKeyboard,
   } = isInGroup
-    ? // eslint-disable-next-line
+      ? // eslint-disable-next-line
       useReactAriaCheckboxGroupItem(
-        {
-          ...ariaCheckboxProps,
-          validationState,
-        },
-        groupContext.groupState,
-        inputRef,
+          {
+            ...ariaCheckboxProps,
+            isInvalid,
+          },
+          groupContext.groupState,
+          inputRef,
       )
-    : useReactAriaCheckbox(ariaCheckboxProps, useToggleState(ariaCheckboxProps), inputRef); // eslint-disable-line
+      : useReactAriaCheckbox(ariaCheckboxProps, useToggleState(ariaCheckboxProps), inputRef); // eslint-disable-line
 
-  const isInvalid = useMemo(() => validationState === "invalid", [validationState]);
   const isInteractionDisabled = isDisabled || isReadOnly;
 
   // Handle press state for full label. Keyboard press state is returned by useCheckbox
@@ -210,16 +210,17 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
   });
 
   const slots = useMemo(
-    () =>
-      checkbox({
-        color,
-        size,
-        radius,
-        lineThrough,
-        isDisabled,
-        disableAnimation,
-      }),
-    [color, size, radius, lineThrough, isDisabled, disableAnimation],
+      () =>
+          checkbox({
+            color,
+            size,
+            radius,
+            isInvalid,
+            lineThrough,
+            isDisabled,
+            disableAnimation,
+          }),
+      [color, size, radius, isInvalid, lineThrough, isDisabled, disableAnimation],
   );
 
   const baseStyles = clsx(classNames?.base, className);
@@ -257,14 +258,14 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
   ]);
 
   const getWrapperProps: PropGetter = useCallback(
-    (props = {}) => {
-      return {
-        ...props,
-        "aria-hidden": true,
-        className: clsx(slots.wrapper({class: clsx(classNames?.wrapper, props?.className)})),
-      };
-    },
-    [slots, classNames?.wrapper],
+      (props = {}) => {
+        return {
+          ...props,
+          "aria-hidden": true,
+          className: clsx(slots.wrapper({class: clsx(classNames?.wrapper, props?.className)})),
+        };
+      },
+      [slots, classNames?.wrapper],
   );
 
   const getInputProps: PropGetter = useCallback(() => {
@@ -276,22 +277,22 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
   }, [inputProps, focusProps, onChange]);
 
   const getLabelProps: PropGetter = useCallback(
-    () => ({
-      id: labelId,
-      className: slots.label({class: classNames?.label}),
-    }),
-    [slots, classNames?.label, isDisabled, isSelected, isInvalid],
+      () => ({
+        id: labelId,
+        className: slots.label({class: classNames?.label}),
+      }),
+      [slots, classNames?.label, isDisabled, isSelected, isInvalid],
   );
 
   const getIconProps = useCallback(
-    () =>
-      ({
-        isSelected: isSelected,
-        isIndeterminate: !!isIndeterminate,
-        disableAnimation: !!disableAnimation,
-        className: slots.icon({class: classNames?.icon}),
-      } as CheckboxIconProps),
-    [slots, classNames?.icon, isSelected, isIndeterminate, disableAnimation],
+      () =>
+          ({
+            isSelected: isSelected,
+            isIndeterminate: !!isIndeterminate,
+            disableAnimation: !!disableAnimation,
+            className: slots.icon({class: classNames?.icon}),
+          } as CheckboxIconProps),
+      [slots, classNames?.icon, isSelected, isIndeterminate, disableAnimation],
   );
 
   return {

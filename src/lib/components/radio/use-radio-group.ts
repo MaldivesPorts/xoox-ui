@@ -47,12 +47,14 @@ interface Props extends Omit<HTMLXooxUIProps<"div">, "onChange"> {
 }
 
 export type UseRadioGroupProps = Omit<Props, "defaultChecked"> &
-  Omit<AriaRadioGroupProps, "onChange"> &
-  Partial<Pick<RadioProps, "color" | "size" | "isDisabled" | "disableAnimation" | "onChange">>;
+    Omit<AriaRadioGroupProps, "onChange"> &
+    Partial<Pick<RadioProps, "color" | "size" | "isDisabled" | "disableAnimation" | "onChange">>;
 
 export type ContextType = {
   groupState: RadioGroupState;
+  // @ts-ignore
   isRequired?: UseRadioGroupProps["isRequired"];
+  // @ts-ignore
   validationState?: UseRadioGroupProps["validationState"];
   color?: RadioProps["color"];
   size?: RadioProps["size"];
@@ -75,11 +77,11 @@ export function useRadioGroup(props: UseRadioGroupProps) {
     isDisabled = false,
     disableAnimation = false,
     orientation = "vertical",
-    isRequired = false,
+    // @ts-ignore
+    validationState, isRequired = false,
     isReadOnly,
     errorMessage,
     description,
-    validationState,
     className,
     onChange,
     onValueChange,

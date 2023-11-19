@@ -1,9 +1,9 @@
+import {ForwardedRef, ReactElement, Ref} from 'react';
 import {PopoverContent} from "../popover";
 import {FocusScope} from "@react-aria/focus";
 import {forwardRef} from "../../core/system";
 import {Menu, MenuProps} from "../menu";
 import {useDropdownContext} from "./dropdown-context";
-import {ForwardedRef, ReactElement, Ref} from 'react';
 
 interface Props<T> extends Omit<MenuProps<T>, "menuProps"> {}
 
