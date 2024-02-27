@@ -8,7 +8,10 @@ import {XooxUIProvider} from '../src/lib';
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <XooxUIProvider>
-            <App />
+            <main className="text-foreground bg-background">
+                <App/>
+            </main>
         </XooxUIProvider>
-    </React.StrictMode>,
+    </React.StrictMode>
+,
 )

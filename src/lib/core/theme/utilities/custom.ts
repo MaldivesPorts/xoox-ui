@@ -17,4 +17,5 @@ export default {
   ".tap-highlight-transparent": {
     "-webkit-tap-highlight-color": "transparent",
   },
+  //  tbody > tr:last-child > td
 };

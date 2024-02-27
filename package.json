@@ -75,6 +75,8 @@
     "@react-types/table": "^3.8.0",
     "@react-types/textfield": "^3.7.3",
     "@react-types/tooltip": "^3.4.3",
+    "@swc/cli": "^0.3.9",
+    "@swc/core": "^1.4.2",
     "@types/color": "^3.0.4",
     "@types/flat": "^5.0.2",
     "@types/lodash.foreach": "^4.5.7",
